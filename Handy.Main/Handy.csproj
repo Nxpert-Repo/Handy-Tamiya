@@ -1,0 +1,484 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9101425-2CA4-45FC-BDFD-1478AFB270B5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Handy.Main</RootNamespace>
+    <AssemblyName>Handy</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>1_Tamiya_Handy</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationIcon>handy_icon_001.ico</ApplicationIcon>
+    <DeployDirPrefix>\</DeployDirPrefix>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="btCommLibNet, Version=1.5.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\btCommLibNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="btFileLibNet, Version=1.5.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\btFileLibNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="btLibDefNet, Version=1.5.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\btLibDefNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="btScanLibNet, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\btScanLibNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="btSysLibNet, Version=1.5.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\btSysLibNet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsCE.Forms" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=3.0.3600.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=969db8053d3322ac, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BarcodeTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarcodeTestWindow.designer.cs">
+      <DependentUpon>BarcodeTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseWindow.designer.cs">
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\CommonInterfaceFunctions.cs" />
+    <Compile Include="Base\KeyenceTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\KeyenceTestWindow.designer.cs">
+      <DependentUpon>KeyenceTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\TestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\TestWindow.designer.cs">
+      <DependentUpon>TestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryPreparationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryPreparationWindow.Designer.cs">
+      <DependentUpon>DeliveryPreparationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayNewTagsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisplayNewTagsWindow.designer.cs">
+      <DependentUpon>DisplayNewTagsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handy.cs">
+      <DependentUpon>Handy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Handy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Handy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HandyMaintenanceListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandyMaintenanceListWindow.designer.cs">
+      <DependentUpon>HandyMaintenanceListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandyMaintenanceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandyMaintenanceWindow.designer.cs">
+      <DependentUpon>HandyMaintenanceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryGenerationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryGenerationWindow.designer.cs">
+      <DependentUpon>InventoryGenerationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryListWindow.designer.cs">
+      <DependentUpon>InventoryListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryProcessingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryProcessingWindow.designer.cs">
+      <DependentUpon>InventoryProcessingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryProcessingWindow_Symbol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryProcessingWindow_Symbol.designer.cs">
+      <DependentUpon>InventoryProcessingWindow_Symbol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IssuanceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssuanceWindow.Designer.cs">
+      <DependentUpon>IssuanceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocatorTaggingListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocatorTaggingListWindow.designer.cs">
+      <DependentUpon>LocatorTaggingListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocatorTaggingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocatorTaggingWindow.designer.cs">
+      <DependentUpon>LocatorTaggingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocatorUnTaggingListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocatorUnTaggingListWindow.designer.cs">
+      <DependentUpon>LocatorUnTaggingListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInWindow.designer.cs">
+      <DependentUpon>LogInWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialAdjustmentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialAdjustmentWindow.designer.cs">
+      <DependentUpon>MaterialAdjustmentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialIssuanceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialIssuanceWindow.designer.cs">
+      <DependentUpon>MaterialIssuanceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialIssuanceWindow_Sym.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialIssuanceWindow_Sym.designer.cs">
+      <DependentUpon>MaterialIssuanceWindow_Sym.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialTransferWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialTransferWindow.Designer.cs">
+      <DependentUpon>MaterialTransferWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PickListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PickListWindow.designer.cs">
+      <DependentUpon>PickListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ScannedListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScannedListWindow.designer.cs">
+      <DependentUpon>ScannedListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatusListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatusListWindow.designer.cs">
+      <DependentUpon>StatusListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockCardWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockCardWindow.designer.cs">
+      <DependentUpon>StockCardWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockMovementWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockMovementWindow.Designer.cs">
+      <DependentUpon>StockMovementWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WRISWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WRISWindow.Designer.cs">
+      <DependentUpon>WRISWindow.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HandyMaintenanceListWindow.resx">
+      <DependentUpon>HandyMaintenanceListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandyMaintenanceWindow.resx">
+      <DependentUpon>HandyMaintenanceWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryListWindow.resx">
+      <DependentUpon>InventoryListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryProcessingWindow.resx">
+      <DependentUpon>InventoryProcessingWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocatorTaggingListWindow.resx">
+      <DependentUpon>LocatorTaggingListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocatorTaggingWindow.resx">
+      <DependentUpon>LocatorTaggingWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocatorUnTaggingListWindow.resx">
+      <DependentUpon>LocatorUnTaggingListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogInWindow.resx">
+      <DependentUpon>LogInWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialAdjustmentWindow.resx">
+      <DependentUpon>MaterialAdjustmentWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialIssuanceWindow.resx">
+      <DependentUpon>MaterialIssuanceWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Handy.DAL\Handy.DAL.csproj">
+      <Project>{E959CA22-1FF1-456C-A45B-802BB037C099}</Project>
+      <Name>Handy.DAL</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Handy.Lib\Handy.Lib.csproj">
+      <Project>{A684F6BB-369A-490C-9116-40E2E1FA19D6}</Project>
+      <Name>Handy.Lib</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <Content Include="Handy.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="LocatorTaggingWindow.cd" />
+    <None Include="DesignTimeAttributes.xmta" />
+    <None Include="Handy.xsc">
+      <DependentUpon>Handy.xsd</DependentUpon>
+    </None>
+    <None Include="Handy.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Handy.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Handy.xss">
+      <DependentUpon>Handy.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\GetHandyNetConfig.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CoreDll.dll" />
+    <Content Include="dbnetlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="handy_icon_001.ico" />
+    <EmbeddedResource Include="BarcodeTestWindow.resx">
+      <DependentUpon>BarcodeTestWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\BaseWindow.resx">
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\KeyenceTestWindow.resx">
+      <DependentUpon>KeyenceTestWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\TestWindow.resx">
+      <DependentUpon>TestWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryPreparationWindow.resx">
+      <DependentUpon>DeliveryPreparationWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisplayNewTagsWindow.resx">
+      <DependentUpon>DisplayNewTagsWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryGenerationWindow.resx">
+      <DependentUpon>InventoryGenerationWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryProcessingWindow_Symbol.resx">
+      <DependentUpon>InventoryProcessingWindow_Symbol.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssuanceWindow.resx">
+      <DependentUpon>IssuanceWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialIssuanceWindow_Sym.resx">
+      <DependentUpon>MaterialIssuanceWindow_Sym.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialTransferWindow.resx">
+      <DependentUpon>MaterialTransferWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickListWindow.resx">
+      <DependentUpon>PickListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScannedListWindow.resx">
+      <DependentUpon>ScannedListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusListWindow.resx">
+      <DependentUpon>StatusListWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockCardWindow.resx">
+      <DependentUpon>StockCardWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockMovementWindow.resx">
+      <DependentUpon>StockMovementWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WRISWindow.resx">
+      <DependentUpon>WRISWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Resources\App.bak.config.txt" />
+    <Content Include="Resources\App.config.txt" />
+    <Content Include="Resources\Battery_ACConnected.bmp" />
+    <Content Include="Resources\Battery_High.bmp" />
+    <Content Include="Resources\Battery_Low.bmp" />
+    <Content Include="Resources\Battery_Medium.bmp" />
+    <Content Include="Resources\Battery_VeryLow.bmp" />
+    <Content Include="Resources\Handy Buttons.bmp" />
+    <Content Include="Resources\HandyFooter.bmp" />
+    <Content Include="Resources\HandyHeader.bmp" />
+    <Content Include="Resources\handy_icon_001.ico" />
+    <Content Include="Resources\midp logo1.jpg" />
+    <Content Include="Resources\MMSLogo.bmp" />
+    <Content Include="Resources\Signal_Excellent.bmp" />
+    <Content Include="Resources\Signal_Fair.bmp" />
+    <Content Include="Resources\Signal_Good.bmp" />
+    <Content Include="Resources\Signal_None.bmp" />
+    <Content Include="Resources\Signal_Poor.bmp" />
+    <Content Include="Resources\Signal_VeryGood.bmp" />
+    <Content Include="Resources\UpdateList.txt" />
+    <Content Include="System.Data.SqlClient.xml" />
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

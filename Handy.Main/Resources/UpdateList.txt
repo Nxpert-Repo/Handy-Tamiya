@@ -1,0 +1,17 @@
+#######################################################################
+
+# Directory    : 
+# Filename     : UpdateList.txt
+# Date Created : 1/08/2012 6:21:00 AM
+
+# Max Field(s) : 1
+
+# Split Char   : ,
+
+# FieldName(s) : Handy Files
+#######################################################################
+handy.dal.dll
+handy.lib.dll
+Handy V3.exe
+UpdateConfig.xml
+Handy Updater.exe

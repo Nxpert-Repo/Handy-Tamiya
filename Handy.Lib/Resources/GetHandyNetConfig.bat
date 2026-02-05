@@ -1,0 +1,1 @@
+ipconfig > \Windows\HandyNetConfig.txt

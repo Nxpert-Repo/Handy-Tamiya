@@ -1,0 +1,18 @@
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Debug\UpdateConfig.xml
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Debug\Handy Updater.exe
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Debug\Handy Updater.pdb
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\HandyUpdater.UpdaterWindow.resources
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\HandyUpdater.Properties.Resources.resources
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\HandyUpdater.csproj.GenerateResource.Cache
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\Handy Updater.exe
+C:\Users\NPXUSER\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Debug\Handy Updater.pdb
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Release\UpdateConfig.xml
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Release\Handy Updater.exe
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\bin\Release\Handy Updater.pdb
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\HandyUpdater.UpdaterWindow.resources
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\HandyUpdater.Properties.Resources.resources
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\HandyUpdater.csproj.GenerateResource.Cache
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\Handy Updater.exe
+C:\Users\Win7\Documents\Visual Studio 2005\Projects\Handy\HandyUpdater\obj\Release\Handy Updater.pdb

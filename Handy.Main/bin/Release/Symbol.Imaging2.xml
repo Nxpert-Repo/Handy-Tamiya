@@ -1,0 +1,3145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Symbol.Imaging2</name>
+    </assembly>
+    <members>
+        <member name="T:Symbol.Imaging2.Config">
+            <summary>
+            Defines an object that encapsulates Configuration information of an imaging device. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AvailableCapabilities">
+            <summary>
+            Gets an array of available capabilities supported by the associated Imager.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapability">
+            <summary>
+            Defines an object that controls the image device capabilities. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapability">
+            <summary>
+            Defines an object that controls the image acquisition capabilities. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapability">
+            <summary>
+            Defines an object that controls the image capabilities. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapability">
+            <summary>
+            Defines an object that controls the image view finder capabilities. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.Activators">
+            <summary>
+            Defines an object that controls the activators for the image capture and timeout
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass">
+            <summary>
+            Defines an object that controls the imaging device capabilities.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.PowerMode">
+            <summary>
+            Provides the power mode that the imaging device will enter when it is
+            locked but not acquiring. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.XNativeResolution">
+            <summary>
+            Provides the native optical resolution along the X-axis of the imaging device.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.YNativeResolution">
+            <summary>
+            Provides the native optical resolution along the Y-axis of the imaging device.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorFormat">
+            <summary>
+            Provides the color format of the pixel data the imaging device is capable of acquiring.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.BitOrder">
+            <summary>
+            Provides the bit order in which the bytes in an image are filled.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorDataFormat">
+            <summary>
+            Provides the color data format used by the Imager. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.LightSource">
+            <summary>
+            Provides the general color characteristic of the integrated light source.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.GetImageTimeout">
+            <summary>
+            Provides the maximum period of time, in milliseconds, that an 
+            image capture method will block. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.Resolution">
+            <summary>
+            Provides the imaging device resolution.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.PowerModeClass">
+            <summary>
+            Provides the power mode that the imaging device will enter when it is
+            locked but not acquiring. 
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.CapabilityClass">
+            <summary>
+            Defines an object that encapsulates information of the capabilities of an imaging device. 
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.Config.CapabilityClass.#ctor(Symbol.Imaging2.CapIDs,Symbol.Imaging2.PInvokes)">
+            <summary>
+            Initialize a new instance of CapabilityClass structure.
+            </summary>
+            <param name="pi">The Imager who owns the capability.</param>
+            <param name="capId">The <see cref="T:Symbol.Imaging2.CapIDs"/> of the capability.</param>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.CapID">
+            <summary>
+            Gets the capability ID.
+            </summary>
+            <value>The capability ID as a value defined in the <see cref="T:Symbol.Imaging2.CapIDs"/> enum.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.IsSupported">
+            <summary>
+            Gets a boolean flag indicating if this capability is supported by the imaging device.
+            </summary>
+            <value>True if the capability is supported by the Imager; otherwise, false;</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.ValueType">
+            <summary>
+            Gets the type of the capability value.
+            </summary>
+            <value>A <see cref="T:System.Type"/> object indicating the type of the capability value.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.AllowedValues">
+            <summary>
+            Gets an Array of allowed values of this capability. 
+            </summary>
+            <value>An Array object that contains the allowed values of this capability.
+            Returns null if the capability is not supported or the set of allowed values 
+            cannot be represented as an array (for example, all values within a range are 
+            allowed).</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.AllowedValueRange">
+            <summary>
+            Gets the range of allowed values of the capability.
+            </summary>
+            <value>A <see cref="T:Symbol.Imaging2.Range"/> structure that defines the allowed value range of this capability.
+            Returns an empty Range if the capability is not supported or the set of allowed values
+            cannot be represented as a range.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapabilityClass.DefaultValue">
+            <summary>
+            Gets the default value of the capability. It can be cast to <see cref="P:Symbol.Imaging2.Config.CapabilityClass.ValueType"/> for further use.
+            </summary>
+            <value>The default value of the capability as an object. 
+            Returns null if the capability is not supported.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.PowerModeClass.Value">
+            <summary>
+            Gets or sets the power mode that the imaging device will enter when it is
+            locked but not acquiring. 
+            </summary>
+            <value>A power mode defined in the <see cref="T:Symbol.Imaging2.PowerModes"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.XNativeResolutionClass">
+            <summary>
+            Provides the native optical resolution along the X-axis of the imaging device. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.XNativeResolutionClass.Value">
+            <summary>
+            Gets the native optical resolution along the X-axis of the imaging device.
+            </summary>
+            <value>An integer representing the native optical resolution along the X-axis of the imaging device.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.YNativeResolutionClass">
+            <summary>
+            Provides the native optical resolution along the Y-axis of the imaging device. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.YNativeResolutionClass.Value">
+            <summary>
+            Gets the native optical resolution along the Y-axis of the imaging device.
+            </summary>
+            <value>An integer representing the native optical resolution along the Y-axis of the imaging device.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorFormatClass">
+            <summary>
+            Provides the color format of the pixel data the imaging device is capable of acquiring. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorFormatClass.Value">
+            <summary>
+            Gets the color format of the pixel data the imaging device is capable of acquiring.
+            </summary>
+            <value>A color format defined in <see cref="T:Symbol.Imaging2.ColorFormats"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.BitOrderClass">
+            <summary>
+            Provides the bit order in which the bytes in an image are filled. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.BitOrderClass.Value">
+            <summary>
+            Gets the bit order in which the bytes in an image are filled.
+            </summary>
+            <value>A bit order defined in the <see cref="T:Symbol.Imaging2.BitOrders"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorDataFormatClass">
+            <summary>
+            Provides the color data format used by the Imager.  Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.ColorDataFormatClass.Value">
+            <summary>
+            Gets the color data format used by the Imager. 
+            </summary>
+            <value>A color data format defined in <see cref="T:Symbol.Imaging2.ColorDataFormats"/> enum.</value>
+            <remarks>
+            There are two options, “Planar” and “Chunky”. In Planar mode the RGB data is 
+            transferred one plane at a time; first the entire red plane then the entire 
+            green plane and finally the entire blue plane. In Chunky mode the RGB data 
+            for each pixel is transferred in an interlaced fashion one pixel at a time 
+            (R-G-B, R-G-B,…).
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.LightSourceClass">
+            <summary>
+            Provides the general color characteristic of the integrated light source. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.LightSourceClass.Value">
+            <summary>
+            Gets the general color characteristic of the integrated light source.
+            </summary>
+            <value>A light source defined in the <see cref="T:Symbol.Imaging2.LightSources"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.GetImageTimeoutClass">
+            <summary>
+            Provides the maximum period of time, in milliseconds, that an 
+            image capture method will block.  Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.GetImageTimeoutClass.Value">
+            <summary>
+            Gets or sets the maximum period of time, in milliseconds, that an 
+            image capture method will block. 
+            </summary>
+            <value>The maximum period of time in milliseconds that GetImage will block.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            Only positive integer values are accepted. Any negative/invalid values provided will 
+            result in InvalidUsageException being thrown.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.DeviceCapabilityClass.ResolutionClass">
+            <summary>
+            Provides the imaging device resolution. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.DeviceCapabilityClass.ResolutionClass.Value">
+            <summary>
+            Gets or sets the imaging device resolution.
+            </summary>
+            <value>A imaging device resolution defined in the <see cref="T:Symbol.Imaging2.Resolutions"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass">
+            <summary>
+            Defines an object that controls the image acquisition parameters. 
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.Config.AcquisitionCapabilityClass.#ctor(Symbol.Imaging2.PInvokes)">
+            <summary>
+            Defines an object that controls the image acquisition capability. 
+            </summary>	  
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.FocusLength">
+            <summary>
+            Provides the focus length, in millimeters, used to acquire images.
+            The allowed values are 123 mm and 221 mm. The default value is 221 mm.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposure">
+            <summary>
+            Provides the auto exposure capability.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureFrameSkip">
+            <summary>
+            Provides the number of frames to skip between auto exposure updates.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureSettle">
+            <summary>
+            Provides an integer indicating the degree to which the auto exposure algorithm
+            must settle before a Capture method will return an image.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureBrightness">
+            <summary>
+            Provides the target brightness that the auto exposure algorithm will
+            attempt to achieve.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.ExposureTime">
+            <summary>
+            Provides the exposure time in microseconds.
+            Default value is 16320. Allowed value range from 64 to 32704 with a step of 64.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AnalogGain">
+            <summary>
+            Provides an integer indicating the amount of analog gain to apply.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.DigitalGain">
+            <summary>
+            Provides an integer indicating the amount of digital gain to apply.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.LampOn">
+            <summary>
+            Provides a boolean flag indicating if the lamp should be used during image acquisition.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AimingMode">
+            <summary>
+            Provides the capability value indicating the way that the aiming reticule is enabled.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.FocusLengthClass">
+            <summary>
+            Provides the focus length, in millimeters, used to acquire images.
+            The allowed values are 123 mm and 221 mm. The default value is 221 mm. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.FocusLengthClass.Value">
+            <summary>
+            Gets or sets the focus length, in millimeters, used to acquire images.
+            The allowed values are 123 mm and 221 mm. The default value is 221 mm.
+            </summary>
+            <value>The focus length in millimeters.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureClass">
+            <summary>
+            Provides the auto exposure capability. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if auto exposure is enabled.
+            </summary>
+            <value>A boolean flag indicating if auto exposure is enabled.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureFrameSkipClass">
+            <summary>
+            Provides the number of frames to skip between auto exposure updates. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureFrameSkipClass.Value">
+            <summary>
+            Gets or sets the number of frames to skip between auto exposure updates.
+            </summary>
+            <value>The number of frames to skip between auto exposure updates.
+            Allowed range of values is from 0 to 20. Default value is 1.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureSettleClass">
+            <summary>
+            Provides an integer indicating the degree to which the auto exposure algorithm
+            must settle before a Capture method will return an image. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureSettleClass.Value">
+            <summary>
+            Gets or sets an integer indicating the degree to which the auto exposure algorithm
+            must settle before a Capture method will return an image.
+            </summary>
+            <value>An integer indicating the degree to which the auto exposure algorithm
+            must settle before a Capture method will return an image.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureBrightnessClass">
+            <summary>
+            Provides the target brightness that the auto exposure algorithm will
+            attempt to achieve. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AutoExposureBrightnessClass.Value">
+            <summary>
+            Gets or sets the target brightness that the auto exposure algorithm will
+            attempt to achieve.
+            </summary>
+            <value>An integer representing the target brightness that the auto 
+            exposure algorithm will attempt to achieve. 
+            Allowed renge of values is from 2 to 254. Default value is 200.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.ExposureTimeClass">
+            <summary>
+            Provides the exposure time in microseconds.
+            Default value is 16320. Allowed value range from 64 to 32704 with a step of 64. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.ExposureTimeClass.Value">
+            <summary>
+            Gets or sets the exposure time in microseconds.
+            Default value is 16320. Allowed value range from 64 to 32704 with a step of 64.
+            This capability is ignored if AutoExposure capability is set to true. 
+            </summary>
+            <value>The exposure time in microseconds.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AnalogGainClass">
+            <summary>
+            Provides an integer indicating the amount of analog gain to apply. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AnalogGainClass.Value">
+            <summary>
+            Gets or sets an integer indicating the amount of analog gain to apply.
+            </summary>
+            <value>An integer indicating the amount of analog gain to apply.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.DigitalGainClass">
+            <summary>
+            Provides an integer indicating the amount of digital gain to apply. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.DigitalGainClass.Value">
+            <summary>
+            Gets or sets an integer indicating the amount of digital gain to apply.
+            </summary>
+            <value>An integer indicating the amount of digital gain to apply.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.LampOnClass">
+            <summary>
+            Provides a boolean flag indicating if the lamp should be used during image acquisition. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.LampOnClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if the lamp should be used during image acquisition.
+            </summary>
+            <value>A boolean flag indicating if the lamp should be used during image acquisition.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AimingClass">
+            <summary>
+            Provides the capability value indicating the way that the aiming reticule is enabled. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.AcquisitionCapabilityClass.AimingClass.Value">
+            <summary>
+            Gets or sets the capability value indicating the way that the aiming reticule is enabled.
+            </summary>
+            <value>A value specifying the way that the aiming reticule is enabled.</value>
+            <exception cref="T:Symbol.Imaging2.OperationFailureException">
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </exception>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass">
+            <summary>
+            Defines an object that controls the image capabilities.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FileFormat">
+            <summary>
+            Provides the file format to encapsulate image data in.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.JpegQuality">
+            <summary>
+            Provides the desired JPEG image quality as a percentage. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.JpegSize">
+            <summary>
+            Provides the desired size for a JPEG image in Kilo bytes.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropX">
+            <summary>
+            Specifies, in pixels, the X coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropY">
+            <summary>
+            Specifies, in pixels, the Y coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropWidth">
+            <summary>
+            Specifies, in pixels, the width of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a width that encompasses the entire acquired image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropHeight">
+            <summary>
+            Specifies, in pixels, the height of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a height that encompasses the entire acquired image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.MatchVFCapCrop">
+            <summary>
+            Provides a boolean flag indicating if the cropping defined for the viewfinder should be used for image retrieval as well.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FlipHorizontal">
+            <summary>
+            Provides a boolean flag indicating if acquired image should be flipped on the horizontal axis.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FlipVertical">
+            <summary>
+            Provides a boolean flag indicating if acquired image should be flipped on the vertical axis.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.Negative">
+            <summary>
+            Provides a boolean flag indicating if the bits in the acquired image should be negated.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.FileFormatClass">
+            <summary>
+            Provides the file format to encapsulate image data in. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FileFormatClass.Value">
+            <summary>
+            Gets or sets the file format to encapsulate image data in.  
+            <para>NOTE: When setting the fileformat, please note that freezing feature (which can be enabled by setting Imaging2.Config.Activators.FreezeTimeout to a non-zero value) may not work in any of the following scenarios:
+            </para>
+            <list type="number">
+            <item>
+            <description>Setting the Config.ImageCapability.FileFormat.Value to TWFF_DIB or TWFF_TIFF. This is due to shortcomings in Microsoft APIs
+            </description>
+            </item>
+            <item>
+            <description>Setting Config.ImageCapability.FileFormat.Value to TWFF_BMP and Config.DeviceCapability.Resolution.Value to higher resolutions. This depends on the amount of memory available in the application at that time.
+            </description>
+            </item>
+            </list>
+            </summary>
+            <value>A file format type defined in <see cref="T:Symbol.Imaging2.FileFormats"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.JpegQualityClass">
+            <summary>
+            Provides the desired JPEG image quality as a percentage. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.JpegQualityClass.Value">
+            <summary>
+            Gets or sets the desired JPEG image quality as a percentage.
+            </summary>
+            <value>An integer representing the desired JPEG image quality percentage.</value>
+            <remarks>
+            Allowed values are from 0 to 100. No assumption is made about the meaning of the range 1 – 99, it may be 
+            derived from the JPEG standard or it may be optimized for the device. 
+            100, though, implies a lossless form of compression. Applications are 
+            not encouraged to use this value since it results in poor compression, 
+            as well as a format that is not currently widely supported in the industry. 
+            A value of 0 means no specific quality is requested and the default will 
+            be used.
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.JpegSizeClass">
+            <summary>
+            Provides the desired size for a JPEG image in Kilo bytes. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.JpegSizeClass.Value">
+            <summary>
+            Gets or sets the desired size for a JPEG image in Kilo bytes.
+            </summary>
+            <value>The desired size for a JPEG image in Kilo bytes.</value>
+            <remarks>
+            <para>This parameter is ignored if the current value is set to 0. If the 
+            current value is greater then 0 then JPEGSize will take precedence 
+            over JPEGQuality. The driver will adjust the image quality in order to 
+            achieve the size requested by JPEGSize. An image larger than JPEGSize will 
+            be returned by a capture method if JPEGSize is smaller 
+            than what can be achieved with compression at the lowest quality setting. 
+            Conversely, the image returned by GetImage method may be smaller than 
+            requested if it was created using the highest quality setting.</para>
+            <para>JPEGSize only has meaning if the current image file format is JPEG.</para>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.CropXClass">
+            <summary>
+            Specifies, in pixels, the X coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropXClass.Value">
+            <summary>
+            Specifies, in pixels, the X coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.CropYClass">
+            <summary>
+            Specifies, in pixels, the Y coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropYClass.Value">
+            <summary>
+            Specifies, in pixels, the Y coordinate of the top, left corner of the rectangle that will be used to crop the acquired image. 
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.CropWidthClass">
+            <summary>
+            Specifies, in pixels, the width of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a width that encompasses the entire acquired image. 
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropWidthClass.Value">
+            <summary>
+            Specifies, in pixels, the width of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a width that encompasses the entire acquired image. 
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.CropHeightClass">
+            <summary>
+            Specifies, in pixels, the height of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a height that encompasses the entire acquired image. 
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.CropHeightClass.Value">
+            <summary>
+            Specifies, in pixels, the height of the rectangle that will be used to crop the acquired image. If the current value is set to 0 this capability will be ignored and the device will use a height that encompasses the entire acquired image. 
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.MatchVFCapCropClass">
+            <summary>
+            Provides a boolean flag indicating if the cropping defined for the viewfinder should be used for image retrieval as well.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.MatchVFCapCropClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if the cropping defined for the viewfinder should be used for image retrieval as well.
+            </summary>
+            <value>A boolean flag indicating if the cropping defined for the viewfinder should be used for image retrieval as well.
+            If set to true, the <see cref="T:System.Drawing.Rectangle"/> property will be ignored and the viewfinder cropping rectangle will
+            be used instead.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.FlipHorizontalClass">
+            <summary>
+            Provides a boolean flag indicating if acquired image should be flipped on the horizontal axis.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FlipHorizontalClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if acquired image should be flipped on the horizontal axis.
+            </summary>
+            <value>A boolean flag indicating if acquired image should be flipped on the horizontal axis.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.FlipVerticalClass">
+            <summary>
+            Provides a boolean flag indicating if acquired image should be flipped on the vertical axis.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.FlipVerticalClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if acquired image should be flipped on the vertical axis.
+            </summary>
+            <value>A boolean flag indicating if acquired image should be flipped on the vertical axis.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ImageCapabilityClass.NegativeClass">
+            <summary>
+            Provides a boolean flag indicating if the bits in the acquired image should be negated.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ImageCapabilityClass.NegativeClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if the bits in the acquired image should be negated.
+            </summary>
+            <value>A boolean flag indicating if the bits in the acquired image should be negated.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass">
+            <summary>
+            Defines an object that controls the image view finder capabilities.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropStyle">
+            <summary>
+            Provides the display style of the cropped area.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FixAspectRatio">
+            <summary>
+            Provides a boolean flag indicating if the aspect ratio of the 
+            viewfinder image is forced to match that of the acquired image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FrameRate">
+            <summary>
+            Provides the current viewfinder frame rate in frames per second.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropX">
+            <summary>
+            Specifies the X coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropY">
+            <summary>
+            Specifies the Y coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropWidth">
+            <summary>
+            Specifies the width of the rectangle that will be used to crop the viewfinder image. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropHeight">
+            <summary>
+            Specifies the height of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropStyleClass">
+            <summary>
+            Provides the display style of the cropped area. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropStyleClass.Value">
+            <summary>
+            Gets or sets the display style of the cropped area.
+            </summary>
+            <value>The display style of the cropped area as defined in the <see cref="T:Symbol.Imaging2.CropStyles"/> enum.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FixAspectRatioClass">
+            <summary>
+            Provides a boolean flag indicating if the aspect ratio of the 
+            viewfinder image is forced to match that of the acquired image. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FixAspectRatioClass.Value">
+            <summary>
+            Gets or sets a boolean flag indicating if the aspect ratio of the 
+            viewfinder image is forced to match that of the acquired image. 
+            </summary>
+            <value>A boolean flag indicating if the aspect ratio of the 
+            viewfinder image is forced to match that of the acquired image.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FrameRateClass">
+            <summary>
+            Provides the current viewfinder frame rate in frames per second. Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.FrameRateClass.Value">
+            <summary>
+            Gets the current viewfinder frame rate in frames per second.
+            </summary>
+            <value>The current viewfinder frame rate in frames per second.</value>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropXClass">
+            <summary>
+            Specifies the X coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropXClass.Value">
+            <summary>
+            Gets or sets the X coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropYClass">
+            <summary>
+            Specifies the Y coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropYClass.Value">
+            <summary>
+            Gets or sets the Y coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropWidthClass">
+            <summary>
+            Specifies the width of the rectangle that will be used to crop the viewfinder image. 
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropWidthClass.Value">
+            <summary>
+            Gets or sets the width of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropHeightClass">
+            <summary>
+            Specifies the height of the rectangle that will be used to crop the viewfinder image.
+            Also provides the capability related properties.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ViewfinderCapabilityClass.CropHeightClass.Value">
+            <summary>
+            Gets or sets the height of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+            <remarks>
+            A OperationFailureException will be thrown if the 
+            Imager does not support this parameter.
+            </remarks>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.CapIDAttribute">
+            <summary>
+            Defines an attribute that specifies the corresponding capability ID of a property. 
+            </summary>
+            <remarks>
+            This attribute is used when a property has a corresponding capability ID defined
+            in the <see cref="T:Symbol.Imaging2.CapIDs"/> enum. The capability ID can be used as index to the
+            Capabilites class to obtain information such as default value and allowed
+            values of the property. 
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.Config.CapIDAttribute.#ctor(Symbol.Imaging2.CapIDs)">
+            <summary>
+            Initialize a new instance of CapIDAttribute.
+            </summary>
+            <param name="capId">The corresponding capability ID (<see cref="T:Symbol.Imaging2.CapIDs"/>) of the property.</param>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.CapIDAttribute.CapID">
+            <summary>
+            Gets the corresponding capability ID of the property.
+            </summary>
+            <value>A capability ID defined in the <see cref="T:Symbol.Imaging2.CapIDs"/> enum.</value>
+        </member>
+        <member name="T:Symbol.Imaging2.Config.ActivatorsClass">
+            <summary>
+            Defines an object that controls the activators for the image capture and timeout
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ActivatorsClass.Triggers">
+             <summary>
+             Get/Set an array of up to 10 triggers on device to activate an image capture. By default it is set to Triggers.ALLTRIGGERS
+             </summary>
+             <example>
+             <code>
+             MyImager.Config.Activators.Triggers = new Triggers[] { Triggers.TRIGGER1, Triggers.TRIGGER2 };
+             </code>
+            </example>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ActivatorsClass.Keys">
+             <summary>
+             Get/Set an array of up to 4 keys on device to activate an image capture. By default it is set to Keys.Enter.
+             </summary>
+             <example>
+             <code>
+             MyImager.Config.Activators.Keys = new Keys[] { Keys.A, Keys.S, Keys.D };
+             // Keycode values can also be explicitly provided as follows.
+             // The following example shows how to use the A key using keycode value
+             MyImager.Config.Activators.Keys = new Keys[] { (Keys)65 };
+             </code>
+            </example>
+        </member>
+        <member name="P:Symbol.Imaging2.Config.ActivatorsClass.FreezeTimeout">
+            <summary>
+            Timeout in milliseconds used to freeze the viewfinder after an image is captured. This can be set to 0 if freezing is not needed.
+            By default it is set to -1 which means it will freeze infinitely until an activator (trigger or key) is pressed.
+            Any negative value passed is taken as -1.
+            The freezing feature requires the control passed to Imaging2.StartViewfinder(control) or Imaging2.StartAcquisition(control) methods
+            to be a System.Windows.Forms.PictureBox object.
+            <para>
+            NOTE: Freezing the viewfinder is not supported in any of the following scenarios:
+            </para>
+            <list type="number">
+            <item>
+            <description>Setting the Config.ImageCapability.FileFormat.Value to TWFF_DIB or TWFF_TIFF. This is due to shortcomings in Microsoft APIs
+            </description>
+            </item>
+            <item>
+            <description>Setting Config.ImageCapability.FileFormat.Value to TWFF_BMP and Config.DeviceCapability.Resolution.Value to higher resolutions. This is due to memory restrictions.
+            </description>
+            </item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.ImageData">
+            <summary>
+            The ImageData base class provides all common functionality that is used by all ImageData objects. 
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.ImageData.#ctor(Symbol.Imaging2.PInvokes)">
+            <summary>
+            Initialize a new instance of the ImageData class.
+            </summary>
+            <param name="ImagerPinvoke">The PInvokes from an imager object</param>
+        </member>
+        <member name="M:Symbol.Imaging2.ImageData.GetBitmap">
+            <summary>
+            Returns a Bitmap of the image capture.
+            <para>NOTE: This call may fail to create a Bitmap object in any of the following scenarios:
+            </para>
+            <list type="number">
+            <item>
+            <description>Setting the Config.ImageCapability.FileFormat.Value to TWFF_DIB or TWFF_TIFF. This is due to shortcomings in Microsoft APIs
+            </description>
+            </item>
+            <item>
+            <description>Setting Config.ImageCapability.FileFormat.Value to TWFF_BMP and Config.DeviceCapability.Resolution.Value to higher resolutions. This depends on the amount of memory available in the application at that time.
+            </description>
+            </item>
+            </list>
+            <para>
+            Under these scenarios, this method will return null and no exception is raised. 
+            As a work around, ImageData.MemoryStream can be used to access the image data.
+            </para>
+            </summary>
+            <returns><see cref="T:System.Drawing.Bitmap"/></returns>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.DateTime">
+            <summary>
+            Date and time image was captured
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.Resolution">
+            <summary>
+            The resolution of the image
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.FileFormat">
+            <summary>
+            The <see cref="T:Symbol.Imaging2.FileFormats"/> of the image
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.TriggerActivator">
+            <summary>
+            <see cref="T:Symbol.Imaging2.Triggers"/> that activated the capture
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.KeyActivator">
+            <summary>
+            Key that activated the capture
+            </summary>        
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.MemoryStream">
+            <summary>
+            Returns a <see cref="P:Symbol.Imaging2.ImageData.MemoryStream"/> whose backing store is memory.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.ImageData.Results">
+            <summary>
+            Provides the <see cref="T:Symbol.Imaging2.IMGResults"/>
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Version">
+            <summary>
+            Defines an object that contains the version information of an Imager. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.CAPIVersion">
+            <summary>
+            Gets the imaging C API version.
+            </summary>
+            <value>The C API version as a string.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.MDDVersion">
+            <summary>
+            Gets the imaging MDD version.
+            </summary>
+            <value>The MDD version as a string.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.PDDVersion">
+            <summary>
+            Gets the imaging PDD version.
+            </summary>
+            <value>The PDD version as a string.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.HardwareVersion">
+            <summary>
+            Gets the imaging hardware version.
+            </summary>
+            <value>The hardware version as a string.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.JPEGLibVersion">
+            <summary>
+            Gets the version of the JPEG library used by the imaging driver.
+            </summary>
+            <value>The JPEG library version as a string.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Version.AssemblyVersion">
+            <summary>
+            Gets the Symbol.Imaging assembly version.
+            </summary>
+            <value>the Symbol.Imaging assembly version as a string.</value>
+        </member>
+        <member name="T:Symbol.Imaging2.Imaging2">
+            <summary>
+            The Imager class defines an object that controls an imaging device. It is the Primary Class under which other classes branch off.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.#ctor">
+             <summary>
+             Initialize a new instance of the Imaging class. First available imager will be used
+             </summary>
+              <example>
+             <code>
+             // Create new Imaging object, first available imager will be used.
+             Symbol.Imaging2 MyImager = new Symbol.Imaging2();
+             </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.#ctor(System.String)">
+             <summary>
+             Initialize a new instance of the Imaging class. Open the imager by port name
+             </summary>
+             <param name="DeviceName">The imaging device port name of this Imaging instance.</param>
+             <example>
+             <code>
+             //Create a imager with device name
+             Symbol.Imaging2() MyImager = new Symbol.Imaging2("IMG1:");
+             </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.#ctor(Symbol.Imaging2.Device)">
+            <summary>
+            Initialize a new instance of the Imaging class. Enumerate Imaging2.Devices
+            </summary>
+            <param name="imagerDevice">The imaging <see cref="T:Symbol.Imaging2.Device"/> of this Imaging instance.</param>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.#ctor(Symbol.Imaging2.DEVICETYPES)">
+             <summary>
+              Initialize a new instance of the Imaging class. Uses the provided imaging device type.
+             </summary>
+             <param name="deviceType">Imaging <see cref="T:Symbol.Imaging2.DEVICETYPES"/></param>
+             <example>
+             <code>
+             //Create an imager with the selected 1st internal camera device type 
+             Symbol.Imaging2() MyImager = new Imaging2(DEVICETYPES.INTERNAL_CAMERA1);
+             </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.Enable">
+            <summary>
+            Enable the Imager on the device.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.Disable">
+            <summary>
+            Disable the Imager on the device.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.CaptureImageNow">
+             <summary>
+             Immediately captures the imagereturns the ImageData. Does not use trigger or keys.
+             The user can save the captured image (using the provided ImageData.MemoryStream)
+             </summary>
+             <returns><see cref="T:Symbol.Imaging2.ImageData"/> Object</returns>
+             <example>
+             An application can use this method in a button press for an image capture.
+             <code> 
+            private void button1_Click(object sender, EventArgs e)
+            {
+                ImageData image = MyImager.CaptureImageNow();
+            }
+             </code>
+             </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.CaptureImageNow(System.String,System.Boolean)">
+             <summary>
+             Does not use trigger or keys. Immediately captures the image, saves captured image using given 
+             filename and returns the ImageData
+             </summary>
+             <param name="fileName">String of Full path to image file to save</param>
+             <param name="OverWrite">Boolean flag to overwite file with same name</param>
+             <returns><see cref="T:Symbol.Imaging2.ImageData"/> Object</returns>
+             <example>
+             An application can use this method in a button press for an image capture.
+             <code> 
+            private void button1_Click(object sender, EventArgs e)
+            {
+                 //open imager using the first available device
+                 MyImager = new Imaging2(); 
+                 //Save image to a file.
+                 ImageData image = MyImager.CaptureImageNow("MyImage_2.jpg", true);
+                 
+             
+            }
+             
+             </code>
+             </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.CaptureImage">
+            <summary>
+            Async call – Uses trigger/keys from Config.
+            Captures the image when the specified trigger/key is pressed and calls OnCapture callback.
+            </summary>
+            <returns><see cref="T:Symbol.Imaging2.IMGResults"/></returns>
+            <example>
+            An application can use this method after attaching an event handler to execute after a
+            trigger is pulled for an image capture.
+            <code> 
+            MyImager.OnCapture += new Imaging2.OnCaptureHandler(MyImager_OnCapture);
+            MyImager.CaptureImage();
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.CaptureImage(System.String,System.Boolean)">
+            <summary>
+            Async image capture call. Uses trigger/keys from Config.
+            Captures the image when the specified trigger/key is pressed and calls OnCapture callback.
+            </summary>        
+            <param name="fileName">String of Full path to image file to save</param>
+            <param name="OverWrite">Boolean flag to overwite file with same name</param>
+            <returns><see cref="T:Symbol.Imaging2.IMGResults"/></returns>
+            <example>
+            An application can use this method after attaching an event handler to execute after a
+            trigger is pulled for an image capture.
+            <code> 
+            MyImager.OnCapture += new Imaging2.OnCaptureHandler(MyImager_OnCapture);
+            MyImager.CaptureImage("MyImage_1.jpg", true);
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.StartAcquisition">
+            <summary>
+            Start acquiring image. 
+            </summary>
+            <returns>IMGResults</returns>
+            <example>
+            <code>
+            private void btnStart_Click(object sender, EventArgs e)
+            {
+               if (!MyImager.AcquisitionStarted)
+               {
+                   //start acquiring images to a picture box/viewfinder set in Config
+                   MyImager.StartAcquisition();
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.StartAcquisition(System.Windows.Forms.Control)">
+            <summary>
+            Start acquiring image and starts sending viewfinder video to the control window.
+            Typically the System.Windows.Forms.PictureBox control is passed into this method.
+            <para>
+            NOTES:
+            </para>
+            <para>
+            - If a control other than a PictureBox is used for receiving the video, the Config.Activators.FreezeTimeout must be set to zero.  
+            Failure to do so will cause an exception when the CaptureImage() method is called.
+            </para>
+            <para>
+            - If the control is resized in the application, the viewfinder automatically adjusts itself to the new size.
+            </para>
+            </summary>
+            <param name="control">Displays the viewfinder in the provided control.
+            If a control other than a PictureBox is used for receiving the video, the Config.Activators.FreezeTimeout must be set to zero.  
+            Failure to do so will cause an exception when the CaptureImage() method is called.
+            </param>
+            <returns>Returns the <see cref="T:Symbol.Imaging2.IMGResults"/> of the operation</returns>
+            <example>
+            <code>
+            private void btnStart_Click(object sender, EventArgs e)
+            {
+               if (!MyImager.AcquisitionStarted)
+               {
+                   //start acquiring images to a picture box/viewfinder
+                   MyImager.StartAcquisition(pictureBox1);
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.StopAcquisition">
+            <summary>
+            Stop acquiring image.
+            </summary>
+            <example>
+            <code>
+             //stop acquiring images
+             MyImager.StopAcquisition();
+            </code>
+            <returns>Returns the <see cref="T:Symbol.Imaging2.IMGResults"/> of the operation</returns>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.StartViewfinder(System.Windows.Forms.Control)">
+            <summary>
+            Starts sending viewfinder video to the control window. The call will be ignored if 
+            viewfinder is already started.
+            <para>
+            NOTES:
+            </para>
+            <para>
+            - The freezing feature (which can be enabled by setting Config.Activators.FreezeTimeout to a non-zero value), 
+            requires the control passed to this method to be a System.Windows.Forms.PictureBox object.
+            If an incorrect control is passed, an Exception is thrown when CaptureImage methods are called.
+            </para>
+            <para>
+            - If the control is resized in the application, the viewfinder automatically adjusts itself to the new size.
+            </para>
+            </summary>
+            <param name="control">Displays the viewfinder in the provided control.
+            The freezing feature (which can be enabled by setting Config.Activators.FreezeTimeout to a non-zero value), 
+            requires the control to be a System.Windows.Forms.PictureBox object.
+            If an incorrect control is passed, an Exception is thrown when CaptureImage methods are called.
+            </param>
+            <returns>Returns the <see cref="T:Symbol.Imaging2.IMGResults"/> of the operation</returns>
+            <example>
+            <code>
+                MyImager = new Imaging2();
+                //Start the view finder and display the view on pictureBox1 
+                MyImager.StartViewfinder(this.pictureBox1);
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.StopViewfinder">
+            <summary>
+            Stops the viewfinder video
+            </summary>
+            <returns>Returns the <see cref="T:Symbol.Imaging2.IMGResults"/> of the operation</returns>
+            <example>
+            <code>
+              //Start the view finder and display the view on picture Box
+                MyImager.StopViewfinder();
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.CaptureCancel">
+             <summary>
+             Cancels the current asynchronous capture.
+             </summary>
+             <returns>Returns the <see cref="T:Symbol.Imaging2.IMGResults"/> of the operation. . Returns <see cref="F:Symbol.Imaging2.IMGResults.SUCCESS"/> if there is a pending capture, and <see cref="F:Symbol.Imaging2.IMGResults.NOCAPTUREISSUED"/> if there is no pending capture</returns>
+             <example>
+             <code>
+             //Attach an event handler to the imaging object
+             MyImager.OnCapture += new Imaging2.OnCaptureHandler(MyImager_OnCapture);
+            
+             ...
+            
+             private void button8_Click(object sender, EventArgs e)
+             {
+                 //Issues an Asynchronous scan that calls back to an event delegate when a trigger is pulled
+                 IMGResults result =   MyImager.CaptureImage();
+             }
+            
+            ...
+            
+             void MyImager_OnCapture(ImageData imageData)
+             {
+                    //Process the ImageData object 
+             } 
+             
+            ...
+            
+             //Button to cancel async mode
+             private void button5_Click(object sender, EventArgs e)
+             {
+                MyImager.CaptureCancel();
+             }
+             </code>
+             </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.LockImager">
+            <summary>
+            Locks the imager for exclusive access.
+            </summary>
+            <returns>Returns the result of the operation</returns>
+            <example>
+            <code> 
+                //Get Exclusive access to imager
+                MyImager.Lock();
+            
+                //Your code comes here
+            
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.UnlockImager">
+            <summary>
+            Unlocks the imager
+            </summary>
+            <returns>Returns the result of the operation</returns>
+            <example>
+            <code> 
+                //Release imager for others to access
+                MyImager.Unlock();
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.Dispose">
+            <summary>
+            Disposes the object
+            </summary>
+            <example>
+            <code>
+            if (MyImg != null){
+                MyImg.Dispose();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Symbol.Imaging2.Imaging2.Finalize">
+            <summary>
+            Ensures that resources are freed when the garbage collector reclaims the Imager.
+            </summary>
+        </member>
+        <member name="E:Symbol.Imaging2.Imaging2.OnCapture">
+            <summary>
+            Attach to this Imager event to be called back when a capture event occurs.
+            </summary>
+            <value>
+            A <see cref="T:Symbol.Imaging2.Imaging2.OnCaptureHandler"/> delegate of the method that will be invoked
+            when a capture event occurs.
+            </value>
+        </member>
+        <member name="E:Symbol.Imaging2.Imaging2.OnStatus">
+            <summary>
+            Attach to this notification event to be called back when a scan status changes. 
+            NOTE: Do not call Disable() from within OnStatus event notification when the status type is STATUSEVENTTYPES.FREEZE. This may lead to unpredictable behavior.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.Config">
+            <summary>
+            Gets a Config object that contains the Configuration settings on an Imager. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.Version">
+            <summary>
+            Gets a Version object that provides version information of this Imager.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.AcquisitionStarted">
+            <summary>
+            Gets a boolean flag indicating if image acquisition is started.  
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.IsEnabled">
+            <summary>
+            Gets a boolean flag indicating if imager is enabled
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.IsCapturePending">
+            <summary>
+            Gets a boolean flag indicating if imager capturing an image
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Imaging2.HasViewfinder">
+            <summary>
+            Gets a boolean flag indicating if the imager has an active viewfinder.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Imaging2.OnCaptureHandler">
+            <summary>
+            Delegate of the method that will be invoked when a image is captured. 
+            </summary>
+            <param name="imageData"><see cref="T:Symbol.Imaging2.ImageData"/> object</param>
+        </member>
+        <member name="T:Symbol.Imaging2.Imaging2.OnStatusHandler">
+            <summary>
+            Delegate of the method that will be invoked when a change of status occurs.
+            </summary>
+            <param name="statusData"><see cref="T:Symbol.Imaging2.StatusData"/> object</param>
+        </member>
+        <member name="T:Symbol.Imaging2.StatusData">
+            <summary>
+            The StatusData class provides access to notification information. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.StatusData.EventType">
+            <summary>
+            Defines the different types of events that can occur for the imager.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.UnimplementedFunctionException">
+            <summary>
+            UnimplementedFunctionException is thrown when a method is 
+            not available for use.
+            </summary>
+            <remarks>
+            Derived off of the System.Exception class, this exception provides
+            no additional functionality over its derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.UnimplementedFunctionException.#ctor(System.String)">
+            <summary>
+            UnimplementedFunctionException constructor with settable 
+            string.
+            </summary>
+            <param name="sMessage">A string the contain information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.WrongMarshalSizeException">
+            <summary>
+            WrongMarshalSizeException is thrown when marshalling fails to work
+            correctly. In particular, when a size of the marshaled buffer is not the
+            correct size.
+            </summary>
+            <remarks>
+            Derived off of the System.Exception class, this exception provides
+            no additional functionality over its derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.WrongMarshalSizeException.#ctor(System.String)">
+            <summary>
+            WrongMarshalSizeException constructor with settable 
+            string.
+            </summary>
+            <param name="sMessage">A string the contain information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.OperationFailureException">
+            <summary>
+            OperationFailureException is thrown when a failure occurs in the 
+            class libraries. This failure usually is one that stops the proper
+            functioning of the class libraries.
+            </summary>
+            <remarks>
+            Derived off of the System.Exception class, this exception provides
+            a results enum or integer to be associated with the exception. The
+            number is returned in integer form via the Result property.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.OperationFailureException.#ctor(System.String,Symbol.Imaging2.IMGResults)">
+            <summary>
+            OperationFailureException constructor with settable string and 
+            results enum.
+            </summary>
+            <param name="sMessage">A string the contains information about
+            the exception.</param>
+            <param name="resResults">A Results enumerated type that contains
+            information about the exception.</param>
+        </member>
+        <member name="M:Symbol.Imaging2.OperationFailureException.#ctor(System.String,System.Int32)">
+            <summary>
+            OperationFailureException constructor with settable string and 
+            integer value.
+            </summary>
+            <param name="sMessage">A string the contains information about
+            the exception.</param>
+            <param name="nResults">A integer that contains information about
+            the exception.</param>
+        </member>
+        <member name="P:Symbol.Imaging2.OperationFailureException.Result">
+            <summary>
+            The number associated with the exception.
+            </summary>
+            <value>
+            An integer result that contains information about what caused the
+            exception.
+            </value>
+        </member>
+        <member name="T:Symbol.Imaging2.InvalidUsageException">
+            <summary>
+            InvalidUsageException is thrown when a class library method or property
+            is not used correctly.
+            </summary>
+            <remarks>
+            Derived off of the System.Exception class, this exception provides
+            no additional functionality over its derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidUsageException.#ctor">
+            <summary>
+            Default InvalidUsageException constructor.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidUsageException.#ctor(System.String)">
+            <summary>
+            InvalidUsageException constructor with settable string.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.InvalidDataTypeException">
+            <summary>
+            InvalidDataTypeException is thrown when a class library accesses an
+            invalid data type.
+            </summary>
+            <remarks>
+            Derived off of the <see cref="T:Symbol.Imaging2.InvalidUsageException"/> class, 
+            this exception provides no additional functionality over its
+            derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidDataTypeException.#ctor">
+            <summary>
+            Default InvalidDataTypeException constructor.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidDataTypeException.#ctor(System.String)">
+            <summary>
+            InvalidDataTypeException constructor with settable string.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.InvalidRequestException">
+            <summary>
+            InvalidRequestException is thrown when a class library trys to perform
+            an invalid request.
+            </summary>
+            <remarks>
+            Derived off of the <see cref="T:Symbol.Imaging2.InvalidUsageException"/> class, 
+            this exception provides no additional functionality over its
+            derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidRequestException.#ctor">
+            <summary>
+            Default InvalidRequestException constructor.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidRequestException.#ctor(System.String)">
+            <summary>
+            InvalidRequestException constructor with settable string.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.InvalidIndexerException">
+            <summary>
+            InvalidIndexerException is thrown when a class library trys to access
+            an invalid indexer.
+            </summary>
+            <remarks>
+            Derived off of the <see cref="T:Symbol.Imaging2.InvalidUsageException"/> class, 
+            this exception provides no additional functionality over its
+            derived class.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidIndexerException.#ctor">
+            <summary>
+            Default InvalidIndexerException constructor.
+            </summary>
+        </member>
+        <member name="M:Symbol.Imaging2.InvalidIndexerException.#ctor(System.String)">
+            <summary>
+            InvalidIndexerException constructor with settable string.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+        </member>
+        <member name="T:Symbol.Imaging2.DebugModeException">
+            <summary>
+            DebugModeException is thrown when a class library trys to perform
+            functions that are invalid but not fatal.
+            </summary>
+            <remarks>
+            Derived off of the System.Exception class, this exception provides
+            the capability of associated the exception with an integer.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.DebugModeException.#ctor(System.String,System.Int32)">
+            <summary>
+            DebugModeException constructor with settable string and integer
+            information.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+            <param name="debugInfo">An integer that contains information about
+            the exception.</param>
+        </member>
+        <member name="P:Symbol.Imaging2.DebugModeException.DebugResult">
+            <summary>
+            The number associated with the exception.
+            </summary>
+            <value>
+            An integer result that contains information about what caused the
+            exception.
+            </value>
+        </member>
+        <member name="T:Symbol.Imaging2.DebugModeUnsupportedEnumValue">
+            <summary>
+            DebugModeUnsupportedEnumValue is thrown when a class library trys to
+            access an enumerated type that is not valid.
+            </summary>
+            <remarks>
+            Derived off of the <see cref="T:Symbol.Imaging2.DebugModeException"/> class, this
+            exception provides no additional functionality.
+            </remarks>
+        </member>
+        <member name="M:Symbol.Imaging2.DebugModeUnsupportedEnumValue.#ctor(System.String,System.Int32)">
+            <summary>
+            DebugModeUnsupportedEnumValue constructor with settable string and integer
+            information.
+            </summary>
+            <param name="sMessage">A string that contains information about
+            the exception.</param>
+            <param name="debugInfo">An integer that contains information about
+            the exception.</param>
+        </member>
+        <member name="F:Symbol.Imaging2.STRUCT_INFO.dwAllocated">
+            <summary>
+            Size of the allocated structure, in bytes.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.STRUCT_INFO.dwUsed">
+            <summary>
+            Amount of memory the structure actually uses, in bytes.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.CropStyles">
+            <summary>
+            Defines how the cropped area is displayed.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CropStyles.FILL">
+            <summary>
+            Use the contents of the cropping rectangle to fill the entire viewfinder window.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CropStyles.LIGHTEN">
+            <summary>
+            Lighten the area outside the cropping rectangle.
+            NOTE: This value is obsolete. It is not supported on newer devices.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CropStyles.DARKEN">
+            <summary>
+            Darken the area outside the cropping rectangle.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CropStyles.FRAME">
+            <summary>
+            Display a frame around the cropping rectangle.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.IMGResults">
+            <summary>
+            Enumeration type that maps its members to underlying C API return codes.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.SUCCESS">
+            <summary>
+            The function completed successfully.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.UNKNOWN_ERROR">
+            <summary>
+            An unknown error has occured.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NULLPTR">
+            <summary>
+            A NULL pointer was passed for a required argument.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NOTENOUGHMEMORY">
+            <summary>
+            An attempt to allocate memory failed.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDHANDLE">
+            <summary>
+            An invalid handle was passed to a function.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDDEVICE">
+            <summary>
+            The physical device driver (PDD)), DLL did not contain the required entry points.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NOTINITIALIZED">
+            <summary>
+            The driver was accessed before a successful initialization.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CANTLOADDEVICE">
+            <summary>
+            The physical device driver (PDD)), could not be loaded.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CANTUNLOADDEVICE">
+            <summary>
+            The physical device driver (PDD)), could not be unloaded.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NOIMAGE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NOMOREITEMS">
+            <summary>
+            No more items are available to be returned from IMAGE_FindFirst/IMAGE_FindNext.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CANTSTARTDEVICE">
+            <summary>
+            The device could not be started.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_BUFFERSIZEIN">
+            <summary>
+            The size of the buffer passed as an input to DeviceIoControl is less than
+            sizeof(STRUCT_INFO)), or is less than the size specified in StructInfo.dwUsed.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_BUFFERSIZEOUT">
+            <summary>
+             The size of the buffer passed as an output to DeviceIoControl is less than
+            sizeof(STRUCT_INFO)), or is less than the size specified in StructInfo.dwAllocated.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_STRUCTSIZE">
+            <summary>
+            STRUCT_INFO structure field is invalid. Either dwAllocated or dwUsed is less
+            than the size of STRUCT_INFO or dwUsed is greater than dwAllocated.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_MAPPOINTERFAILED">
+            <summary>
+            Failed to map pointer.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_BUFFERTOSMALL">
+            <summary>
+            Data buffer is too small for incoming data.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_LOCKFAILED">
+            <summary>
+            Failed to lock the imaging device.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_NOTACQUIRING">
+            <summary>
+            The imaging device is not acquiring images.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CANTOPENREGKEY">
+            <summary>
+            A required registry key could not be opened.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_READINGPARAMKEY">
+            <summary>
+            Failed to read parameters from registry.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_OPENINGPARAMKEY">
+            <summary>
+            Failed to open the base registry key for the device.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_READINGACTIVEKEY">
+            <summary>
+            Failed to read the active key assigned to the device driver.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_OPENINGACTIVEKEY">
+            <summary>
+            Failed to open the active key assigned to the device driver.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDOPENCONTEXT">
+            <summary>
+            Invalid open device context.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDDEVCONTEXT">
+            <summary>
+            Invalid device context.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDIOCTRL">
+            <summary>
+            Invalid IOCTRL.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_PDDNOTLOADED">
+            <summary>
+            The PDD driver of the device is not loaded.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CAPNOTSUPPORTED">
+            <summary>
+            The capability is not supported.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CAPINVALIDVALUE">
+            <summary>
+            The capability valid is invalid.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CAPINVALIDTYPE">
+            <summary>
+            The capability valid type is invalid.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CAPINVALIDCONTAINER">
+            <summary>
+            The capability container is invalid.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CAPREADONLY">
+            <summary>
+            The capability is readonly.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_WIN32ERROR">
+            <summary>
+            A Win32 error has occured.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_EXCEPTION">
+            <summary>
+            An exception has occured.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_MISSINGFIELD">
+            <summary>
+            Missing field in a structure passed to the driver.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_DEVICEFAILURE">
+            <summary>
+            A device failure has occured.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDPDDCONTEXT">
+            <summary>
+            Invalid PDD context.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDWINDOWHANDLE">
+            <summary>
+            Invalid window handle.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_GETIMAGETIMEDOUT">
+            <summary>
+            A call to GetImage timed out.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_BADIMAGEFORMAT">
+            <summary>
+            Bad image format.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_DEVICENOTSTARTED">
+            <summary>
+            The device was not started.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_DEVICEDISABLED">
+            <summary>
+            The camera security policy not allowing to use the camera.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_CANTLOADHALDLL">
+            <summary>
+            The Image HAL DLL can not be loaded.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_INVALIDHALDLL">
+            <summary>
+            At least one API function is missing in Image HAL DLL.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.E_IMG_RUNNING">
+            <summary>
+            Action could not be completed since imager is already running.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.PENDING">
+            <summary>
+            The task is pending.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.NOCAPTUREISSUED">
+            <summary>
+            There are no pending image captures.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.FILEALREADYEXISTS">
+            <summary>
+            The file being created already exists
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.NOACTIVATORSPRESENT">
+            <summary>
+            There are no activators (triggers or keys) provided by the user.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.IMGResults.ACTIVATORREGISTRATIONFAILURE">
+            <summary>
+            Failure during (triggers or keys) registration.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.CapIDs">
+            <summary>
+            Defines the IDs of different imaging device capabilites.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_POWERMODE">
+            <summary>
+            The capability defines the power mode that the imaging device will
+            enter when it is locked but not acquiring. When image acquisition is started with Symbol.Imaging.Imager.StartAcquisition() the power mode will switch to ACQUIRING regardless of the current setting of this capability.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_XNATIVERESOLUTION">
+            <summary>
+            The capability returns the native optical resolution along the X-axis 
+            of the imaging device.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_YNATIVERESOLUTION">
+            <summary>
+            The capability returns the native optical resolution along the Y-axis 
+            of the imaging device.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_COLORFORMAT">
+            <summary>
+            The capability returns the color format of the pixel data the imaging 
+            device is capable of acquiring.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_BITORDER">
+            <summary>
+            The capability specifies how the bytes in an image are filled by the 
+            Source. BitOrders.MSBFIRST indicates that the leftmost bit in the 
+            byte (usually bit 7) is the byte’s Most Significant Bit.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_PLANEORCHUNKY">
+            <summary>
+            The capability specifies the available color data formats.
+            There are two options, “Planar” and “Chunky”. In Planar mode the RGB data is 
+            transferred one plane at a time; first the entire red plane then the 
+            entire green plane and finally the entire blue plane. In Chunky mode 
+            the RGB data for each pixel is transferred in an interlaced fashion 
+            one pixel at a time (R-G-B, R-G-B,…). 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_LIGHTSOURCE">
+            <summary>
+            The capability describes the general color characteristic of the integrated light source.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_GETIMAGETIMEOUT">
+            <summary>
+            The capability defines the maximum length of time (in milliseconds) taken for capturing an image.
+            If this capability is non-zero, the internal image capture call will return after the timeout regardless of whether an image was acquired.
+            The ImageData.Result will contain E_IMG_GETIMAGETIMEDOUT if the timeout happened.
+            If this capability is set to zero, then the internal image capture call will only unblock if an image is acquired or the acquisition is stopped.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.DEVCAP_RESOLUTION">
+            <summary>
+            The capability provides access to the imaging device resolution.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_FOCUSLENGTH">
+            <summary>
+            The capability specifies the available focal lengths in millimeters.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_AUTOEXPOSURE">
+            <summary>
+            The capability specifies if auto exposure is enabled or not. Enabling this capability effects the capabilities ACQCAP_EXPOSURETIME, ACQCAP_GAINANALOG and ACQCAP_GAINDIGITAL.
+            ACQCAP_EXPOSURETIME: the current value is ignored and an exposure time calculated by the auto exposure algorithm is used instead. 
+            ACQCAP_GAINANALOG: the current value is ignored and an analog gain calculated by the auto exposure algorithm is used instead. 
+            ACQCAP_GAINDIGITAL: the current value is ignored and a digital gain calculated by the auto exposure algorithm is used instead. 
+            If the imager is acquiring with auto exposure enabled and GetImage() is called to read an image, the values of the above capabilities as calculated by the algorithm may be retrieved using the GetLastAcqParams(...) function followed by the respective property for the capability.
+            The target brightness that the auto exposure algorithm will attempt to achieve may be set using the ACQCAP_BRIGHTNESS capability.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_BRIGHTNESS">
+            <summary>
+            capability specifies the target brightness that the auto exposure 
+            algorithm will attempt to achieve. This capability is only meaningful if ACQCAP_AUTOEXPOSURE is enabled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_EXPOSURETIME">
+            <summary>
+            The capability specifies the exposure time in microseconds. 
+            The current value of this capability is ignored if the ACQCAP_AUTOEXPOSURE capability is enabled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_GAINANALOG">
+            <summary>
+            The capability specifies the amount of analog gain to apply.
+            The current value of this capability is ignored if the ACQCAP_AUTOEXPOSURE capability is enabled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_GAINDIGITAL">
+            <summary>
+            The capability specifies the amount of digital gain to apply.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_LAMPSTATE">
+            <summary>
+            The capability specifies if the lamp should be used during image acquisition.
+            If enabled the lamp will be turned on during the exposure phase of image acquisition.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_AIMING">
+            <summary>
+            The capability specifies the way that the aiming reticule should be enabled.
+            If capability’s value is set to NORMAL or PICKLIST the aiming reticule will be turned on as long as image acquisition has been started with StartAcquisition(). 
+            If it's set to NORMAL then the aiming reticule will automatically turn off during the exposure phase of image acquisition so that it does not appear in the captured image. 
+            If it's set to PICKLIST then the aiming reticule will not turn off during exposure and will be visible in the captured image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_AESETTLE">
+            <summary>
+            The capability defines the degree to which the autoexposure algorithm 
+            must settle before GetImage() will return an image. 
+            This capability has no effect if the ACQCAP_AUTOEXPOSURE capability is disabled. Setting this value too low may cause GetImage() fail to return an image under certain lighting conditions.
+            The default value for this capability should ensure adequate settling. This feature may be disabled by setting this capability to 0. With ACQCAP_AESETTLE disabled GetImage() will return the first acquired image regardless of the state of the autoexposure algorithm.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.ACQCAP_AEFRAMESKIP">
+            <summary>
+            The capability specifies the number of frames to skip between auto 
+            exposure updates. This capability is only meaningful if ACQCAP_AUTOEXPOSURE is enabled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_FILEFORMAT">
+            <summary>
+            The capability specifies the file format to encapsulate image data in.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_JPEGQUALITY">
+            <summary>
+            The capability specifies the desired JPEG image quality as a percentage.
+            No assumption is made about the meaning of the range 1 - 99, it may be derived from the JPEG standard or it may be optimized for the device. 
+            100, though, implies a lossless form of compression. Applications are not encouraged to use this value since it results in poor compression, as well as a format that is not currently widely supported in the industry. 
+            A value of 0 means no specific quality is requested and the default will be used.
+            IMGCAP_JPEGSIZE takes priority over this capability. This capability will be ignored if the current value of IMGCAP_JPEGSIZE is not 0.
+            This capability only has meaning if the current value of IMGCAP_FILEFORMAT is FileFormats.JPEG.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_JPEGSIZE">
+            <summary>
+            The capability specifies the desired size for a JPEG image in Kilo bytes.
+            This capability is ignored if the current value is set to 0. If the current value is greater than 0 then this capability will take precedence over IMGCAP_JPEGQUALITY. 
+            The driver will adjust the image quality in order to achieve the size requested by IMGCAP_JPEGSIZE. An image larger then IMGCAP_JPEGSIZE will be returned by GetImage() if IMGCAP_JPEGSIZE is smaller than what can be achieved with compression at the lowest quality setting. 
+            Conversely, the image returned by GetImage() may be smaller than requested if it was created using the highest quality setting.
+            This capability only has meaning if the current value of IMGCAP_FILEFORMAT is FileFormats.JPEG.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_CROPX">
+            <summary>
+            The capability specifies, in pixels, the X coordinate of the top, left 
+            corner of the rectangle that will be used to crop the acquired image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_CROPY">
+            <summary>
+            The capability specifies, in pixels, the Y coordinate of the top, left 
+            corner of the rectangle that will be used to crop the acquired image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_CROPWIDTH">
+            <summary>
+            The capability specifies, in pixels, the width of the rectangle that will be used to crop the acquired image. 
+            If the current value is set to 0 this capability will be ignored and the device will use a width that encompasses the entire acquired image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_CROPHEIGHT">
+            <summary>
+            The capability specifies, in pixels, the height of the rectangle that will be used to crop the acquired image.
+            If the current value is set to 0 this capability will be ignored and the device will use a height that encompasses the entire acquired image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_MATCHVFCAPCROP">
+            <summary>
+            The capability specifies if the cropping defined for the viewfinder should be used for image retrieval as well. 
+            If TRUE then the following capabilities IMGCAP_CROPX, IMGCAP_CROPY, IMGCAP_CROPWIDTH and IMGCAP_CROPHEIGHT  are ignored.
+            The capabilities VFCAP_CROPX, VFCAP_CROPY, VFCAP_CROPWIDTH and VFCAP_CROPHEIGHT are used instead.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_FLIPHORIZONTAL">
+            <summary>
+            The capability specifies if acquired image should be flipped on the horizontal axis.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_FLIPVERTICAL">
+            <summary>
+            The capability specifies if the acquired image should be flipped on the vertical axis.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_ROTATE">
+            <summary>
+            The capability specifies the amount, in degrees, that the acquired image should be rotated. 
+            NOTE: This capability is not supported.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.IMGCAP_NEGATIVE">
+            <summary>
+            The capability specifies if the bits in the acquired image should be negated.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_CROPX">
+            <summary>
+            The capability specifies, in pixels, the X coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_CROPY">
+            <summary>
+            The capability specifies, in pixels, the Y coordinate of the top, left corner of the rectangle that will be used to crop the viewfinder image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_CROPWIDTH">
+            <summary>
+            The capability specifies, in pixels, the width of the rectangle that will be used to crop the viewfinder image.
+            If the current value is set to 0 this capability will be ignored and the device will use a width that encompasses the entire viewfinder image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_CROPHEIGHT">
+            <summary>
+            The capability specifies, in pixels, the height of the rectangle that will be used to crop the viewfinder image.
+            If the current value is set to 0 this capability will be ignored and the device will use a height that encompasses the entire viewfinder image. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_CROPSTYLE">
+            <summary>
+            The capability specifies how the cropped area is displayed.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_FIXASPECTRATIO">
+            <summary>
+            The capability specifies if the aspect ratio of the viewfinder image is forced to match that of the acquired image. 
+            The aspect ratio of the viewfinder window is defined by VFCAP_WINWIDTH / VFCAP_WINHEIGHT .
+            The aspect ratio of the imaging device is  defined by DEVCAP_XNATIVERESOLUTION / DEVCAP_YNATIVERESOLUTION .
+            If VFCAP_FIXASPECTRATIO is TRUE then the acquired image is proportionally scaled so that it fits into the viewfinder window. 
+            The viewfinder window will not be completely filled with image data if the viewfinder window aspect ratio does not match the device aspect ratio.
+            If FALSE the acquired image is scaled, disproportionately if necessary, to completely fill the viewfinder window.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_FRAMERATE">
+            <summary>
+            The capability indicates the current frame rate of the viewfinder in frames per second.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_WINX">
+            <summary>
+            The capability specifies, in pixels, the X coordinate of the display rectangle.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_WINY">
+            <summary>
+            The capability specifies, in pixels, the Y coordinate of the display rectangle. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_WINWIDTH">
+            <summary>
+            The capability specifies, in pixels, the width of the display rectangle. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.CapIDs.VFCAP_WINHEIGHT">
+            <summary>
+            The capability specifies, in pixels, the height of the display rectangle. 
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.ColorFormats">
+            <summary>
+            Defines the color formats of the pixel data in the acquired images.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.MONO1">
+            <summary>
+            MONO: 1 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.MONO4">
+            <summary>
+            MONO: 4 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.MONO8">
+            <summary>
+            MONO: 8 bpp
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB4">
+            <summary>
+            RGB:  palettized, 4 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB8">
+            <summary>
+            RGB:  palettized, 8 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB565">
+            <summary>
+            RGB:  565,  16 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB555">
+            <summary>
+            RGB:  555,  16 bpp 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB24">
+            <summary>
+            RGB:  888,  24 bpp
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.RGB32">
+            <summary>
+            RGBX: 888X, 32 bpp, no alpha channel 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.AYUV">
+            <summary>
+            PACKED YUV, 4:4:4 with alpha channel
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.UYVY">
+            <summary>
+            PACKED YUV, UYVY (4:2:2) 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.Y411">
+            <summary>
+            PACKED YUV, (4:1:1)
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.Y211">
+            <summary>
+            PACKED YUV, Y211
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.YUY2">
+            <summary>
+            PACKED YUV, YUY2 (4:2:2)
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.YVYU">
+            <summary>
+            PACKED YUV, YVYU (4:2:2)
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.IF09">
+            <summary>
+            PLANAR YUV, Indeo YVU9
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.IYUV">
+            <summary>
+            PLANAR YUV, IYUV
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.YV12">
+            <summary>
+            PLANAR YUV, YV12 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorFormats.YVU9">
+            <summary>
+            PLANAR YUV, YVU9 
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Resolutions">
+            <summary>
+            Defines the different imaging device resolutions.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_1024x768">
+            <summary>
+            The resolution 1024x768.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_800x600">
+            <summary>
+            The resolution 800x600.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_752x480">
+            <summary>
+            The resolution 752x480.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_640x480">
+            <summary>
+            The resolution 640x480.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_1280x1024">
+            <summary>
+            The resolution 1280x1024.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_160x120">
+            <summary>
+            The resolution 160x120.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_320x240">
+            <summary>
+            The resolution 320x240.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_160x120_QQVGA">
+            <summary>
+            The resolution 160x120.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_80x60">
+            <summary>
+            The resolution 80x60.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_352x288">
+            <summary>
+            The resolution 352x288.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_176x144">
+            <summary>
+            The resolution 176x144.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_88x72">
+            <summary>
+            The resolution 88x72.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_44x36">
+            <summary>
+            The resolution 44x36.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_128x96">
+            <summary>
+            The resolution 128x96.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_1280x960">
+            <summary>
+            The resolution 1280x960.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_1600x1200">
+            <summary>
+            The resolution 1600x1200.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_2048x1536">
+            <summary>
+            The resolution 2048x1536.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_2240x1680">
+            <summary>
+            The resolution 2240x1680.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_2560x1920">
+            <summary>
+            The resolution 2560x1920.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.R_3032x2008">
+            <summary>
+            The resolution 3032x2008.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Resolutions.UNKNOWN">
+            <summary>
+            Unknown resolution.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.ColorDataFormats">
+            <summary>
+            Specifies the available color data formats.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorDataFormats.CHUNKY">
+            <summary>
+            Chunkey mode
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.ColorDataFormats.PLANAR">
+            <summary>
+            Planer mode
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.BitOrders">
+            <summary>
+            Defines the order in which the bytes in an image are filled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.BitOrders.LSBFIRST">
+            <summary>
+            Least significant bit first 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.BitOrders.MSBFIRST">
+            <summary>
+            Most significant bit first
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.PowerModes">
+            <summary>
+            Defines the power modes of an imaging device.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.PowerModes.OFF">
+            <summary>
+            Power off.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.PowerModes.STANDBY">
+            <summary>
+            Standby.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.PowerModes.HALTED">
+            <summary>
+            Halted.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.PowerModes.RUNNING">
+            <summary>
+            Running.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.PowerModes.ACQUIRING">
+            <summary>
+            Acquiring.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.LightSources">
+            <summary>
+            Defines the general color characteristics of the integrated light source.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.RED">
+            <summary>
+            Red.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.GREEN">
+            <summary>
+            Green.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.BLUE">
+            <summary>
+            Blue.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.NONE">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.WHITE">
+            <summary>
+            White.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.UV">
+            <summary>
+            Ultraviolet.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.LightSources.IR">
+            <summary>
+            Infrared.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.AimingModes">
+            <summary>
+            Defines the way that the aiming reticule should be enabled.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.AimingModes.OFF">
+            <summary>
+            Off.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.AimingModes.NORMAL">
+            <summary>
+            Normal.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.AimingModes.PICKLIST">
+            <summary>
+            Picklist.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Range">
+            <summary>
+            Represents a range of integers.
+            </summary>
+            <remarks>The range structure is used by the CapabiltyInfo structure 
+            to represent the range allowed values.</remarks>
+        </member>
+        <member name="F:Symbol.Imaging2.Range.Empty">
+            <summary>
+            Represents an empty range.
+            </summary>
+            <value>A Range structure representing an empty range.</value>
+        </member>
+        <member name="M:Symbol.Imaging2.Range.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initialize a new instance of the Range structure.
+            </summary>
+            <param name="min">Minimum value of the range.</param>
+            <param name="max">Maximum value of the range.</param>
+            <param name="step">Interval between two adjacent values within the range.</param>
+        </member>
+        <member name="M:Symbol.Imaging2.Range.Equals(System.Object)">
+            <summary>
+            Tests if obj is a Range structure with the same
+            Min, Max, and Step values.
+            </summary>
+            <param name="obj">The object to test.</param>
+            <returns>True if obj passed the test; false, otherwise. </returns>
+        </member>
+        <member name="M:Symbol.Imaging2.Range.GetHashCode">
+            <summary>
+            Returns the hash code for this Range structure. 
+            For information about the use of hash codes, see <see cref="M:System.Object.GetHashCode"/>.
+            </summary>
+            <returns>An integer that represents the hashcode for this Range.</returns>
+        </member>
+        <member name="M:Symbol.Imaging2.Range.op_Equality(Symbol.Imaging2.Range,Symbol.Imaging2.Range)">
+            <summary>
+            Equality operator. Tests whether two Range structures have equal Min, Max, and Step.
+            </summary>
+            <param name="left">The <see cref="T:Symbol.Imaging2.Range"/> structure that is to the left of the equality operator</param>
+            <param name="right">The <see cref="T:Symbol.Imaging2.Range"/> structure that is to the right of the equality operator</param>
+            <returns>True if the two Range structures passed the test; false, otherwise.</returns>
+        </member>
+        <member name="M:Symbol.Imaging2.Range.op_Inequality(Symbol.Imaging2.Range,Symbol.Imaging2.Range)">
+            <summary>
+            Inequality operator. Tests whether two Range structures differ in Min, Max, or Step.
+            </summary>
+            <param name="left">The <see cref="T:Symbol.Imaging2.Range"/> structure that is to the left of the inequality operator</param>
+            <param name="right">The <see cref="T:Symbol.Imaging2.Range"/> structure that is to the right of the inequality operator</param>
+            <returns>True if the two Range structures passed the test; false, otherwise.</returns>
+        </member>
+        <member name="P:Symbol.Imaging2.Range.Min">
+            <summary>
+            Gets or sets the minimum value of the range.
+            </summary>
+            <value>An interger that is the minimum value of the range.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Range.Max">
+            <summary>
+            Gets or sets the maximum value of the range.
+            </summary>
+            <value>An interger that is the maximum value of the range.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Range.Step">
+            <summary>
+            Gets or sets the interval between two adjacent values within the range.
+            </summary>
+            <value>An integer that is the interval between two adjacent values within the range.</value>
+        </member>
+        <member name="P:Symbol.Imaging2.Range.IsEmpty">
+            <summary>
+            Tests if the range instance is empty.
+            </summary>
+            <value>A boolean flag indicating if this range instance is empty.</value>
+        </member>
+        <member name="T:Symbol.Imaging2.DEVICETYPES">
+            <summary>
+            Defines the different types of the imaging devices. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.INTERNAL_IMAGER1">
+            <summary>
+            Internal Imager
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.INTERNAL_CAMERA1">
+            <summary>
+            Internal Camera
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.BT_IMAGER1">
+            <summary>
+            Bluetooth Imager
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.BT_CAMERA1">
+            <summary>
+            Bluetooth Camera
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.SERIAL_IMAGER1">
+            <summary>
+            Serial Imager
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.SERIAL_CAMERA1">
+            <summary>
+            Serial Imager
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.DEVICETYPES.FIRSTAVAILABLE">
+            <summary>
+            First Available Imaging device
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Triggers">
+            <summary>
+            Defines all triggers that can be available in the system. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER1">
+            <summary>
+            Trigger ID #1. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER2">
+            <summary>
+            Trigger ID #2. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER3">
+            <summary>
+            Trigger ID #3. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER4">
+            <summary>
+            Trigger ID #4. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER5">
+            <summary>
+            Trigger ID #5. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER6">
+            <summary>
+            Trigger ID #6. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.TRIGGER7">
+            <summary>
+            Trigger ID #7. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.ALLTRIGGERS">
+            <summary>
+            Trigger ID ALL TRIGGERS. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.Triggers.NONE">
+            <summary>
+            No Triggers. 
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.FileFormats">
+            <summary>
+            Defines an object that controls the format of the image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.FileFormats.TWFF_TIFF">
+            <summary>
+            TIFF format. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.FileFormats.TWFF_BMP">
+            <summary>
+            BMP format. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.FileFormats.TWFF_JPEG">
+            <summary>
+            JPEG format. 
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.FileFormats.TWFF_DIB">
+            <summary>
+            DIB format.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.STATUSEVENTTYPES">
+            <summary>
+            Status types that define the state the imaging device is in.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.STATUSEVENTTYPES.CAPTURE">
+            <summary>
+            The Imager is capturing an image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.STATUSEVENTTYPES.FREEZE">
+            <summary>
+            The Imager viewfinder has a frozen image.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.STATUSEVENTTYPES.UNFREEZE">
+            <summary>
+            The Imager viewfinder has unfrozen.
+            </summary>
+        </member>
+        <member name="F:Symbol.Imaging2.STATUSEVENTTYPES.FILESAVE">
+            <summary>
+            The Imager is saving the captured image to a file.
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_BADIMAGEFORMAT">
+            <summary>
+              Looks up a localized string similar to The PDD returned an image to the MDD in an unrecognized format..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_BUFFERSIZEIN">
+            <summary>
+              Looks up a localized string similar to The size of the buffer passed as an input to DeviceIoControl is less than sizeof(STRUCT_INFO) or is less than the size specified in StructInfo.dwUsed..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_BUFFERSIZEOUT">
+            <summary>
+              Looks up a localized string similar to The size of the buffer passed as an output to DeviceIoControl is less than sizeof(STRUCT_INFO) or is less than the size specified in StructInfo.dwAllocated..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_BUFFERTOOSMALL">
+            <summary>
+              Looks up a localized string similar to Data buffer is too small for incoming data..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CANTLOADDEVICE">
+            <summary>
+              Looks up a localized string similar to The physical device driver (PDD) could not be loaded..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CANTLOADHALDLL">
+            <summary>
+              Looks up a localized string similar to The Image HAL DLL can not be loaded..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CANTOPENREGKEY">
+            <summary>
+              Looks up a localized string similar to A required registry key could not be opened..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CANTSTARTDEVICE">
+            <summary>
+              Looks up a localized string similar to The device could not be started..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CANTUNLOADDEVICE">
+            <summary>
+              Looks up a localized string similar to The physical device driver (PDD) could not be unloaded..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CAPINVALIDCONTAINER">
+            <summary>
+              Looks up a localized string similar to The size of the buffer supplied to a capability container get call was an invalid size..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CAPINVALIDTYPE">
+            <summary>
+              Looks up a localized string similar to The size of the buffer supplied to a capability get or set call was an invalid size..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CAPINVALIDVALUE">
+            <summary>
+              Looks up a localized string similar to An attempt was made to set a capability to an invalid value..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CAPNOTSUPPORTED">
+            <summary>
+              Looks up a localized string similar to An attempt was made to get or set a capability that is not supported..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_CAPREADONLY">
+            <summary>
+              Looks up a localized string similar to An attempt was made to set the value of a read only capability..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_DEVICEDISABLED">
+            <summary>
+              Looks up a localized string similar to Camera security policy not allowing to use camera..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_DEVICEFAILURE">
+            <summary>
+              Looks up a localized string similar to A general failure was encountered at the device level..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_DEVICENOTSTARTED">
+            <summary>
+              Looks up a localized string similar to An attempt was made to use the imaging device before it was started..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_EXCEPTION">
+            <summary>
+              Looks up a localized string similar to An unhandled exception was encountered..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_GETIMAGETIMEDOUT">
+            <summary>
+              Looks up a localized string similar to The timeout value specified by the IMG_DEVCAP_GETIMAGETIMEOUT capability has expired while waiting for IMAGE_GetImage to acquire an image..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDDEVCONTEXT">
+            <summary>
+              Looks up a localized string similar to An attempt was made to access an invalid device context in the driver MDD layer..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDDEVICE">
+            <summary>
+              Looks up a localized string similar to The physical device driver (PDD) DLL did not contain the required entry points..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDHALDLL">
+            <summary>
+              Looks up a localized string similar to At least one API function is missing in Image HAL DLL..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDHANDLE">
+            <summary>
+              Looks up a localized string similar to An invalid handle was passed to a function..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDIOCTRL">
+            <summary>
+              Looks up a localized string similar to DeviceIoControl() was called with an invalid IOCTL code..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDOPENCONTEXT">
+            <summary>
+              Looks up a localized string similar to An attempt was made to access an invalid open context in the driver MDD layer..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDPDDCONTEXT">
+            <summary>
+              Looks up a localized string similar to An attempt was made to access an invalid open context in the driver PDD layer..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_INVALIDWINDOWHANDLE">
+            <summary>
+              Looks up a localized string similar to The window handle specified in the IMG_VFCAP_WINHANDLE capability is not a valid window handle..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_LOCKFAILED">
+            <summary>
+              Looks up a localized string similar to A locking request was made to an imaging device that was already locked by another handle..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_MAPPOINTERFAILED">
+            <summary>
+              Looks up a localized string similar to An attempt to create a mapped pointer failed. This may happen if the system does not have enough memory for to create a memory mapped file large enough to contain an image..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_MISSINGFIELD">
+            <summary>
+              Looks up a localized string similar to A required field in a structure was missing..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NOIMAGE">
+            <summary>
+              Looks up a localized string similar to An attempt was made to retrieve capability values for the last image read using IMAGE_GetCapImgAcqValue before IMAGE_GetImage was called..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NOMOREITEMS">
+            <summary>
+              Looks up a localized string similar to No more items are available to be returned from IMAGE_FindFirst or IMAGE_FindNext..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NOTACQUIRING">
+            <summary>
+              Looks up a localized string similar to An attempt was made to read image data using IMAGE_GetImage but acquisition had not been started with IMAGE_StartAcquisition..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NOTENOUGHMEMORY">
+            <summary>
+              Looks up a localized string similar to An attempt to allocate memory failed..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NOTINITIALIZED">
+            <summary>
+              Looks up a localized string similar to The driver was accessed before a successful initialization..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_NULLPTR">
+            <summary>
+              Looks up a localized string similar to A NULL pointer was passed for a required argument..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_OPENINGACTIVEKEY">
+            <summary>
+              Looks up a localized string similar to The Drivers\Active key could not be opened..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_OPENINGPARAMKEY">
+            <summary>
+              Looks up a localized string similar to A required registry parameter key could not be opened..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_PDDNOTLOADED">
+            <summary>
+              Looks up a localized string similar to An attempt was made to access the driver PDD layer before it was loaded..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_READINGACTIVEKEY">
+            <summary>
+              Looks up a localized string similar to The Drivers\Active key could not be read..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_READINGPARAMKEY">
+            <summary>
+              Looks up a localized string similar to A required registry parameter key could not be read..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_RUNNING">
+            <summary>
+              Looks up a localized string similar to Action could not be completed since imager is already running..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_STRUCTSIZE">
+            <summary>
+              Looks up a localized string similar to STRUCT_INFO structure field is invalid. Either dwAllocated or dwUsed is less than the size of STRUCT_INFO or dwUsed is greater than dwAllocated..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_SUCCESS">
+            <summary>
+              Looks up a localized string similar to The function completed successfully.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.E_IMG_WIN32ERROR">
+            <summary>
+              Looks up a localized string similar to A general Win32 error was encountered. Use GetLastError() to determine the windows error..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.ERROR_CREATEEVENT">
+            <summary>
+              Looks up a localized string similar to Failure in creating event.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.ERROR_RESETEVENT">
+            <summary>
+              Looks up a localized string similar to Failure in resetting event.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.ERROR_SETEVENT">
+            <summary>
+              Looks up a localized string similar to Failure in setting event.
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.IMG_NEGATIVE_NUM">
+            <summary>
+              Looks up a localized string similar to Negative values are not allowed..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.INCORRECTVIEWFINDERCONTROL">
+            <summary>
+              Looks up a localized string similar to The type of control object passed to Imaging2.StartViewfinder(control) or Imaging2.StartAcquisition(control) methods is incorrect. When using the freezing feature (which can be enabled by setting Config.Activators.FreezeTimeout to a non-zero value), the control passed to these methods must be a System.Windows.Forms.PictureBox object..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.INVALIDDEVICE">
+            <summary>
+              Looks up a localized string similar to Invalid device..
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Resource.INVALIDPARAM">
+            <summary>
+              Looks up a localized string similar to The parameter passed is not valid. It cannot be null or empty..
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Devices">
+            <summary>
+            Encapsulates the static information of an imaging device. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Devices.AvailableDevices">
+            <summary>
+            Gets a static array that list all available imaging devices in the system.  
+            </summary>
+        </member>
+        <member name="T:Symbol.Imaging2.Device">
+            <summary>
+            The Device class provides the basic functionality needed to obtain a list of available devices. 
+            </summary>
+        </member>
+        <member name="P:Symbol.Imaging2.Device.DeviceName">
+            <summary>
+            Provides read access to the device name of the device.
+            </summary>
+            <value>
+            A string that contains the device name.
+            </value>
+        </member>
+        <member name="P:Symbol.Imaging2.Device.FriendlyName">
+            <summary>
+            Provides read access to the friendly name of the device.
+            </summary>
+            <value>
+            A string that contains the friendly name.
+            </value>
+        </member>
+        <member name="P:Symbol.Imaging2.Device.RegBasePath">
+            <summary>
+            Provides read access to the BasePath of the device.
+            </summary>
+            <value>
+            A string that contains the BasePath.
+            </value>
+        </member>
+        <member name="P:Symbol.Imaging2.Device.DeviceType">
+            <summary>
+            Provides read access to the device name of the device.
+            </summary>
+            <value>
+            A string that contains the device name.
+            </value>
+        </member>
+    </members>
+</doc>

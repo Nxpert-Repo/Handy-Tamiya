@@ -1,0 +1,45 @@
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\Handy.DAL.pdb
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\System.Data.SqlClient.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\System.Data.SqlServerCe.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\System.Data.SqlClient.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Release\System.Data.SqlServerCe.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Release\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Release\Handy.DAL.pdb
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\bin\Debug\System.Data.SqlServerCe.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy Migration\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\bin\Debug\System.Data.SqlServerCe.xml
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Documents and Settings\Jonel\My Documents\Visual Studio 2005\Projects\Handy V4\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\bin\Debug\System.Data.SqlServerCe.xml
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\gEnr0n-aRri0n\Documents\Ongoing Work\Source Code\Handy\Handy Keyence\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\bin\Debug\System.Data.SqlServerCe.xml
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC\Handy.DAL\obj\Debug\Handy.DAL.pdb

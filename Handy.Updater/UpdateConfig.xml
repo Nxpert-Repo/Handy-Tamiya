@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<updateinfo>
+  <checkassembly name="Handy V3.exe"/>
+  <remoteapp name="Handy V3"/>
+  <service url="http://10.195.1.69:90/Handy/UpdaterWebService.asmx"/>
+  <!--service url="http://10.195.9.228/Handy/UpdaterWebService.asmx"/-->
+</updateinfo>

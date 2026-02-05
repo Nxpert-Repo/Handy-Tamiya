@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Handy.BaseWindow" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>UiBCgIA4ICEACAAEAECRoIGCkxLKEACFTAAcABAIgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.MsgWindow" Collapsed="true">
+    <Position X="36.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.BarcodeReader" Collapsed="true">
+    <Position X="38" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAKCAAAAAAAAAAAAAAAAAiAAAAAAAAIUAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Actions" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAgAAAAAAAAAAAgAAAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Info" Collapsed="true">
+    <Position X="39.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.ReaderData" Collapsed="true">
+    <Position X="39.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAIACAAAAAAAEAAAARAAAAAAAAAAQAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.CommonInterfaceFunctions" Collapsed="true">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AggAQCAQRkQAAIhhAgEAAAAAAFgAAEEgYAAACABADIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Config" Collapsed="true">
+    <Position X="34.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.WLAN" Collapsed="true">
+    <Position X="38" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Adapter" Collapsed="true">
+    <Position X="36.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.StatusChangeArgs" Collapsed="true">
+    <Position X="36.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.KTestWindow">
+    <Position X="4.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>Base\KeyenceTestWindow.cs</FileName>
+      <HashCode>AIAABAAQACBAABAAAACAIAACAAAAAAAAAAEACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.TestWindow">
+    <Position X="9.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Base\TestWindow.cs</FileName>
+      <HashCode>AIAAAAAQACBAABAAAACAIAACAAAAAAAAAAEACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.DisplayNewTagsWindow">
+    <Position X="16" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>DisplayNewTagsWindow.cs</FileName>
+      <HashCode>CQAggAABACAgBEhAIACAIACCQwBIFAAABAAQBAAAwAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.HandyMaintenanceListWindow">
+    <Position X="20.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>HandyMaintenanceListWindow.cs</FileName>
+      <HashCode>/6yQEBkUACz8iBigCFCAZMACMZaCUrUAFYQ2ha0mcBk=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.HandyMaintenanceWindow">
+    <Position X="27.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>HandyMaintenanceWindow.cs</FileName>
+      <HashCode>BAAAAAAAACIgABAAAACAIAACAAEAAAAABAARBYAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.InventoryListWindow">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>InventoryListWindow.cs</FileName>
+      <HashCode>CEQkAgAAACowBBBAggDMIQSCQgEAFAMMBAByBIAgAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.InventoryProcessingWindow">
+    <Position X="6.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>InventoryProcessingWindow.cs</FileName>
+      <HashCode>QWAEAAAQAKAxEVlAAwGAJAyDQA4AsiBgBAIwJMAEQBA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Handy.InventoryProcessingWindow.ActivateWindow" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>InventoryProcessingWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Handy.LocatorTaggingListWindow">
+    <Position X="11.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>LocatorTaggingListWindow.cs</FileName>
+      <HashCode>AAAAwAAAICIgABAEAACAIAQSUwAAHEEAxAAQBAIAAAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.LocatorTaggingWindow">
+    <Position X="18.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>LocatorTaggingWindow.cs</FileName>
+      <HashCode>YEAlAAQQJSAgAFBEiBCAoAgCSCAAAgAABIA8BQAAAAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Handy.LocatorTaggingWindow.TxtScroll" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LocatorTaggingWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Handy.LocatorUnTaggingListWindow">
+    <Position X="23" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>LocatorUnTaggingListWindow.cs</FileName>
+      <HashCode>AEAAwACAACIgADAAAECQIAQSEwAAMAAABAAQBAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.LogInWindow">
+    <Position X="29.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>LogInWindow.cs</FileName>
+      <HashCode>ABAAAhEQADAgABACgACAYAADBAIIAAgCBAAYQQBQAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Handy.MainWindow">
+    <Position X="2.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>MainWindow.cs</FileName>
+      <HashCode>BAACAAAAACgAAAAAAAGAMAACAwAACAAABAAQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Delegate Name="Handy.MainWindow.InvokeDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+  </Class>
+  <Class Name="Handy.MaterialAdjustmentWindow" Collapsed="true">
+    <Position X="34.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>MaterialAdjustmentWindow.cs</FileName>
+      <HashCode>xUjAAGAACCggQFBAAAKFgIkGACigQAAAAAQgBQAUBMI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.MaterialIssuanceWindow">
+    <Position X="13.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <FileName>MaterialIssuanceWindow.cs</FileName>
+      <HashCode>AAAAgAARACAgABBAAACAIAgCAyQABACAhAAaBIAAQAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Program" Collapsed="true">
+    <Position X="38" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.ScannedListWindow">
+    <Position X="25.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>ScannedListWindow.cs</FileName>
+      <HashCode>CEAAgACgQCAAABAAAACAIAACAwABEAAABAUQEAAAwAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.StatusListWindow">
+    <Position X="32" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>StatusListWindow.cs</FileName>
+      <HashCode>AEAAAKAEACAAAAAAAACEIAACAgAAEAAAhBQQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Main.Handy" Collapsed="true">
+    <Position X="38" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABAAAQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandyUtil.DesignerUtil" Collapsed="true">
+    <Position X="36.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Properties.Resources" Collapsed="true">
+    <Position X="34.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEwEqrAAQmApgJbANECNUIROa04FwBKQISCjwDFIAYg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Handy.Results" Collapsed="true">
+    <Position X="34.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAACAAACAAACAAAAAAAAABAAAgAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Handy.SignalQuality" Collapsed="true">
+    <Position X="36.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\CommonInterfaceFunctions.cs</FileName>
+      <HashCode>AAAAAgAAAAAAAAAIAQAAAAAAAAAAAAABAAAAAAAAEAg=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

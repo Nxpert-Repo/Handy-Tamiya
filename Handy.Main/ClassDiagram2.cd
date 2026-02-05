@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="Handy.BaseWindow">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>UiBCgIA4ICEACAAEAECRoIGCkxLKEACFTAAcABAIgAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Handy.BaseWindow.BaseButtons">
+        <TypeIdentifier>
+          <NewMemberFileName>Base\BaseWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Handy.BaseWindow.ActiveButton">
+        <TypeIdentifier>
+          <NewMemberFileName>Base\BaseWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Handy.MsgWindow">
+    <Position X="3.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.BarcodeReader">
+    <Position X="3.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAKCAAAAAAAAAAAAAAAAAiAAAAAAAAIUAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Actions">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAgAAAAAAAAAAAgAAAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.Info">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handy.ReaderData">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAAAIACAAAAAAAEAAAARAAAAAAAAAAQAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Handy.Results">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Base\BaseWindow.cs</FileName>
+      <HashCode>AAAAAACAAACAAACAAAAAAAAABAAAgAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

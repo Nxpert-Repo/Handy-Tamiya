@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="DataHelper.BaseDataHelper">
+    <Position X="5.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>BaseDataHelper.cs</FileName>
+      <HashCode>AAAAAAABKCAAQCCAABAAAGAgAAMAQAQAAAAAABACAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="DataHelper.BaseDataHelper.DataSourceType">
+        <TypeIdentifier>
+          <NewMemberFileName>BaseDataHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataHelper.HandyConfiguration">
+    <Position X="13.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>HandyConfiguration.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataHelper.ParameterInfo">
+    <Position X="10.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>ParameterInfo.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgBAAAAAAIAYAAAAAAAAAAQAgAAAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataHelper.SQLDataHelper">
+    <Position X="8" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>SQLDataHelper.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAABAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CEDataHelper.CEBaseDataHelper">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>CEBaseDataHelper.cs</FileName>
+      <HashCode>AABAAAADKCAAQCCIABAAAGAgAAMAQAQAAAAAABACAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CEDataHelper.CEBaseDataHelper.DataSourceType">
+        <TypeIdentifier>
+          <NewMemberFileName>CEBaseDataHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CEDataHelper.CEParameterInfo">
+    <Position X="10.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>CEParameterInfo.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgBAAAAAAIAYAAAAAAAAAAQAgAAAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CEDataHelper.CESQLDataHelper">
+    <Position X="2.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>CESQLDataHelper.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

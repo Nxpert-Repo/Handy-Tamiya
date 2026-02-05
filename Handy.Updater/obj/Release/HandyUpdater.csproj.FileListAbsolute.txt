@@ -1,0 +1,9 @@
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\bin\Release\UpdateConfig.xml
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\bin\Release\Handy Updater.exe
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\bin\Release\Handy Updater.pdb
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\ResolveAssemblyReference.cache
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\HandyUpdater.UpdaterWindow.resources
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\HandyUpdater.Properties.Resources.resources
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\HandyUpdater.csproj.GenerateResource.Cache
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\Handy Updater.exe
+G:\Users\Dan\Documents\Lito TurnOver Files\THI Handy Files by Lito Cabornay\Source Code\Handy\HandyUpdater\obj\Release\Handy Updater.pdb

@@ -1,0 +1,9 @@
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\bin\Debug\UpdateConfig.xml
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\bin\Debug\Handy Updater.exe
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\bin\Debug\Handy Updater.pdb
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\ResolveAssemblyReference.cache
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\HandyUpdater.UpdaterWindow.resources
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\HandyUpdater.Properties.Resources.resources
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\HandyUpdater.csproj.GenerateResource.Cache
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\Handy Updater.exe
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\HandyUpdater\obj\Debug\Handy Updater.pdb

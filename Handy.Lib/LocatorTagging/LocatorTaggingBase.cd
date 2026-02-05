@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="Handy.Lib.LocatorTaggingBase">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>LocatorTagging\LocatorTaggingBase.cs</FileName>
+      <HashCode>goABAKQiAACAgAQAABQgAAIAIASAIACkAECAAAIAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

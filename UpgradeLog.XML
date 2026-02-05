@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Handy Migration">
+</Property><Property Name="Solution File" Value="C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy Migration.sln">
+</Property><Property Name="Date" Value="Monday, February 13, 2017">
+</Property><Property Name="Time" Value="11:31 AM">
+</Property></Properties><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\Handy.Lib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\Handy.Lib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Handy.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\Handy.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Updater" Source="Handy.Updater\Handy.Updater.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Updater" Source="Handy.Updater\Handy.Updater.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.DAL" Source="Handy.DAL\Handy.DAL.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.DAL" Source="Handy.DAL\Handy.DAL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Handy Migration.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Handy Migration.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\LicenseWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\LicenseWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\MessageForm.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\MessageForm.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\PriveledgeWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\PriveledgeWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\Properties\Resource.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\Properties\Resource.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\SupervisoryCancelation.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Lib" Source="Handy.Lib\SupervisoryCancelation.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\Handy.Lib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Handy.Lib" Source="Handy.Lib\Handy.Lib.csproj" Description="References to a previous version of the SQL Server Compact provider were updated.">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\BarcodeTestWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\BarcodeTestWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Base\BaseWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\Base\BaseWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Base\KeyenceTestWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\Base\KeyenceTestWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Base\TestWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\Base\TestWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\DisplayNewTagsWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\DisplayNewTagsWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\HandyMaintenanceListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\HandyMaintenanceListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\HandyMaintenanceWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\HandyMaintenanceWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\InventoryListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\InventoryListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\InventoryProcessingWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\InventoryProcessingWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\LocatorTaggingListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\LocatorTaggingListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\LocatorTaggingWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\LocatorTaggingWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\LocatorUnTaggingListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\LocatorUnTaggingListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\LogInWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\LogInWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\MainWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\MainWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\MaterialAdjustmentWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\MaterialAdjustmentWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\MaterialIssuanceWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\MaterialIssuanceWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Properties\Resources.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\Properties\Resources.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\ScannedListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\ScannedListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\StatusListWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\StatusListWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\StockMovementWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy" Source="Handy.Main\StockMovementWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Handy.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Handy" Source="Handy.Main\Handy.csproj" Description="References to a previous version of the SQL Server Compact provider were updated.">
+</Event><Event ErrorLevel="0" Project="Handy.Updater" Source="Handy.Updater\Properties\Resources.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Updater" Source="Handy.Updater\Properties\Resources.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Updater" Source="Handy.Updater\UpdaterWindow.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="Handy.Updater" Source="Handy.Updater\UpdaterWindow.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Handy.Updater" Source="Handy.Updater\Handy.Updater.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Handy.DAL" Source="Handy.DAL\Handy.DAL.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Handy.DAL" Source="Handy.DAL\Handy.DAL.csproj" Description="References to a previous version of the SQL Server Compact provider were updated.">
+</Event></UpgradeLog>

@@ -1,0 +1,199 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A684F6BB-369A-490C-9116-40E2E1FA19D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Handy.Lib</RootNamespace>
+    <AssemblyName>Handy.Lib</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>EHS_Handy</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="btLibDefNet, Version=1.5.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Windows CE Tools\SDKs\BT-W SDK-HT\Lib\ARMv4I\btLibDefNet.dll</HintPath>
+    </Reference>
+    <Reference Include="btSysLibNet, Version=1.5.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Windows CE Tools\SDKs\BT-W SDK-HT\Lib\ARMv4I\btSysLibNet.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=3.0.3600.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoilDefragging\CoilDefraggingBase.cs" />
+    <Compile Include="Common\Audio.cs" />
+    <Compile Include="Common\CommonEnum.cs" />
+    <Compile Include="Common\CommonFunctions.cs" />
+    <Compile Include="Common\CommonMessages.cs" />
+    <Compile Include="Common\CommonQueryStrings.cs" />
+    <Compile Include="Common\CommonStoredProcedures.cs" />
+    <Compile Include="Common\ConstantString.cs" />
+    <Compile Include="Common\FTP.cs" />
+    <Compile Include="Common\FTPConnection.cs" />
+    <Compile Include="Common\FTPFileTransferType.cs" />
+    <Compile Include="Common\FTPMode.cs" />
+    <Compile Include="Common\NLLogger.cs" />
+    <Compile Include="Common\ScanLog.cs" />
+    <Compile Include="DeliveryChecklist\DeliveryChecklistBase.cs" />
+    <Compile Include="DeliveryPreparation\DeliveryPreparationBase.cs" />
+    <Compile Include="DeliveryPreparation\DeliveryPreparationBase_Old.cs" />
+    <Compile Include="DisplayNewTagsWindow\DisplayNewTagsWindowBase.cs" />
+    <Compile Include="Inventory\InventoryBase.cs" />
+    <Compile Include="Jobstart\JobStartBase.cs" />
+    <Compile Include="LicenseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseWindow.designer.cs">
+      <DependentUpon>LicenseWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocatorTagging\LocatorTaggingBase.cs" />
+    <Compile Include="LocatorTagging\LocatorTaggingFunctions.cs" />
+    <Compile Include="Maintenance\MaintenanceBase.cs" />
+    <Compile Include="MaterialAdjustment\MaterialAdjustmentBase.cs" />
+    <Compile Include="MaterialTransferAndIssuance\IssuanceBase.cs" />
+    <Compile Include="MaterialTransferAndIssuance\MaterialIssuanceBase.cs" />
+    <Compile Include="MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageForm.designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pick List\PickListBase.cs" />
+    <Compile Include="PriveledgeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PriveledgeWindow.designer.cs">
+      <DependentUpon>PriveledgeWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resource.cs" />
+    <Compile Include="StockCard\StockCardBase.cs" />
+    <Compile Include="StockMovement\StockMovementBase.cs" />
+    <Compile Include="StockReclass\StockReclassBase.cs" />
+    <Compile Include="StringEnum.cs" />
+    <Compile Include="StringValue.cs" />
+    <Compile Include="SupervisoryCancelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupervisoryCancelation.designer.cs">
+      <DependentUpon>SupervisoryCancelation.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LicenseWindow.resx">
+      <DependentUpon>LicenseWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriveledgeWindow.resx">
+      <DependentUpon>PriveledgeWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupervisoryCancelation.resx">
+      <DependentUpon>SupervisoryCancelation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\CancelOnly.bmp" />
+    <Content Include="Resources\CloseOnly.bmp" />
+    <Content Include="Resources\error.bmp" />
+    <Content Include="Resources\info.bmp" />
+    <Content Include="Resources\OkCancel.bmp" />
+    <Content Include="Resources\OkOnly.bmp" />
+    <Content Include="Resources\question.bmp" />
+    <Content Include="Resources\RevertCancel.bmp" />
+    <Content Include="Resources\success.bmp" />
+    <Content Include="Resources\UnloadCancel.bmp" />
+    <Content Include="Resources\Warning.bmp" />
+    <Content Include="Resources\YesNo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LocatorTagging\LocatorTaggingBase.cd" />
+    <None Include="Resources\GetHandyNetConfig.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Handy.DAL\Handy.DAL.csproj">
+      <Project>{E959CA22-1FF1-456C-A45B-802BB037C099}</Project>
+      <Name>Handy.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+</Project>

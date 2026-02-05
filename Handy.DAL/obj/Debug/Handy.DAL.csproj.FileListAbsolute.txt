@@ -1,0 +1,92 @@
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC - Copy\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\NPX-i5DESKTOP#2\Documents\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.pdb
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.dll
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.pdb
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.dll
+F:\FRANCIS Docs\Projects\FEP\Handy Keyence\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.pdb
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.dll
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.pdb
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.dll
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.pdb
+G:\Users\Dan\Documents\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Francis\Projects\FEP\Handy Keyence SC VS2008\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Francis\Projects\NXPERTOne\Development\Handy\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\bsbaril\Documents\Source Codes\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+D:\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+D:\NPAX\ERP\HANDY\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\EHS TEST\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\ERP-MARVIEEABUCAY\Desktop\EHS\deploy\source code\Handy Keyence SC VS2008(NXPERTONE)\Handy.DAL\obj\Debug\Handy.DAL.pdb
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\bin\Debug\Handy.DAL.dll
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\bin\Debug\Handy.DAL.pdb
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\obj\Debug\Handy.DAL.dll
+C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.DAL\obj\Debug\Handy.DAL.pdb

@@ -1,0 +1,5171 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using DataHelper;
+using CEDataHelper;
+using System.Data.SqlServerCe;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Threading;
+using System.Diagnostics;
+using System.Net;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using Handy.Lib.MaterialTransferAndIssuance;
+
+namespace Handy.Lib
+{
+    public class CommonFunctions
+    {
+        #region Common Variables
+
+        //string
+        private static string _JobSheetNo;
+        private static string _LocatorCode;
+        private static string _LocatorDesc;
+        private static string _OldLocatorCode;
+        private static string _OldLocatorDesc;
+        private static string _VarianceDesc;
+        private static string _NewLocSeqNo;
+        private static string _QuantityType;
+        private static string _TransferNo;
+        private static string _Result;
+        private static string _UserPIN;
+        private static string _Customer;
+        private static string _PONo;
+        private static string _RRStatus;
+        private static string _GeneratedDate;
+        private static string _GeneratedBy;
+        private static string _DPItemScanMessage;
+
+        //int
+        private static int _GeneratedRowCnt;
+        private static int _LayerNo = 1;
+        private static int _LayerSeqNo = 1;
+        private static int _InputLayerNo = 1;
+        private static int _InputLayerSeqNo = 1;
+
+        //decimals
+        private static decimal _Weight;
+        private static decimal _AvailableQty;
+        private static decimal _InputQty;
+        private static decimal _ReceivedQty;
+        private static decimal _ReservedQty;
+        private static decimal _VarianceQty;
+        private static decimal _LotQty;
+        private static decimal _UntaggedQty;
+        private static decimal _LocatorQty;
+        private static decimal _ExpectedActualQty;
+        private static decimal _RequestedQty;
+        ////Common
+        private static string _TagNo;
+        private static string _RRNo;
+        private static string _RRSeq;
+        private static string _RRLotSeq;
+        private static string _RRLocSeq;
+        private static string _LotCode;
+        private static decimal _Thickness;
+        private static decimal _Width;
+        private static decimal _Length;
+        private static decimal _Height; //added new
+        private static string _Specs;
+        private static string _Mill;
+        private static string _Works;
+        private static string _Class;
+        private static string _Unit;
+        private static string _StockType;
+        private static decimal _IssuedQty;
+        private static decimal _TransferQty;
+        private static string _StockDescription; //old class desc
+        private static string _StockClassNew; //new class desc
+        private static string _StockClassCode; //old class code
+        private static string _StockClassCodeNew; //new class code
+        private static string _CustomerCode;
+        private static DateTime _ScannedDate = Convert.ToDateTime("01/01/1900"); //Default date if not updated from server date
+
+        //bool
+        private static bool _IsHalfFinished;
+        private static bool _IsComplete;
+        private static bool _IsReturned = false;
+        private static bool _IsProcessing;
+        private static bool _SuccessPost = false;
+        private static bool _SuccessConnect;
+        private static bool _IsReclass = false;
+        private static bool _IsBalanceClass = false;
+        private static bool _InventoryReferenceGenerated;
+        private static bool _isWRISSplit;
+        private static bool _isSTMSplit;
+        private static bool _defaultLogin = false;
+        public static bool UseMobileDB = true; //Added this column to compare the speed between txtfile and db
+
+
+
+        ////Barcode
+        private static string _BarcodeTagNo;
+        private static string _BarcodeRRNo;
+        private static string _BarcodeRRSeq;
+        private static string _BarcodeRRLotSeq;
+        private static string _BarcodeRRLocSeq;
+        private static string _BarcodeStockCode;
+        private static string _BarcodeLotCode;
+        private static string _BarcodeQuantity;
+        private static string _BarcodeUnit;
+        private static string _BarcodePrintedDate;
+        private static string _BarcodeWHReqControlNo;
+        private static string _ReturnRemark;
+        private static string _BarcodeReqSeqNo;
+        private static string _BarcodeReqSPitSeqNo;
+        private static string _BarcodeWRISStockCode;
+        private static string _BarcodeSpecs;
+        private static string _BarcodeTravelogNo;
+        private static string _BarcodeTravelogProcess;
+        private static string _BarcodeJobSheetNo;
+        private static string _BarcodeLocatorCode;
+        private static string _BarcodeWRISNo;
+        private static string _BarcodeTransNo;
+
+
+        /////Message
+        private static List<string> _TagNoScannedList;
+        private static List<string> _TagNoUnsentList;
+        private static List<string> _DeliveryPreparationList;
+        private static List<string> _DeliveryReportList;
+        private static List<string> _MaterialIssuanceList;
+        private static List<string> _MaterialTransferList;
+        private static List<string> _DeliveryList;
+        private static string _TagNoScannedListToSting;
+        private static string _DeliveryListToSting;
+        private static CommonEnum.Function _CurrentFunction;
+        private static DataTable _ScanStatusTable;
+        private static CommonEnum.StockType _GeneratedStockType;
+        private static CommonEnum.Warehouse _GeneratedWarehouse;
+
+        //Nilo Added
+        //Datatable
+        private static DataTable _WRISTable;
+        private static DataTable _RRListWithUnmatchProjCode;
+        private static DataTable _PickListTable;
+        private static DataTable _PickListScannedRRTable;
+        private static DataTable _LocatorListTable;
+        private static DataTable _MITTable;
+        private static DataTable _DisposableTable;
+        private static DataTable _InventoryMaster;
+        private static DataTable _LabelHistoryMaster;
+        private static DataTable _StockClassList;
+        private static DataTable _CustomerList;
+        private static DataTable _GenericMasterList;
+        private static DataTable _StockClassDescList;
+        private static DataTable _DeliveryPreparationSpecs;
+        private static DataTable _WRISTableSplitList;
+        private static DataTable _StockMovementTable;
+        private static int _MITGenericPendingCount;
+        public static string strRRNo;
+        public static string strRRSeqNo;
+        public static string strRRLotSeq;
+        public static string strRRLocSeq;
+        //Double
+        private static double _Progress;
+        private static ProgressBar _PostProgress;
+        //Signal 
+        private static Label _lblSignalStatus;
+        private static Label _lblSignalBack;
+        private static Label _lblSignalDisp;
+        private static Label _lblThreadingDisplay;
+        private static CommonEnum.Signal _SignalStat;
+        //Handy Info
+        private static string _HandyNo;
+        private static string _HandyInstalledPath;
+        private static string _HandyMacAddress;
+        private static string _HandySerialNo;
+        private static string _HandyIPAddress;
+        private static string _HandyModel;
+        private static string _HandyStatus;
+        private static string _strFTPPassword;
+        private static DataTable _HandyRegisteredList;
+        private static bool _HandyRegistered = false;
+        private static bool _HandyUpdateMonitorSend;
+        //FTP
+        private static string _HandyFTPSeqNo;
+        private static string _ValidityType;
+        //Appliction Version
+        private static string _ApplicationVersion;
+        private static int _ConnectionCount;
+        #endregion
+
+        #region Accessors
+        public static CommonEnum.StockType GeneratedStockType
+        {
+            get { return _GeneratedStockType; }
+            set { _GeneratedStockType = value; }
+        }
+        public static CommonEnum.Warehouse GeneratedWarehouse
+        {
+            get { return _GeneratedWarehouse; }
+            set { _GeneratedWarehouse = value; }
+        }
+        public static CommonEnum.Function CurrentFunction
+        {
+            get { return _CurrentFunction; }
+            set
+            {
+                if (_CurrentFunction == value) return;
+                _CurrentFunction = value;
+            }
+        }
+        //List
+        public static List<string> TagNoScannedList
+        {
+            get { return _TagNoScannedList; }
+            set { _TagNoScannedList = value; }
+        }
+        public static List<string> TagNoUnsentList
+        {
+            get { return _TagNoUnsentList; }
+            set { _TagNoUnsentList = value; }
+        }
+        public static List<string> DeliveryPreparationList
+        {
+            get { return _DeliveryPreparationList; }
+            set { _DeliveryPreparationList = value; }
+        }
+        public static List<string> DeliveryReporttList
+        {
+            get { return _DeliveryReportList; }
+            set { _DeliveryReportList = value; }
+        }
+        public static List<string> MaterialIssuanceList
+        {
+            get { return _MaterialIssuanceList; }
+            set { _MaterialIssuanceList = value; }
+        }
+        public static string ReturnRemark
+        {
+            get { return _ReturnRemark; }
+            set { _ReturnRemark = value; }
+        }
+
+        public static List<string> MaterialTransferList
+        {
+            get { return _MaterialTransferList; }
+            set { _MaterialTransferList = value; }
+        }
+        public static List<string> DeliveryList
+        {
+            get { return _DeliveryList; }
+            set
+            {
+                if (_DeliveryList == value) return;
+                _DeliveryList = value;
+            }
+        }
+        //string
+        public static string UserPIN
+        {
+            get { return _UserPIN; }
+            set { _UserPIN = value; }
+        }
+        public static string JobSheetNo
+        {
+            get { return _JobSheetNo; }
+            set { _JobSheetNo = value; }
+        }
+        public static string LocatorCode
+        {
+            get { return _LocatorCode; }
+            set { _LocatorCode = value; }
+        }
+        public static string LocatorDesc
+        {
+            get { return _LocatorDesc; }
+            set { _LocatorDesc = value; }
+        }
+        public static string OldLocatorCode
+        {
+            get { return _OldLocatorCode; }
+            set { _OldLocatorCode = value; }
+        }
+        public static string RRStatus
+        {
+            get { return _RRStatus; }
+            set { _RRStatus = value; }
+        }
+        public static string OldLocatorDesc
+        {
+            get { return _OldLocatorDesc; }
+            set { _OldLocatorDesc = value; }
+        }
+        public static string NewLocSeqNo
+        {
+            get { return _NewLocSeqNo; }
+            set { _NewLocSeqNo = value; }
+        }
+        public static string QuantityType
+        {
+            get { return _QuantityType; }
+            set { _QuantityType = value; }
+        }
+        public static string TransferNo
+        {
+            get { return _TransferNo; }
+            set { _TransferNo = value; }
+        }
+        public static string Result
+        {
+            get { return _Result; }
+            set { _Result = value; }
+        }
+        public static string Customer
+        {
+            get { return _Customer; }
+            set { _Customer = value; }
+        }
+        public static string PONo
+        {
+            get { return _PONo; }
+            set { _PONo = value; }
+        }
+        public static string GeneratedDate
+        {
+            get { return _GeneratedDate; }
+            set { _GeneratedDate = value; }
+        }
+        public static string GeneratedBy
+        {
+            get { return _GeneratedBy; }
+            set { _GeneratedBy = value; }
+        }
+        public static string BarcodeReqSeqNo
+        {
+            get { return _BarcodeReqSeqNo; }
+            set { _BarcodeReqSeqNo = value; }
+        }
+        public static string BarcodeReqSPitSeqNo
+        {
+            get { return _BarcodeReqSPitSeqNo; }
+            set { _BarcodeReqSPitSeqNo = value; }
+        }
+        public static string BarcodeWRISStockCode
+        {
+            get { return _BarcodeWRISStockCode; }
+            set { _BarcodeWRISStockCode = value; }
+        }
+        public static string DPItemScanMessage
+        {
+            get { return _DPItemScanMessage; }
+            set { _DPItemScanMessage = value; }
+        }
+        public static int GeneratedRowCnt
+        {
+            get { return _GeneratedRowCnt; }
+            set { _GeneratedRowCnt = value; }
+        }
+        public static int LayerNo
+        {
+            get { return _LayerNo; }
+            set { _LayerNo = value; }
+        }
+        public static int LayerSeqNo
+        {
+            get { return _LayerSeqNo; }
+            set { _LayerSeqNo = value; }
+        }
+        public static int InputLayerNo
+        {
+            get { return _InputLayerNo; }
+            set { _InputLayerNo = value; }
+        }
+        public static int InputLayerSeqNo
+        {
+            get { return _InputLayerSeqNo; }
+            set { _InputLayerSeqNo = value; }
+        }
+
+        //decimal
+        public static decimal Weight
+        {
+            get { return _Weight; }
+            set { _Weight = value; }
+        }
+        public static decimal AvailableQty
+        {
+            get { return _AvailableQty; }
+            set { _AvailableQty = value; }
+        }
+        public static decimal InputQty
+        {
+            get { return _InputQty; }
+            set { _InputQty = value; }
+        }
+        public static decimal ReceivedQty
+        {
+            get { return _ReceivedQty; }
+            set { _ReceivedQty = value; }
+        }
+        public static decimal ReservedQty
+        {
+            get { return _ReservedQty; }
+            set { _ReservedQty = value; }
+        }
+        public static decimal VarianceQty
+        {
+            get { return _VarianceQty; }
+            set { _VarianceQty = value; }
+        }
+        public static decimal LotQty
+        {
+            get { return _LotQty; }
+            set { _LotQty = value; }
+        }
+        public static decimal UntaggedQty
+        {
+            get { return _UntaggedQty; }
+            set { _UntaggedQty = value; }
+        }
+        public static decimal LocatorQty
+        {
+            get { return _LocatorQty; }
+            set { _LocatorQty = value; }
+        }
+        public static decimal ExpectedActualQty
+        {
+            get { return _ExpectedActualQty; }
+            set { _ExpectedActualQty = value; }
+        }
+        public static decimal RequestedQty
+        {
+            get { return _RequestedQty; }
+            set { _RequestedQty = value; }
+        }
+        ////Common
+        public static string Unit
+        {
+            get { return _Unit; }
+            set { _Unit = value; }
+        }
+        public static string LotCode
+        {
+            get { return _LotCode; }
+            set { _LotCode = value; }
+        }
+        public static DateTime ScannedDate
+        {
+            get { return _ScannedDate; }
+            set { _ScannedDate = value; }
+        }
+        // decimal
+        public static decimal Thickness
+        {
+            get { return _Thickness; }
+            set { _Thickness = value; }
+        }
+        public static decimal Width
+        {
+            get { return _Width; }
+            set { _Width = value; }
+        }
+        public static decimal Length
+        {
+            get { return _Length; }
+            set { _Length = value; }
+        }
+        public static decimal Height
+        {
+            get { return _Height; }
+            set
+            {
+                if (_Height == value) return;
+                _Height = value;
+            }
+        }
+        //
+        public static string TagNo
+        {
+            get { return _TagNo; }
+            set { _TagNo = value; }
+        }
+        public static string Specs
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(BarcodeSpecs))
+                {
+                    return _Specs;
+                }
+                else
+                {
+                    return BarcodeSpecs;
+                }
+            }
+            set { _Specs = value; }
+        }
+        public static string Mill
+        {
+            get { return _Mill; }
+            set { _Mill = value; }
+        }
+        public static string Works
+        {
+            get { return _Works; }
+            set { _Works = value; }
+        }
+        public static string Class
+        {
+            get { return _Class; }
+            set { _Class = value; }
+        }
+        public static string RRNo
+        {
+            get { return _RRNo; }
+            set { _RRNo = value; }
+        }
+        public static string RRSeq
+        {
+            get { return _RRSeq; }
+            set { _RRSeq = value; }
+        }
+        public static string RRLotSeq
+        {
+            get { return _RRLotSeq; }
+            set { _RRLotSeq = value; }
+        }
+        public static string RRLocSeq
+        {
+            get { return _RRLocSeq; }
+            set { _RRLocSeq = value; }
+        }
+        public static string StockType
+        {
+            get { return _StockType; }
+            set { _StockType = value; }
+        }
+        public static decimal IssuedQty
+        {
+            get { return _IssuedQty; }
+            set { _IssuedQty = value; }
+        }
+        public static decimal TransferQty
+        {
+            get { return _TransferQty; }
+            set { _TransferQty = value; }
+        }
+        //bool
+        public static bool IsHalfFinished
+        {
+            get { return _IsHalfFinished; }
+            set { _IsHalfFinished = value; }
+        }
+        public static bool IsReturned
+        {
+            get { return _IsReturned; }
+            set { _IsReturned = value; }
+        }
+        public static bool IsBalanceClass
+        {
+            get { return _IsBalanceClass; }
+            set { _IsBalanceClass = value; }
+        }
+        public static bool SuccessConnect
+        {
+            get { return _SuccessConnect; }
+            set { _SuccessConnect = value; }
+        }
+        ////Barcode
+        public static string BarcodeTagNo
+        {
+            get { return _TagNo; }
+            set { _TagNo = value; }
+        }
+        public static string BarcodeRRNo
+        {
+            get { return _BarcodeRRNo; }
+            set { _BarcodeRRNo = value; }
+        }
+        public static string BarcodeRRSeq
+        {
+            get { return _BarcodeRRSeq; }
+            set { _BarcodeRRSeq = value; }
+        }
+        public static string BarcodeRRLotSeq
+        {
+            get { return _BarcodeRRLotSeq; }
+            set { _BarcodeRRLotSeq = value; }
+        }
+        public static string BarcodeRRLocSeq
+        {
+            get { return _BarcodeRRLocSeq; }
+            set { _BarcodeRRLocSeq = value; }
+        }
+        public static string BarcodeStockCode
+        {
+            get { return _BarcodeStockCode; }
+            set { _BarcodeStockCode = value; }
+        }
+        public static string BarcodeLotCode
+        {
+            get { return _BarcodeLotCode; }
+            set { _BarcodeLotCode = value; }
+        }
+        public static string BarcodeQuantity
+        {
+            get { return _BarcodeQuantity; }
+            set { _BarcodeQuantity = value; }
+        }
+
+        public static string BarcodeUnit
+        {
+            get { return _BarcodeUnit; }
+            set { _BarcodeUnit = value; }
+        }
+        public static string BarcodePrintedDate
+        {
+            get { return _BarcodePrintedDate; }
+            set { _BarcodePrintedDate = value; }
+        }
+        public static string BarcodeSpecs
+        {
+            get { return _BarcodeSpecs; }
+            set { _BarcodeSpecs = value; }
+        }
+        public static string BarcodeJobSheetNo
+        {
+            get { return _BarcodeJobSheetNo; }
+            set { _BarcodeJobSheetNo = value; }
+        }
+        public static string BarcodeTravelogProcess
+        {
+            get { return _BarcodeTravelogProcess; }
+            set { _BarcodeTravelogProcess = value; }
+        }
+        public static string BarcodeTravelogNo
+        {
+            get { return _BarcodeTravelogNo; }
+            set { _BarcodeTravelogNo = value; }
+        }
+        public static string BarcodeLocatorCode
+        {
+            get { return _BarcodeLocatorCode; }
+            set { _BarcodeLocatorCode = value; }
+        }
+        public static string BarcodeWRISNo
+        {
+            get { return _BarcodeWRISNo; }
+            set
+            {
+                if (_BarcodeWRISNo == value) return;
+                _BarcodeWRISNo = value;
+            }
+        }
+        public static string BarcodeTransNo
+        {
+            get { return _BarcodeTransNo; }
+            set
+            {
+                if (_BarcodeTransNo == value) return;
+                _BarcodeTransNo = value;
+            }
+        }
+        public static string TagNoScannedListToSting
+        {
+            get { return _TagNoScannedListToSting; }
+            set
+            {
+                if (_TagNoScannedListToSting == value) return;
+                _TagNoScannedListToSting = value;
+            }
+        }
+        public static string DeliveryListToSting
+        {
+            get { return _DeliveryListToSting; }
+            set
+            {
+                if (_DeliveryListToSting == value) return;
+                _DeliveryListToSting = value;
+            }
+        }
+        public static string StockClassNew
+        {
+            get { return _StockClassNew; }
+            set { _StockClassNew = value; }
+        }
+        public static string StockDescription
+        {
+            get { return _StockDescription; }
+            set { _StockDescription = value; }
+        }
+        public static string StockClassCode
+        {
+            get { return _StockClassCode; }
+            set { _StockClassCode = value; }
+        }
+        public static string StockClassCodeNew
+        {
+            get { return _StockClassCodeNew; }
+            set { _StockClassCodeNew = value; }
+        }
+        public static string CustomerCode
+        {
+            get { return _CustomerCode; }
+            set { _CustomerCode = value; }
+        }
+        public static bool IsReclass
+        {
+            get { return _IsReclass; }
+            set { _IsReclass = value; }
+        }
+        public static bool IsComplete
+        {
+            get { return _IsComplete; }
+            set { _IsComplete = value; }
+        }
+        public static bool IsProcessing
+        {
+            get { return _IsProcessing; }
+            set { _IsProcessing = value; }
+        }
+        public static DataTable ScanStatusTable
+        {
+            get { return _ScanStatusTable; }
+            set { _ScanStatusTable = value; }
+        }
+        //Nilo added 09/13/2012
+        public static DataTable MITTable
+        {
+            get { return _MITTable; }
+            set { _MITTable = value; }
+        }
+        public static double Progress
+        {
+            get { return _Progress; }
+            set { _Progress = value; }
+        }
+        private static bool _CommitPickList = false;
+        public static bool CommitPickList
+        {
+            get { return _CommitPickList; }
+            set { _CommitPickList = value; }
+        }
+        public static bool SuccessPost
+        {
+            get { return _SuccessPost; }
+            set { _SuccessPost = value; }
+        }
+        public static ProgressBar PostProgress
+        {
+            get { return _PostProgress; }
+            set { _PostProgress = value; }
+        }
+        public static Label lblSignalStatus
+        {
+            get { return _lblSignalStatus; }
+            set { _lblSignalStatus = value; }
+        }
+        public static Label lblSignalBack
+        {
+            get { return _lblSignalBack; }
+            set { _lblSignalBack = value; }
+        }
+        public static Label lblSignalDisp
+        {
+            get { return _lblSignalDisp; }
+            set { _lblSignalDisp = value; }
+        }
+        public static Label lblThreadingDisplay
+        {
+            get { return _lblThreadingDisplay; }
+            set { _lblThreadingDisplay = value; }
+        }
+        public static CommonEnum.Signal SignalStat
+        {
+            get { return _SignalStat; }
+            set
+            {
+                if (_SignalStat == value) return;
+                _SignalStat = value;
+            }
+        }
+        public static DataTable DisposableTable
+        {
+            get { return _DisposableTable; }
+            set { _DisposableTable = value; }
+        }
+        public static int MITGenericPendingCount
+        {
+            get { return _MITGenericPendingCount; }
+            set { _MITGenericPendingCount = value; }
+        }
+        public static string HandyNo
+        {
+            get { return _HandyNo; }
+            set { _HandyNo = value; }
+        }
+        public static string HandyInstalledPath
+        {
+            get { return _HandyInstalledPath; }
+            set { _HandyInstalledPath = value; }
+        }
+        public static string HandyMacAddress
+        {
+            get { return _HandyMacAddress; }
+            set { _HandyMacAddress = value; }
+        }
+        public static string HandyIPAddress
+        {
+            get { return _HandyIPAddress; }
+            set { _HandyIPAddress = value; }
+        }
+        public static string HandyModel
+        {
+            get { return _HandyModel; }
+            set { _HandyModel = value; }
+        }
+        public static string HandyStatus
+        {
+            get { return _HandyStatus; }
+            set { _HandyStatus = value; }
+        }
+        public static string HandySerialNo
+        {
+            get { return _HandySerialNo; }
+            set { _HandySerialNo = value; }
+        }
+        public static string HandyFTPSeqNo
+        {
+            get { return _HandyFTPSeqNo; }
+            set { _HandyFTPSeqNo = value; }
+        }
+        public static string strFTPPassword
+        {
+            get { return _strFTPPassword; }
+            set { _strFTPPassword = value; }
+        }
+        public static string ValidityType
+        {
+            get { return _ValidityType; }
+            set { _ValidityType = value; }
+        }
+        public static DataTable HandyRegisteredList
+        {
+            get { return _HandyRegisteredList; }
+            set { _HandyRegisteredList = value; }
+        }
+        public static DataTable InventoryMaster
+        {
+            get { return _InventoryMaster; }
+            set { _InventoryMaster = value; }
+        }
+        public static DataTable LabelHistoryMaster
+        {
+            get { return _LabelHistoryMaster; }
+            set { _LabelHistoryMaster = value; }
+        }
+        public static DataTable StockClassDescList
+        {
+            get { return _StockClassDescList; }
+            set { _StockClassDescList = value; }
+        }
+        public static DataTable StockClassList
+        {
+            get { return _StockClassList; }
+            set { _StockClassList = value; }
+        }
+        public static DataTable PickListTable
+        {
+            get { return _PickListTable; }
+            set { _PickListTable = value; }
+        }
+        public static DataTable PickListScannedRRTable
+        {
+            get { return _PickListScannedRRTable; }
+            set { _PickListScannedRRTable = value; }
+        }
+        public static DataTable GenericMasterList
+        {
+            get { return _GenericMasterList; }
+            set { _GenericMasterList = value; }
+        }
+        public static bool HandyRegistered
+        {
+            get { return _HandyRegistered; }
+            set { _HandyRegistered = value; }
+        }
+        public static DataTable LocatorListTable
+        {
+            get { return _LocatorListTable; }
+            set { _LocatorListTable = value; }
+        }
+        public static DataTable CustomerList
+        {
+            get { return _CustomerList; }
+            set { _CustomerList = value; }
+        }
+        public static DataTable DeliveryPrepationListWithSpecs   //allen added 20140108 
+        {
+            get { return _DeliveryPreparationSpecs; }
+            set { _DeliveryPreparationSpecs = value; }
+        }
+
+        private static PictureBox _pbSignalStatus = null;
+        public static PictureBox pbSignalStatus
+        {
+            get { return _pbSignalStatus; }
+            set { _pbSignalStatus = value; }
+        }
+        public static string ApplicationVersion
+        {
+            get { return _ApplicationVersion; }
+            set
+            {
+                if (_ApplicationVersion == value) return;
+                _ApplicationVersion = value;
+            }
+        }
+        public static bool InventoryReferenceGenerated
+        {
+            get { return _InventoryReferenceGenerated; }
+            set { _InventoryReferenceGenerated = value; }
+        }
+
+
+        private static string _StockName = "";
+        public static string StockName
+        {
+            get { return _StockName; }
+            set { _StockName = value; }
+        }
+        private static DateTime _RRLastUpdate;
+        public static DateTime RRLastUpdate
+        {
+            get { return _RRLastUpdate; }
+            set { _RRLastUpdate = value; }
+        }
+
+        private static string _StockSpecs = "";
+        public static string StockSpecs
+        {
+            get { return _StockSpecs; }
+            set { _StockSpecs = value; }
+        }
+
+        private static DateTime _Expiry ;
+        public static DateTime Expiry
+        {
+            get { return _Expiry; }
+            set { _Expiry = value; }
+        }
+
+
+
+        #endregion
+
+        #region Parsed Informations
+
+        public static string RRNoDisplay
+        {
+            get { return string.Format("{0}-{1}-{2}-{3}", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq); }
+        }
+
+        public static string Dimension
+        {
+            get
+            {
+                return _Thickness.ToString("f2") + " X " + _Width.ToString("f2") + " X " +
+                    ((_Height > 0) ? _Height.ToString("f2") + " X " : string.Empty)
+                            + (_Length == 0 ? "C" : Length.ToString("f2"));
+
+                //return string.Format("{0:f3} X {1:f2} X {2}", _Thickness, _Width, (_Length == 0 ? "C" : _Length.ToString("f2"))); 
+            }
+        }
+
+        public static string SubLocatorDesc
+        {
+            get { return string.Format("Layer {0} - Column {1}", _LayerNo.ToString(), _LayerSeqNo.ToString()); }
+        }
+
+        public static string SubLocator
+        {
+            get { return string.Format("{0} - {1}", _LayerNo.ToString(), _LayerSeqNo.ToString()); }
+        }
+
+        public static string VarianceDesc
+        {
+            get { return (_VarianceDesc == CommonEnum.GetStringValue(CommonEnum.MaterialAdjustmentProcess.Excess)) ? "Excess Materials" : "Write-Off"; }
+        }
+
+        public static string StockClass
+        {
+            get
+            {
+                return _StockDescription;
+                #region OldCode
+                //if (_Length == 0)
+                //{
+                //    if (IsReturned)
+                //        return CommonEnum.GetStringValue(CommonEnum.StockClass.Returned); 
+                //    else
+                //        if (!StockType.StartsWith("FG"))
+                //        {
+                //            if (_IssuedQty == 0)
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.MotherCoil); 
+                //            else
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.CoilBack);
+                //        }
+                //        else
+                //        {
+                //            if (_IsHalfFinished)
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.SemiProduct);
+                //            else
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.Product);
+                //        }
+                //}
+                //else
+                //{
+                //    if (IsReturned)
+                //        return CommonEnum.GetStringValue(CommonEnum.StockClass.Returned); 
+                //    else
+                //        if (!StockType.StartsWith("FG"))
+                //        {
+                //            //if (!StockType.StartsWith("RM1"))
+                //            return _StockDescription; //GetStockTypeInfo(StockType).Description);
+                //        }
+                //        else
+                //        {
+                //            if (_IsHalfFinished)
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.SemiProduct);
+                //            else
+                //                return CommonEnum.GetStringValue(CommonEnum.StockClass.Product);
+                //        }
+                //}
+                #endregion
+            }
+
+            //Length
+            //StockType
+            //IssuedQty
+            //isHalfFinished
+        }
+
+        #endregion
+
+        #region LogIn Functions
+
+        public static string GetUserPIN(string UserID)
+        {
+            string PIN = string.Empty;
+            DataTable dt = new DataTable();
+            dt = Logger.GetTextDataTable(Logger.HandyUSERPathFile);
+            if (dt != null)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow[] Rows = dt.Select(string.Format("COLUMN_1 = '{0}'", UserID));
+                    if (Rows.Length > 0)
+                    {
+                        foreach (DataRow dr in Rows)
+                        {
+                            PIN = dr["COLUMN_2"].ToString();
+                        }
+                    }
+                }
+            }
+            dt = null; //releasing
+            return PIN;
+        }
+
+        public static CommonEnum.Result VerifyUser(string UserID, string UserPIN, bool UseOnline)
+        {
+            if (String.IsNullOrEmpty(UserID))
+                return CommonEnum.Result.EnterUser;
+            else
+                if (String.IsNullOrEmpty(UserPIN))
+                    return CommonEnum.Result.EnterPIN;
+                else
+                {
+                    //if (UseOnline)
+                    //{
+                    if (IsConnected())
+                    {
+                        string PIN = DataReader(string.Format("SELECT umt_UserHandyPin FROM T_UserMaster WHERE Umt_Usercode = '{0}'", UserID));
+
+                        if (PIN == "Error")
+                        {
+                            UserPIN = string.Empty;
+                            return CommonEnum.Result.ServerNotFound;
+                        }
+                        else
+                        {
+                            if (PIN == string.Empty)
+                            {
+                                return CommonEnum.Result.InvalidUser;
+                            }
+                            else
+                                if (UserPIN == PIN.Trim())
+                                {
+                                    return CommonEnum.Result.OK;
+                                }
+                                else
+                                {
+                                    return CommonEnum.Result.InvalidPIN;
+                                }
+                        }
+                    }
+                    else
+                    {
+                        UserPIN = string.Empty;
+                        return CommonEnum.Result.ServerNotFound;
+                    }
+
+                    //}
+                    //else
+                    //{
+                    //    //Offline
+                    //    string[] param = new string[2];
+                    //    param[0] = UserID;
+                    //    param[1] = UserPIN;
+
+                    //    string[] UserInfo = new string[2];
+                    //    UserInfo = Logger.GetTextData(Logger.HandyUSERPathFile, param,true);
+
+                    //    if (UserInfo != null)
+                    //    {
+                    //        string PIN = UserInfo[1];
+
+                    //        if (PIN == string.Empty)
+                    //        {
+                    //            return CommonEnum.Result.InvalidUser;
+                    //        }
+                    //        else
+                    //            if (UserPIN == PIN)
+                    //            {
+                    //                return CommonEnum.Result.OK;
+                    //            }
+                    //            else
+                    //            {
+                    //                return CommonEnum.Result.InvalidPIN;
+                    //            }
+                    //    }
+                    //    else
+                    //    {
+                    //        return CommonEnum.Result.Retry;
+                    //    }
+
+
+                    //    }
+
+
+                }
+        }
+
+        #endregion
+
+        #region ExecuteNonQuery
+
+
+        /// <summary>
+        /// Executes Non Query to CE Database.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <returns></returns>
+        public static int CeExecuteNonQuery(string Query)
+        {
+            return CeExecuteNonQuery(Query, true);
+        }
+
+        public static int CeExecuteNonQuery(string Query, bool DisplayCursor)
+        {
+            return CeExecuteNonQuery(Query, DisplayCursor, true);
+        }
+
+        public static int CeExecuteNonQuery(string Query, bool DisplayCursor, bool ShowMessage)
+        {
+            if (DisplayCursor) { if (ShowMessage) Cursor.Current = Cursors.WaitCursor; }
+            int affectedrow = 0;
+
+            using (CESQLDataHelper CeDB = new CESQLDataHelper())
+            {
+                try
+                {
+                    CeDB.OpenDB();
+                    affectedrow = CeDB.ExecuteNonQuery(Query);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    if (ShowMessage) Cursor.Current = Cursors.Default;
+                    if (ShowMessage) MessageShow("Message:" + ex.Message + "\n" + "Stack Trace :" + ex.StackTrace, "CeExecuteNonQuery: Specific Exception", CommonEnum.NotificationType.Error);
+                    affectedrow = -1;
+                }
+                catch (SqlCeException ex)
+                {
+                    if (ShowMessage) Cursor.Current = Cursors.Default;
+                    if (ShowMessage) MessageShow("Source:" + ex.Source + "\n" + "Message:" + ex.Message, "CeExecuteNonQuery: Database Exception", CommonEnum.NotificationType.Error);
+                    affectedrow = -1;
+                }
+                catch (Exception ex)
+                {
+                    if (ShowMessage) Cursor.Current = Cursors.Default;
+                    if (ShowMessage) MessageShow("Message:" + ex.Message, "CeExecuteNonQuery: Generic Exception", CommonEnum.NotificationType.Error);
+                    affectedrow = -1;
+                }
+                finally
+                {
+                    CeDB.CloseDB();
+                }
+            }
+
+            if (DisplayCursor) { if (ShowMessage) Cursor.Current = Cursors.Default; }
+            return affectedrow;
+        }
+
+        //Execute Non Query to DB
+        public static bool ExecuteNonQuery(string Query)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            using (SQLDataHelper DB = new SQLDataHelper())
+            {
+                try
+                {
+                    DB.OpenDB();
+                    DB.ExecuteNonQuery(Query);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageShow("Message:" + ex.Message + "\n" + "Stack Trace :" + ex.StackTrace, "ExecuteNonQuery: Specific Exception", CommonEnum.NotificationType.Error);
+                    return false;
+                }
+                catch (SqlException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageShow("Source:" + ex.Source + "\n" + "Message:" + ex.Message, "ExecuteNonQuery: Database Exception", CommonEnum.NotificationType.Error);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageShow("Message:" + ex.Message, "ExecuteNonQuery: Generic Exception", CommonEnum.NotificationType.Error);
+                    return false;
+                }
+                finally
+                {
+                    DB.CloseDB();
+                }
+
+            }
+
+            Cursor.Current = Cursors.Default;
+            return true;
+        }
+
+        #endregion
+
+        #region DataTableQueries
+
+        /// <summary>
+        /// Executes Query on CE database. This method contains error handler. Returns null on exception.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <returns></returns>
+        public static DataTable CEGetData(string Query)
+        {
+            return CEGetData(Query, true);
+        }
+
+        public static DataTable WRISTable
+        {
+            get { return _WRISTable; }
+            set { _WRISTable = value; }
+        }
+        public static DataTable StockMovementTable
+        {
+            get { return _StockMovementTable; }
+            set { _StockMovementTable = value; }
+        }
+        public static DataTable RRListWithUnmatchProjCode
+        {
+            get { return _RRListWithUnmatchProjCode; }
+            set { _RRListWithUnmatchProjCode = value; }
+        }
+
+        public static DataTable WRISTableSplitList
+        {
+            get { return _WRISTableSplitList; }
+            set { _WRISTableSplitList = value; }
+        }
+        public static bool isWRISSplit
+        {
+            get { return _isWRISSplit; }
+            set { _isWRISSplit = value; }
+        }
+        public static bool isSTMSplit
+        {
+            get { return _isSTMSplit; }
+            set { _isSTMSplit = value; }
+        }
+        public static string BarcodeWHReqControlNo
+        {
+            get { return _BarcodeWRISNo; }
+            set { _BarcodeWRISNo = value; }
+        }
+        public static DataTable CEGetData(string Query, bool ShowMessage)
+        {
+            using (CESQLDataHelper DBCe = new CESQLDataHelper())
+            {
+                DataTable dt = null;
+                try
+                {
+                    DBCe.OpenDB();
+                    dt = DBCe.ExecuteDataTable(Query);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    if (ShowMessage) CommonFunctions.MessageShow("Message:" + ex.Message + "\nStack Trace :" + ex.StackTrace, "CEGetData: Specific Exception", CommonEnum.NotificationType.Error);
+                    return dt;
+                }
+                catch (SqlCeException ex)
+                {
+                    if (ShowMessage) CommonFunctions.MessageShow("Source:" + ex.Source + "\nMessage:" + ex.Message + "\nQuery: " + Query, "CEGetData: Database Exception", CommonEnum.NotificationType.Error);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    if (ShowMessage) CommonFunctions.MessageShow("Message:" + ex.Message, "CEGetData: Generic Exception", CommonEnum.NotificationType.Error);
+                    return dt;
+                }
+                finally
+                {
+                    DBCe.CloseDB();
+                }
+                return dt;
+            }
+        }
+
+        /// <summary>
+        /// Executes specified query and returns data table.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <returns></returns>
+        public static DataTable GetData(string Query)
+        {
+            return GetData(Query, true);
+        }
+
+        private static DataTable GetData(string Query, SQLDataHelper DB, bool issuance)
+        {
+            #region Update monitoring
+
+            if (!_HandyUpdateMonitorSend)
+            {
+                _HandyUpdateMonitorSend = MaintenanceBase.UpdateHandyMonitoring();
+            }
+
+            #endregion
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            ds = DB.ExecuteDataSet(Query);
+
+            if (ds != null)
+            {
+                if (ds.Tables.Count > 1)
+                {
+                    dt = ds.Tables[1];
+                }
+                else
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+
+
+            return dt;
+        }
+
+        /// <summary>
+        /// Executes specified query and returns data table.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ShowMessage"></param>
+        /// <returns></returns>
+        public static DataTable GetData(string Query, bool ShowMessage)
+        {
+            if (ShowMessage) Cursor.Current = Cursors.WaitCursor;
+
+            using (SQLDataHelper DB = new SQLDataHelper())
+            {
+                DataTable dt = new DataTable();
+                try
+                {
+                    DB.OpenDB();
+                    dt = DB.ExecuteDataTable(Query);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        CommonFunctions.MessageShow("Message:" + ex.Message + "\n" + "Stack Trace :" + ex.StackTrace, "GetData: Specific Exception", CommonEnum.NotificationType.Error);
+                    }
+                    return dt;
+                }
+                catch (SqlException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        CommonFunctions.MessageShow("Source:" + ex.Source + "\n" + "Message:" + ex.Message, "GetData: Database Exception", CommonEnum.NotificationType.Error);
+                    }
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        CommonFunctions.MessageShow("Message:" + ex.Message, "GetData: Generic Exception", CommonEnum.NotificationType.Error);
+                    }
+                    return dt;
+                }
+                finally
+                {
+                    DB.CloseDB();
+                }
+                if (ShowMessage) Cursor.Current = Cursors.Default;
+                return dt;
+            }
+        }
+
+        #endregion
+
+        #region Mobile Database Helper
+
+        //Retrieve Data from DBCe
+        public static string CEDataReader(string Query)
+        {
+            return CEDataReader(Query, true);
+        }
+
+        public static string CEDataReader(string Query, bool ShowMessage)
+        {
+            string Data;
+
+            if (ShowMessage) Cursor.Current = Cursors.WaitCursor;
+
+            using (CESQLDataHelper DB = new CESQLDataHelper())
+            {
+                try
+                {
+                    DB.OpenDB();
+                    SqlCeDataReader DataReader = DB.ExecuteReader(Query);
+                    if (DataReader.Read())
+                        Data = DataReader[0].ToString();
+                    else
+                        Data = string.Empty;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        str += "\n" + "Stack Trace :" + ex.StackTrace;
+                        MessageShow(str, "Specific Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                catch (SqlCeException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Source:" + ex.Source;
+                        str += "\n" + "Message:" + ex.Message;
+                        MessageShow(str, "Database Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                catch (Exception ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        MessageShow(str, "Generic Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                finally
+                {
+                    DB.CloseDB();
+                }
+            }
+
+            if (ShowMessage) Cursor.Current = Cursors.Default;
+            return Data;
+        }
+
+        public static string CEGetQuantity(string Tablename)
+        {
+            return CEGetQuantity(Tablename, "Quantity");
+        }
+
+        public static string CEGetQuantity(string Tablename, string FieldName)
+        {
+            return CEDataReader(string.Format(CommonQueryStrings.Mobile.View.StockReclassField, Tablename, _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq, FieldName));
+        }
+
+        /// <summary>
+        /// Returns the string data if successful or empty string if query returns no data or "Error" when there is exception.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <returns></returns>
+        public static string DataReader(string Query)
+        {
+            return DataReader(Query, true);
+        }
+
+        /// <summary>
+        /// Returns the string data if successful or empty string if query returns no data or "Error" when there is exception.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ShowMessage"></param>
+        /// <returns></returns>
+        public static string DataReader(string Query, bool ShowMessage)
+        {
+            bool Success = false;
+            return DataReader(Query, ShowMessage, ref Success);
+        }
+
+        /// <summary>
+        /// Returns the string data if successful or empty string if query returns no data or "Error" when there is exception.
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ShowMessage"></param>
+        /// <param name="Success"></param>
+        /// <returns></returns>
+        public static string DataReader(string Query, bool ShowMessage, ref bool Success)
+        {
+            string Data = "";
+            Success = false;
+
+            if (ShowMessage) Cursor.Current = Cursors.WaitCursor;
+
+            using (SQLDataHelper DB = new SQLDataHelper())
+            {
+                try
+                {
+                    DB.OpenDB();
+                    SqlDataReader DataReader = DB.ExecuteReader(Query);
+                    if (DataReader.Read())
+                    {
+                        Data = DataReader[0].ToString().Trim();
+                        Success = true;
+                    }
+                    else
+                        Data = string.Empty;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        str += "\n" + "Stack Trace :" + ex.StackTrace;
+                        Audio.PlayErrorBeep();
+                        MessageShow(str, "Specific Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                catch (SqlException ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Source:" + ex.Source;
+                        str += "\n" + "Message:" + ex.Message;
+                        Audio.PlayErrorBeep();
+                        MessageShow(str, DB.DBName + " Database Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                catch (Exception ex)
+                {
+                    if (ShowMessage)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        Audio.PlayErrorBeep();
+                        MessageShow(str, "Generic Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    return "Error";
+                }
+                finally
+                {
+                    DB.CloseDB();
+                }
+            }
+
+            if (ShowMessage) Cursor.Current = Cursors.Default;
+            return Data;
+        }
+
+        #endregion
+
+        #region RRInformation Generation
+
+        public static bool IsReceivingReportInfoGenerated()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    DataTable dt = GetData(string.Format("EXEC spHandyGetReceivingReportInfo '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (dt == null)
+                        return false;
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        TagNo = dt.Rows[0]["TagNo"].ToString().Trim();
+                        Thickness = (decimal)dt.Rows[0]["Thickness"];
+                        Width = (decimal)dt.Rows[0]["Width"];
+                        Height = (decimal)dt.Rows[0]["Height"];
+                        Length = (decimal)dt.Rows[0]["Length"];
+                        Specs = dt.Rows[0]["Specs"].ToString().Trim();
+                        Mill = dt.Rows[0]["Mill"].ToString().Trim();
+                        Works = dt.Rows[0]["Works"].ToString().Trim();
+                        Unit = dt.Rows[0]["Unit"].ToString().Trim();
+                        StockType = dt.Rows[0]["StockType"].ToString().Trim();
+                        IssuedQty = (decimal)dt.Rows[0]["IssuedQty"];
+                        StockClassCode = dt.Rows[0]["StockClassCode"].ToString().Trim();
+                        StockDescription = dt.Rows[0]["StockDescription"].ToString().Trim();
+                        IsHalfFinished = (bool)dt.Rows[0]["IsHalfFinished"];
+                        OldLocatorCode = dt.Rows[0]["OldLocatorCode"].ToString().Trim();
+                        LocatorQty = (decimal)dt.Rows[0]["LocatorQty"];
+                        RRStatus = dt.Rows[0]["Status"].ToString().Trim();
+                        IsReturned = (bool)dt.Rows[0]["IsReturned"];
+                        //Nilo Added 20130218 : Reprint Flag in for reprint
+                        bool IsReprint = false;
+                        IsReprint = (bool)dt.Rows[0]["IsReprint"];
+                        ScannedDate = (DateTime)dt.Rows[0]["ScannedDate"];
+                        //End
+                        //Primary validation
+                        /***** Nilo Added : Validate if issued material is processed to new labels *****/
+                        if (!string.IsNullOrEmpty(OldLocatorCode) && LocatorQty > 0 && IssuedQty > 0 && (LocatorQty - IssuedQty <= 0))
+                        {
+                            if (IsBarcodeOutDated())
+                                return false;
+                        }
+                        //Other validations
+                        if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Cancelled)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.ItemCancelled, CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Delivered)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.ItemDelivered, CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Temp)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.ItemTemp, CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.New)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.ItemNotYetApproved, CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (IsReprint)
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(string.Format(CommonMsg.Warning.d_Reprint, _TagNo), CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Reprint)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.Reprint, CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+                        else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Fulfilled)))
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Info.ItemFulfilled, CommonEnum.NotificationType.Warning, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; //releasing
+                            return false;
+                        }
+
+                        dt.Dispose();
+                        return true;
+                    }
+                    else
+                    {
+                        MessageShow(string.Format(CommonMsg.Error.InventoryNotRetrieveRR, RRNoDisplay), CommonEnum.NotificationType.Warning);
+                        dt.Dispose();
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Audio.PlayErrorBeep();
+                MessageShow(ex.Message
+                            , string.Empty
+                            , CommonEnum.NotificationType.Error
+                            , CommonEnum.MessageButtons.CloseOnly);
+                return false;
+            }
+        }
+        //
+
+        //public static bool isJobStartRRInfoGenerated()
+        //{
+        //    try
+        //    {
+        //        if (isConnected())
+        //        {
+        //            DataTable dt = GetData(string.Format("EXEC spHandyGetJobStartRRInfo '{0}','{1}','{2}','{3}',{4}", _BarcodeJobSheetNo, _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+        //            if (dt.Rows.Count > 0)
+        //            {
+        //                TagNo = dt.Rows[0]["TagNo"].ToString().Trim();
+        //                Weight = (decimal)dt.Rows[0]["Weight"];
+        //                Unit = dt.Rows[0]["Unit"].ToString().Trim();
+        //                Specs = dt.Rows[0]["Specs"].ToString().Trim();
+        //                Thickness = (decimal)dt.Rows[0]["Thickness"];
+        //                Width = (decimal)dt.Rows[0]["Width"];
+        //                Length = (decimal)dt.Rows[0]["Length"];
+        //                Mill = dt.Rows[0]["Mill"].ToString().Trim();
+        //                Works = dt.Rows[0]["Works"].ToString().Trim();
+        //                StockType = dt.Rows[0]["StockType"].ToString().Trim();
+        //                IssuedQty = (decimal)dt.Rows[0]["IssuedQty"];
+        //                LocatorCode = dt.Rows[0]["LocatorCode"].ToString().Trim();
+        //                LocatorDesc = dt.Rows[0]["LocatorCodeDesc"].ToString().Trim();
+        //                IsHalfFinished = (bool)dt.Rows[0]["IsHalfFinished"];
+        //                RRStatus = dt.Rows[0]["Status"].ToString().Trim();
+
+
+        //                if (string.IsNullOrEmpty(dt.Rows[0]["TaggedDate"].ToString().Trim()) && string.IsNullOrEmpty(LocatorCode))
+        //                {
+        //                    MessageShow(CommonMsg.Warning.ItemNotTagged, CommonEnum.NotificationType.Warning);
+        //                    dt.Dispose();
+        //                    return false;
+        //                }
+        //                else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Cancelled)))
+        //                {
+        //                    MessageShow(CommonMsg.Warning.ItemCancelled, CommonEnum.NotificationType.Warning);
+        //                    dt.Dispose();
+        //                    return false;
+        //                }
+        //                else if (RRStatus.Trim().ToUpper().Equals(CommonEnum.GetStringValue(CommonEnum.RRStatus.Reprint)))
+        //                {
+        //                    MessageShow(CommonMsg.Warning.Reprint, CommonEnum.NotificationType.Warning);
+        //                    dt.Dispose();
+        //                    return false;
+        //                }
+
+        //                dt.Dispose();
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                MessageShow("",CommonMsg.Warning.ItemMismatch
+        //                              , CommonEnum.NotificationType.Warning);
+        //                dt.Dispose();
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //            return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageShow(CommonMsg.Error.ProcessUnable + ex.Message, CommonEnum.NotificationType.Error);
+        //        return false;
+        //    }
+
+        //}
+        public static bool IsJobStartRRInfoGenerated()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    if (IsReceivingReportInfoGenerated())
+                    {
+                        decimal AvailableQty = LocatorQty - IssuedQty;
+                        if (LocatorQty == 0)
+                        {
+                            MessageShow(CommonMsg.Warning.ItemNotTagged, TagNo, CommonEnum.NotificationType.Warning);
+                            return false;
+                        }
+                        else if (AvailableQty == 0 || AvailableQty < 0)
+                        {
+                            MessageShow(CommonMsg.Warning.ItemIsUsed, TagNo, CommonEnum.NotificationType.Warning);
+                            return false;
+                        }
+                        else
+                        {
+
+                            DataTable dt = GetData(string.Format("EXEC spHandyGetJobStartRRInfo '{0}','{1}','{2}','{3}',{4}", _BarcodeJobSheetNo, _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                            if (dt.Rows.Count > 0)
+                            {
+                                TagNo = dt.Rows[0]["TagNo"].ToString().Trim();
+
+                                dt.Dispose();
+                                return true;
+                            }
+                            else
+                            {
+                                MessageShow("", CommonMsg.Warning.ItemMismatch
+                                              , CommonEnum.NotificationType.Warning);
+                                dt.Dispose();
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.ProcessUnable + ex.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+
+        }
+
+        public static bool IsLocatorTaggingRRInfoGenerated()
+        {
+            try
+            {
+                if (CommonFunctions.IsConnected())
+                {
+
+                    DataTable dt = CommonFunctions.GetData(string.Format("EXEC spHandyGetLocatorTaggingRRInfo '{0}','{1}','{2}','{3}'", CommonFunctions.BarcodeRRNo, CommonFunctions.BarcodeRRSeq, CommonFunctions.BarcodeRRLotSeq, CommonFunctions.BarcodeRRLocSeq));
+                    if (dt.Rows.Count > 0)
+                    {
+                        CommonFunctions.LotQty = (decimal)dt.Rows[0]["LotQty"];
+                        CommonFunctions.AvailableQty = (decimal)dt.Rows[0]["AvailableQty"];
+                        CommonFunctions.QuantityType = dt.Rows[0]["QuantityType"].ToString().Trim();
+                        dt.Dispose();
+
+                        if (CommonFunctions.AvailableQty > 0)
+                        {
+                            Audio.PlayOKBeep();
+                            return true;
+                        }
+                        else
+                        {
+                            Audio.PlayErrorBeep();
+                            CommonFunctions.MessageShow(CommonMsg.Success.ItemTagged
+                                        , CommonFunctions.LotCode
+                                        , CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.CloseOnly);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Audio.PlayErrorBeep();
+                        CommonFunctions.MessageShow(CommonMsg.Warning.NoTaggingQty
+                                    , CommonFunctions.TagNo, CommonEnum.NotificationType.Warning
+                                    , CommonEnum.MessageButtons.CloseOnly);
+                        dt.Dispose();
+                        return false;
+                    }
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                CommonFunctions.MessageShow(ex.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+        }
+
+        public static bool IsStockMovementRRInfoGenerated()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    DataTable dt = GetData(string.Format("EXEC spHandyGetStockMovementRRInfo '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (dt.Rows.Count > 0)
+                    {
+                        AvailableQty = (decimal)dt.Rows[0]["AvailableQty"];
+                        OldLocatorCode = dt.Rows[0]["OldLocatorCode"].ToString().Trim();
+                        OldLocatorDesc = dt.Rows[0]["OldLocatorDesc"].ToString().Trim();
+                        QuantityType = dt.Rows[0]["QuantityType"].ToString().Trim();
+                        dt.Dispose();
+
+                        if (AvailableQty > 0)
+                        {
+                            Audio.PlayOKBeep();
+                            return true;
+                        }
+                        else
+                        {
+                            Audio.PlayErrorBeep();
+                            MessageShow(CommonMsg.Warning.NoMovementQty
+                                        , TagNo
+                                        , CommonEnum.NotificationType.Warning
+                                        , CommonEnum.MessageButtons.CloseOnly);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Audio.PlayErrorBeep();
+                        MessageShow(CommonMsg.Warning.NoMovementQty
+                                    , TagNo
+                                    , CommonEnum.NotificationType.Warning
+                                    , CommonEnum.MessageButtons.CloseOnly);
+                        dt.Dispose();
+                        return false;
+                    }
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.ProcessUnable + ex.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+        }
+
+        public static bool IsCoilDefraggingRRInfoGenerated()
+        {
+            if (IsReceivingReportInfoGenerated())
+            {
+                try
+                {
+                    if (IsConnected())
+                    {
+                        DataTable dt = GetData(string.Format("EXEC spHandyGetStockMovementRRInfo '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                        if (dt.Rows.Count > 0)
+                        {
+                            ExpectedActualQty = (decimal)dt.Rows[0]["ActualQty"];
+                            OldLocatorCode = dt.Rows[0]["OldLocatorCode"].ToString().Trim();
+                            OldLocatorDesc = dt.Rows[0]["OldLocatorDesc"].ToString().Trim();
+                            QuantityType = dt.Rows[0]["QuantityType"].ToString().Trim();
+                            dt.Dispose();
+
+                            if (ExpectedActualQty > 0)
+                                return true;
+                            else
+                            {
+                                MessageShow(CommonMsg.Warning.NoDeffragQty
+                                            , TagNo
+                                            , CommonEnum.NotificationType.Warning
+                                            , CommonEnum.MessageButtons.CloseOnly);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageShow(CommonMsg.Warning.NoDeffragQty
+                                        , TagNo, CommonEnum.NotificationType.Warning
+                                        , CommonEnum.MessageButtons.CloseOnly);
+                            dt.Dispose();
+                            return false;
+                        }
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    MessageShow(ex.Message
+                                , CommonMsg.Error.ProcessUnable
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+
+        public static bool IsMaterialAdjustmentRRInfoGenerated()
+        {
+            if (IsReceivingReportInfoGenerated())
+            {
+                try
+                {
+                    if (IsConnected())
+                    {
+                        DataTable dt = GetData(string.Format("EXEC spHandyGetMaterialAdjustmentRRInfo '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                        if (dt.Rows.Count > 0)
+                        {
+                            ReceivedQty = (decimal)dt.Rows[0]["LocatorQty"];
+                            ReservedQty = (decimal)dt.Rows[0]["ReservedQty"];
+                            AvailableQty = (decimal)dt.Rows[0]["AvailableQty"];
+                            ExpectedActualQty = (decimal)dt.Rows[0]["ExpectedActualQty"];
+                            QuantityType = dt.Rows[0]["QuantityType"].ToString().Trim();
+                            dt.Dispose();
+
+                            if (ExpectedActualQty > 0)
+                                return true;
+                            else
+                            {
+                                MessageShow(CommonMsg.Warning.NoAdjustQty
+                                            , TagNo
+                                            , CommonEnum.NotificationType.Warning
+                                            , CommonEnum.MessageButtons.CloseOnly);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageShow(CommonMsg.Warning.NoAdjustQty
+                                            , TagNo
+                                            , CommonEnum.NotificationType.Warning
+                                            , CommonEnum.MessageButtons.CloseOnly);
+                            dt.Dispose();
+                            return false;
+                        }
+
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    MessageShow(ex.Message
+                                , string.Empty
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Called from InventoryProcessingWindow.
+        /// Checks if scanned barcode has RR info in InventoryMaster.  Updates variables if found.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsInventoryRRinfoGenerated()
+        {
+            bool _return = false;
+            try
+            {
+                #region First Checking from Downloaded Inventory Table
+
+                foreach (DataRow dr in _InventoryMaster.Rows)
+                {
+
+                    if (dr["RRNo"].ToString().Trim() == BarcodeRRNo
+                        && dr["RRSeqNo"].ToString().Trim() == BarcodeRRSeq
+                        && dr["LotSeqNo"].ToString().Trim() == BarcodeRRLotSeq
+                        && dr["LocSeqNo"].ToString().Trim() == BarcodeRRLocSeq)
+                    {
+                        OldLocatorCode = dr["LocatorCode"].ToString().Trim();
+                        OldLocatorDesc = dr["LocatorDesc"].ToString().Trim();
+                        TagNo = dr["TagNo"].ToString().Trim() + "-" + dr["TagSeqNo"].ToString().Trim();
+                        Unit = dr["Unit"].ToString().Trim();
+                        AvailableQty = Convert.ToDecimal((dr["WarehouseBalanceQty"] == null) ? 0 : dr["WarehouseBalanceQty"]);
+                        _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.Success);
+                        _Remark = CommonMsg.Info.InventoryOkay;
+                        _return = true;
+                        //Exit loop
+                        break;
+                    }
+                }
+
+                /** Old search was datatable.select being replace with foreach direct search with is faster**/
+                #region Search from generated reference
+
+                //if (_InventoryMaster != null)
+                //{
+                #region Datatable.Select function filtering | Commented
+                /*****
+                    DataRow[] drLocalInventory;
+                    drLocalInventory = _InventoryMaster.Select(String.Format("RRNo = '{0}' AND RRSeqNo = '{1}' AND LotSeqNo = '{2}' AND LocSeqNo = '{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (drLocalInventory != null)
+                    {
+                        if (drLocalInventory.Length > 0)
+                        {
+                            foreach (DataRow dr in drLocalInventory)
+                            {
+                                OldLocatorCode = dr["LocatorCode"].ToString().Trim();
+                                OldLocatorDesc = dr["LocatorDesc"].ToString().Trim();
+                                TagNo = dr["TagNo"].ToString().Trim() + "-" + dr["TagSeqNo"].ToString().Trim();
+                                Unit = dr["Unit"].ToString().Trim();
+                                AvailableQty = Convert.ToDecimal((dr["WarehouseBalanceQty"] == null) ? 0 : dr["WarehouseBalanceQty"]);
+                                _Remark = CommonMsg.Info.InventoryOkay;
+                            }
+                            _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.Success);
+                            _SuccessConnect = true;
+                            drLocalInventory = null; //releasing
+                            _return = true;
+                        }
+                        else
+                        {
+                            _return = false;
+                        }
+                    }
+                    else
+                    {
+                        _return = false;
+                    }
+                     *****/
+                #endregion
+
+                #region Check from generated reference the original RR Number | Commented ( utility transferred to desktop )
+
+                /*****
+                    drLocalInventory = null;
+                    drLocalInventory = _InventoryMaster.Select(String.Format("OrigRRNo = '{0}' AND OrigRRSeqNo = '{1}' AND OrigLotSeqNo = '{2}' AND OrigLocSeqNo = '{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (drLocalInventory != null)
+                    {
+                        if (drLocalInventory.Length > 0)
+                        {
+                            String NewTagNo = string.Empty;
+                            foreach (DataRow dr in drLocalInventory)
+                            {
+                                OldLocatorCode = dr["OrigLocatorCode"].ToString().Trim();
+                                //OldLocatorDesc = dr["LocatorDesc"].ToString().Trim();
+                                TagNo = dr["OrigTagNo"].ToString().Trim() + "-" + dr["OrigTagSeqNo"].ToString().Trim();
+                                NewTagNo = dr["TagNo"].ToString().Trim() + "-" + dr["TagSeqNo"].ToString().Trim();
+                                //Unit = dr["Unit"].ToString().Trim();
+                                AvailableQty = 0;
+                                _Remark = CommonMsg.Info.InventoryReprintLabel + " " + String.Format("{0}-{1}-{2}-{3}"
+                                                                                                       , dr["RRNo"].ToString().Trim()
+                                                                                                       , dr["RRSeqNo"].ToString().Trim()
+                                                                                                       , dr["LotSeqNo"].ToString().Trim()
+                                                                                                       , dr["LocSeqNo"].ToString().Trim());
+
+                            }
+                            _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.Reprint);
+                            _SuccessConnect = true;
+                            Cursor.Current = Cursors.Default;
+                            MessageShow(String.Format(CommonMsg.Warning.d_ReprintOutdated, NewTagNo), TagNo, CommonEnum.NotificationType.Warning);
+                            drLocalInventory = null; //releasing
+                            return false;
+                        }
+                    }
+                    *****/
+
+                #endregion
+                //}
+                //else
+                //{
+                //    _return = false;
+                //}
+                #endregion
+
+                #endregion
+
+                #region Revalidating of Outdated RR | Commented ( Utility transferred to desktop )
+
+
+                ////if (IsConnected())
+                ////{
+                ////    _SuccessConnect = true;
+
+                #region Check if barcode is outdated | Commented ( utility transferred to desktop )
+                /*****
+                    if (IsBarcodeOutDated())
+                    {
+                        _SuccessConnect = false;
+                        _lblThreadingDisplay.Visible = false;
+                        return false;
+                    }
+                    *****/
+                #endregion
+
+                #region Third Checking Remark as USED otherwise Not in database | Commented ( utility transferred to desktop )
+
+                /*****
+                    DataTable dt = GetData(string.Format("EXEC [spHandyGetMITRRInfo] '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (dt == null)
+                    {
+                        _SuccessConnect = false;
+                        _lblThreadingDisplay.Visible = false;
+                        return false;
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        OldLocatorCode = dt.Rows[0]["LocatorCode"].ToString().Trim();
+                        OldLocatorDesc = dt.Rows[0]["LocatorDesc"].ToString().Trim();
+                        TagNo = dt.Rows[0]["TagNo"].ToString().Trim();
+                        Unit = dt.Rows[0]["Unit"].ToString().Trim();
+                        AvailableQty = Convert.ToDecimal((dt.Rows[0]["WarehouseBalanceQty"] == null) ? 0 : dt.Rows[0]["WarehouseBalanceQty"]);
+                        _Remark = CommonMsg.Info.InventoryOkay;
+                        _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.Success);
+
+                        //Added 11/29/2012 Warning Msg for MIT non existing
+                        try
+                        {
+                            if (dt.Rows[0]["Exist"].ToString().Trim().Equals("0"))
+                            {
+                                MessageShow(CommonMsg.Warning.d_AlreadyUsed, CommonEnum.NotificationType.Warning);
+                                _Remark = CommonMsg.Info.InventoryNonExist;
+                                _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.InventoryNonExist);
+                            }
+                        }
+                        catch { }
+
+                        _lblThreadingDisplay.Visible = false;
+                        dt = null; //releasing
+                        return true;
+                    }
+                    else
+                    {
+                        //Item not found to all list
+                        MessageShow(CommonMsg.Error.InventoryNotRetrieve, "Warning", CommonEnum.NotificationType.Error);
+                        _Remark = CommonMsg.Info.InventoryUnretrieved;
+                        _ValidityType = CommonEnum.GetStringValue(CommonEnum.ValidityType.Unretrieve);
+                        dt.Dispose();
+                        _lblThreadingDisplay.Visible = false;
+                        dt = null; //releasing
+                        return false;
+                    }
+                    *****/
+                #endregion
+                ////}
+                ////else //Disconnected
+                ////{
+                ////    _SuccessConnect = false;
+                ////    _lblThreadingDisplay.Visible = false;
+                ////    return false;
+                ////}
+                #endregion
+
+                return _return;
+            }
+            catch (NotSupportedException err)
+            {
+                //Cursor.Current = Cursors.Default;
+                _lblThreadingDisplay.Visible = false;
+                MessageShow(CommonMsg.Error.ProcessUnable + err.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                //Cursor.Current = Cursors.Default;
+                _lblThreadingDisplay.Visible = false;
+                MessageShow(CommonMsg.Error.ProcessUnable + ex.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+
+        }
+
+        public static bool IsStockReclassRRInfoGenerated()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    if (IsReceivingReportInfoGenerated())
+                    {
+                        decimal AvailableQty = LocatorQty - IssuedQty;
+                        if (LocatorQty == 0)
+                        {
+                            MessageShow(CommonMsg.Warning.ItemNotTagged, TagNo, CommonEnum.NotificationType.Warning);
+                            return false;
+                        }
+                        else if (AvailableQty == 0 || AvailableQty < 0)
+                        {
+                            MessageShow(CommonMsg.Warning.ItemIsUsed, TagNo, CommonEnum.NotificationType.Warning);
+                            return false;
+                        }
+                        else
+                        {
+                            string query = string.Format("EXEC spHandyGetStockReclassRRInfo '{0}','{1}','{2}','{3}','{4}','{5}'"
+                                                                                                    , _BarcodeRRNo
+                                                                                                    , _BarcodeRRSeq
+                                                                                                    , _BarcodeRRLotSeq
+                                                                                                    , _BarcodeRRLocSeq
+                                                                                                    , _BarcodeStockCode
+                                                                                                    , _BarcodeQuantity);
+                            DataTable dt = GetData(query);
+                            query = null;
+
+                            if (dt == null)
+                            {
+                                return false;
+                            }
+                            if (dt.Rows.Count > 0)
+                            {
+                                if (AvailableQty > 0)
+                                {
+                                    LotQty = (decimal)dt.Rows[0]["LotQty"];
+                                    CommonFunctions.LocatorCode = dt.Rows[0]["LocatorCode"].ToString().Trim();
+                                    CommonFunctions.LocatorDesc = dt.Rows[0]["LocatorCodeDesc"].ToString().Trim();
+                                    CommonFunctions.AvailableQty = AvailableQty;
+                                    CommonFunctions.IsBalanceClass = dt.Rows[0]["IsBalanceClass"].ToString().Trim().Equals("0") ? false : true;
+                                    dt.Dispose();
+                                    Audio.PlayOKBeep();
+                                    dt = null; //releasing
+                                    return true;
+                                }
+                                else
+                                {
+                                    //Audio.PlayErrorBeep();
+                                    //MessageShow(CommonMsg.Success.ItemTagged
+                                    //            , TagNo
+                                    //            , CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.CloseOnly);
+                                    dt = null; //releasing
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                Audio.PlayErrorBeep();
+                                MessageShow(CommonMsg.Error.d_UnabletoProcess
+                                            , TagNo, CommonEnum.NotificationType.Warning
+                                            , CommonEnum.MessageButtons.CloseOnly);
+                                dt.Dispose();
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.ProcessUnable + ex.Message, CommonEnum.NotificationType.Error);
+                return false;
+            }
+
+        }
+
+        public static bool IsMaterialInquiryInfoGenerated()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    DataTable dt = GetData(string.Format("EXEC [spHandyMaterialInquiryRRInfo] '{0}','{1}','{2}','{3}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq));
+                    if (dt.Rows.Count > 0)
+                    {
+                        TagNo = dt.Rows[0]["TagNo"].ToString().Trim();
+                        Thickness = (decimal)dt.Rows[0]["Thickness"];
+                        Width = (decimal)dt.Rows[0]["Width"];
+                        Height = (decimal)dt.Rows[0]["Height"];
+                        Length = (decimal)dt.Rows[0]["Length"];
+                        Specs = dt.Rows[0]["Specs"].ToString().Trim();
+                        Mill = dt.Rows[0]["Mill"].ToString().Trim();
+                        Works = dt.Rows[0]["Works"].ToString().Trim();
+                        Unit = dt.Rows[0]["Unit"].ToString().Trim();
+                        StockType = dt.Rows[0]["StockType"].ToString().Trim();
+                        IssuedQty = (decimal)dt.Rows[0]["IssuedQty"];
+                        StockDescription = dt.Rows[0]["StockDescription"].ToString().Trim();
+                        IsHalfFinished = (bool)dt.Rows[0]["IsHalfFinished"];
+                        LocatorCode = dt.Rows[0]["LocatorCode"].ToString().Trim();
+                        LocatorDesc = dt.Rows[0]["LocatorDesc"].ToString().Trim();
+
+                        dt.Dispose();
+                        return true;
+                    }
+                    else
+                    {
+                        dt.Dispose();
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageShow(CommonMsg.Error.ServerDisconnected
+                                , ""
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageShow(ex.Message, string.Empty, CommonEnum.NotificationType.Error, CommonEnum.MessageButtons.CloseOnly);
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region String Messages
+
+        public static string NewRRInfo(string LocatorCode, decimal Quantity, bool ViewTrasferNo)
+        {
+            return _BarcodeRRNo + "-" + _BarcodeRRSeq + "-" + _BarcodeRRLotSeq + "-" + _BarcodeRRLocSeq
+            + "\r\nLot Code : " + LotCode
+            + "\r\nLocator Code : " + LocatorCode
+            + "\r\nQuantity : " + Quantity;
+        }
+
+        public static string MaterialAdjustmentMessage()
+        {
+            return CommonFunctions.RRNoDisplay + ((_VarianceDesc == CommonEnum.GetStringValue(CommonEnum.MaterialAdjustmentProcess.WriteOff)) ? "\r\nControl No : " + Result + "\r\nIssued Quantity: " + VarianceQty : "\r\nQuantity: " + (ExpectedActualQty + VarianceQty));
+        }
+
+        public static decimal GetVarianceQty(decimal InputQty, decimal BaseQty)
+        {
+            _VarianceDesc = (InputQty > BaseQty) ? CommonEnum.GetStringValue(CommonEnum.MaterialAdjustmentProcess.Excess) : CommonEnum.GetStringValue(CommonEnum.MaterialAdjustmentProcess.WriteOff);
+            CommonFunctions.VarianceQty = (InputQty > BaseQty) ? InputQty - BaseQty : BaseQty - InputQty;
+            return CommonFunctions.VarianceQty;
+        }
+
+        #endregion
+
+        #region Server Actual Data Processing : todo threading function
+
+        /// <summary>
+        /// Runs a process that corresponds to function specified by the parameter.
+        /// </summary>
+        /// <param name="Function"></param>
+        public static void SendingThread(CommonEnum.Function Function)
+        {
+            switch (Function)
+            {
+                case CommonEnum.Function.LocatorTagging:
+                    LocatorTaggingBase.SendingThreadTagging();
+                    break;
+                case CommonEnum.Function.StockMovement:
+                    StockMovementBase.SendingThreadStockMovement();
+                    break;
+                case CommonEnum.Function.StockReclass:
+                    StockReclassBase.SendingThreadStocReclassorOpening();
+                    break;
+                case CommonEnum.Function.StockPackingOpennig:
+                    StockReclassBase.SendingThreadStocReclassorOpening();
+                    break;
+                case CommonEnum.Function.MaterialIssuance:
+                    SendingThreadIssuance();
+                    break;
+                case CommonEnum.Function.DeliveryPreparation:
+                    SendingThreadDeliveryPreparation();
+                    break;
+                case CommonEnum.Function.MaterialAdjustment:
+                    MaterialAdjustmentBase.SendingThreadMaterialAdjustment();
+                    break;
+                case CommonEnum.Function.CoilDefragging:
+                    CoilDefraggingBase.SendingThreadCoilDefragging();
+                    break;
+                //Nilo Added 06-06-2012
+                case CommonEnum.Function.Inventory:
+                    InventoryBase.SendingThreadInventory();
+                    break;
+                default:
+                    MessageShow(""
+                                , CommonMsg.Error.FunctionNotFound
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Database Mobile
+
+        private static bool ResetMobileDatabase()
+        {
+            CommonFunctions.MessageShow(CommonMsg.Info.ResetHandyDatabase);
+            if (System.IO.File.Exists("\\Temp\\HandyDB.sdf"))
+            {
+                System.IO.File.Delete("\\Temp\\HandyDB.sdf");
+            }
+            return CreateMobileDatabase();
+        }
+
+        public static bool CreateMobileDatabase()
+        {
+            CESQLDataHelper DBCe = new CESQLDataHelper();
+            try
+            {
+                if (DBCe.DBCreate())
+                {
+                    DBCe.OpenDB();
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.HandyDatabaseVersion);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.Tagging);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.TaggedList);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.StockMovement);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.StockReclass);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.Inventory);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.InventoryReference);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.Defragging);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.Jobstart);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.DeliveryPreparation);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.DeliveryReportReprint);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.DeliveryChecklist);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.MaterialIssuance);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.MaterialIssuanceReprint);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.ScannedStatusList);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Insert.HandyDatabaseVersion);
+
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_Tagging);
+                    //Movement Table
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_Movement);
+                    //Inventory Table
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_Inventory);
+                    //Steel Grave Table
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_SteelGrave);
+                    //Inventory Reference RM3 stock code initials
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_StockCodeInitial);
+                    // Return to Inventory Table
+                    DBCe.ExecuteNonQuery(CommonQueryStrings.Mobile.Create.T_ReturnToInventory);
+
+                    MaintenanceBase.AddRegKey();
+                }
+                else
+                {
+                    if (CEDataReader(CommonQueryStrings.Mobile.View.HandyVersionTable).Trim().Equals("1"))
+                    {
+                        #region Check database version
+
+                        DataTable dt = CommonFunctions.CEGetData(CommonQueryStrings.Mobile.View.HandyDatabaseVersion);
+
+                        if (dt != null)
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                if (dt.Rows[0]["Activate"].ToString().Trim().Equals("1"))
+                                {
+                                    if (dt.Rows[0]["Version"].ToString().Trim() != CommonQueryStrings.Mobile.HandyDBVersion)
+                                    {
+                                        DBCe.Dispose();
+                                        DBCe.CloseDB();
+                                        ResetMobileDatabase();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                DBCe.Dispose();
+                                DBCe.CloseDB();
+                                ResetMobileDatabase();
+                            }
+                        }
+
+                        #endregion
+                    }
+                    else
+                    {
+                        DBCe.Dispose();
+                        DBCe.CloseDB();
+                        ResetMobileDatabase();
+                    }
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                string str;
+                str = "Message:" + ex.Message;
+                str += "\n" + "Stack Trace :" + ex.StackTrace;
+                CommonFunctions.MessageShow(str, "Specific Exception: Create DB", CommonEnum.NotificationType.Error);
+                return false;
+            }
+            catch (SqlCeException ex)
+            {
+                string str;
+                str = "Source:" + ex.Source;
+                str += "\n" + "Message:" + ex.Message;
+                CommonFunctions.MessageShow(str, "Database Exception: Create DB", CommonEnum.NotificationType.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                string str;
+                str = "Message:" + ex.Message;
+                CommonFunctions.MessageShow(str, "Generic Exception: Create DB", CommonEnum.NotificationType.Error);
+                return false;
+            }
+            finally
+            {
+                DBCe.Dispose();
+                DBCe.CloseDB();
+            }
+            return true;
+        }
+
+        public static bool MITMobileDBListClear(String Query)
+        {
+            bool ret = true;
+            try
+            {
+                CeExecuteNonQuery(Query);
+            }
+            catch
+            {
+                ret = false;
+            }
+            return ret;
+        }
+
+
+        private static bool _isOnline;
+
+        public static bool isOnline
+        {
+            get
+            {
+                return _isOnline;
+            }
+            set
+            {
+                _isOnline = value;
+            }
+        }
+        private static string _defaultPassword;
+        public static string defaultPassword
+        {
+            get { return _defaultPassword; }
+            set { _defaultPassword = value; }
+        }
+        private static string _Username;
+        private static string _SentDateTime = "01/01/1900";
+        public static string SentDateTime
+        {
+            get { return _SentDateTime; }
+            set { _SentDateTime = value; }
+        }
+        public static string Username
+        {
+            get
+            {
+                return _Username;
+            }
+            set
+            {
+                _Username = value;
+            }
+        }
+        public static string Remark
+        {
+            get { return _Remark; }
+            set { _Remark = value; }
+        }
+
+        public static bool defaultLogin
+        {
+            get { return _defaultLogin; }
+            set { _defaultLogin = value; }
+        }
+        #endregion
+
+        #region Common Base Functions
+        //Nilo Adde For Reprinting Read / Write 
+        public static string _LastBatchNo = "0";
+        public static string _BatchCount = "0";
+        public static string _Remark = "OK";
+
+        public static bool ScannedLabelForReprinting(bool Transacting, bool ShowMsg, String Locator, String LastProcess)
+        {
+            //If Transacting is false it will retrieve only if for reprinting 
+            //Otherwise update Last Transaction Date
+            bool Reprinting = false;
+            try
+            {
+                Reprinting = DataReader(string.Format("EXEC [spHandyUpdateLastTransactionDate] '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}'"
+                                                                                  , _BarcodeRRNo
+                                                                                  , _BarcodeRRSeq
+                                                                                  , _BarcodeRRLotSeq
+                                                                                  , _BarcodeRRLocSeq
+                                                                                  , _BarcodeStockCode
+                                                                                  , string.IsNullOrEmpty(_BarcodeQuantity.Trim()) ? "0" : _BarcodeQuantity
+                                                                                  , string.IsNullOrEmpty(Locator) ? LocatorCode : Locator
+                                                                                  , _BarcodePrintedDate
+                                                                                  , LastProcess
+                                                                                  , Username
+                                                                                  , -1
+                                                                                  , Transacting == true ? 1 : 0)) == "1" ? true : false;
+
+            }
+            catch
+            { }
+            if (Reprinting && ShowMsg)
+            {
+                Audio.PlayErrorBeep();
+                MessageShow(String.Format(CommonMsg.Info.RRNo, RRNoDisplay)
+                            , CommonMsg.Warning.Reprint
+                            , CommonEnum.NotificationType.Warning);
+            }
+            return Reprinting;
+        }
+
+        public static string getBatchNo(bool Last)
+        {
+            string Res = "";
+            //if Last then get last count if not then get count all rows
+            try
+            {
+                using (SQLDataHelper DB = new SQLDataHelper())
+                {
+                    try
+                    {
+                        DB.OpenDB();
+                        string query = String.Format(@"select 
+                                                        isnull(Max(sli_batchno),0) as LastBatchNo
+                                                    from T_TempScannedLabelIndicator
+                                                    where User_login='{0}'", Username);
+                        if (!Last)
+                            query = String.Format(@"select COUNT(Sli_RRNo) as BatchCount
+                                    from T_TempScannedLabelIndicator
+                                    where User_login='{0}' and sli_batchno='{1}' and Sli_Remark!='CONFLICT'", Username, _LastBatchNo);
+                        DataTable dt = GetData(query);
+                        if (dt.Rows.Count > 0)
+                        {
+                            if (Last)
+                            {
+                                _LastBatchNo = Convert.ToString(Convert.ToInt16(dt.Rows[0]["LastBatchNo"].ToString()) + 1);
+                                Res = _LastBatchNo;
+                            }
+                            else
+                            {
+                                _BatchCount = Convert.ToString(Convert.ToInt16(dt.Rows[0]["BatchCount"].ToString()));
+                                Res = _BatchCount;
+                            }
+                        }
+                        else
+                        {
+                            Res = "Error";
+                        }
+                        dt = null; //releasing
+                    }
+                    catch (InvalidOperationException ex)
+                    { Res = "Error"; }
+                    finally
+                    {
+                        DB.CloseDB();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Res = "Error";
+            }
+            return Res;
+        }
+
+        ////<END>
+        /// <summary>
+        /// Converts column data rows into list of string.
+        /// </summary>
+        /// <param name="Table"></param>
+        /// <param name="ColumnName"></param>
+        /// <returns></returns>
+        public static List<string> DataColumnToList(DataTable Table, string ColumnName)
+        {
+            if (Table == null)
+                return null;
+            List<string> rows = new List<string>();
+            foreach (DataRow row in Table.Rows)
+                rows.Add(row[ColumnName].ToString());
+            return rows;
+        }
+
+        public static List<string> DataColumnToList(DataTable Table, int ColumnIndex)
+        {
+            if (Table == null)
+                return null;
+            List<string> rows = new List<string>();
+            foreach (DataRow row in Table.Rows)
+                rows.Add(row[ColumnIndex].ToString());
+            return rows;
+        }
+
+        public static CommonEnum.LabelType IdentifyBarcode(string BarcodeValue, string BarcodeType)
+        {
+            InventoryBase.Reprint = false;
+
+            if ((BarcodeType == CommonEnum.GetStringValue(CommonEnum.BarcodeType.QRCode)
+                || int.Parse(BarcodeType) == (int)CommonEnum.BarcodeType.QRCode) )
+            {
+                string[] Split = BarcodeValue.Split(new Char[] { '*' });
+                if (Split.Length == 6)// || Split.Length > 6)
+                {
+                    int Index = 0;
+                    #region Material Barcode Format
+                    BarcodeRRNo = Split[Index + 0].Trim().Substring(0, 12);
+                    BarcodeRRSeq = Split[Index + 0].Trim().Substring(12, 3);
+                    BarcodeRRLotSeq = Split[Index + 0].Trim().Substring(15, 3);
+                    BarcodeRRLocSeq = Split[Index + 0].Trim().Substring(18, 3);
+                    BarcodeLotCode = Split[Index + 1].Trim();
+                    BarcodeStockCode = Split[Index + 2].Trim();
+                    BarcodeQuantity = Split[Index + 3].Trim().Replace(",", "");
+                    BarcodePrintedDate = Split[Index + 4].Trim();
+                    #endregion
+                    return CommonEnum.LabelType.Item2D;
+                }
+                else if (Split.Length == 7)
+                {
+                    //NXPERTONE RR Barcode Format
+                    int Index = 0;
+                    BarcodeRRNo = Split[Index++].Trim();
+                    BarcodeRRSeq = Split[Index++].Trim();
+                    BarcodeRRLotSeq = Split[Index++].Trim();
+                    BarcodeRRLocSeq = Split[Index++].Trim();
+                    BarcodeStockCode = Split[Index++].Trim();
+                    BarcodeQuantity = Split[Index++].Split(new Char[] { ' ' })[0].Trim().Replace(",", "");
+                    BarcodePrintedDate = Split[Index++].Trim();
+                    return CommonEnum.LabelType.Item2D;
+                }
+                else if (Split.Length == 3)
+                {
+                    #region WIP Barcode Format
+                    BarcodeJobSheetNo = Split[0].Trim();
+                    BarcodeTravelogNo = Split[1].Trim();
+                    BarcodeTravelogProcess = Split[2].Trim();
+                    #endregion
+                    return CommonEnum.LabelType.WIP;
+                }
+                else if (Split.Length == 1 && BarcodeValue.Length == 12)
+                {
+
+                    #region Retrieve Parse Data
+                    if (CommonFunctions.CurrentFunction != CommonEnum.Function.MaterialTransfer)
+                    {
+                        BarcodeWHReqControlNo = Split[0].Trim();
+                        //marvie
+                        //CommonFunctions.BarcodeWRISNo = BarcodeWHReqControlNo;
+                        //MaterialIssuanceBase.MaterialIssuanceReceivingReportList();
+                        //
+                        return CommonEnum.LabelType.IssuanceNo;
+                    }
+                    else
+                    {
+                        BarcodeTransNo = Split[0].Trim();
+
+                        return CommonEnum.LabelType.TransferNo;
+                    }
+                    #endregion
+                }
+                else //if (BarcodeValue.Length == 6) //Locator Code
+                {
+                    BarcodeLocatorCode = Split[0].Trim();
+                    return SetLocatorInstances(BarcodeValue);
+                    //LocatorCode = DataReader(string.Format("SELECT Lmt_LocatorCode FROM T_LocatorMaster WHERE Lmt_LocatorCode = '{0}' AND Lmt_Status = 'A' AND Lmt_LocatorArea = 'W'", BarcodeValue)).Trim();
+                    #region Old Locator Retrieval function
+                    //    if (_LocatorCode == "Error")
+                    //    {
+                    //        Audio.PlayErrorBeep();
+                    //        MessageShow( CommonMsg.Error.ServerDisconnected
+                    //                    , ""
+                    //                    , CommonEnum.NotificationType.Error
+                    //                    , CommonEnum.MessageButtons.CloseOnly);
+                    //        return CommonEnum.LabelType.ServerNotFound;
+                    //    }
+                    //    else
+                    //        if (string.IsNullOrEmpty(_LocatorCode))
+                    //        {
+                    //            Audio.PlayErrorBeep();
+                    //            MessageShow(BarcodeValue
+                    //                        , CommonMsg.Error.BarcodeInvalid
+                    //                        , CommonEnum.NotificationType.Error
+                    //                        , CommonEnum.MessageButtons.CloseOnly);
+                    //            return CommonEnum.LabelType.Invalid;
+                    //        }
+                    //        else
+                    //        {
+                    //            _LocatorDesc = DataReader(string.Format("SELECT Lmt_Locatordesc FROM T_LocatorMaster WHERE Lmt_LocatorCode = '{0}' AND Lmt_Status = 'A' AND Lmt_LocatorArea = 'W'", BarcodeValue)).Trim();
+                    //            return CommonEnum.LabelType.LocatorCode;
+                    //        }
+                    #endregion
+                }
+
+            }
+            else //if (BarcodeType == CommonEnum.GetStringValue(CommonEnum.BarcodeType.Code39))
+            {
+                string[] Split = BarcodeValue.Split(new Char[] { ' ' });
+                if (Split.Length == 1)
+                {
+                    #region Job Sheet Unused Code
+                    //                    if ((BarcodeValue.Length == 11 || BarcodeValue.Length == 10) && _CurrentFunction == CommonEnum.Function.JobStart) //JobSheet No with an extended 1 Char 
+                    //                    {
+                    //                        if (isConnected())
+                    //                        {
+                    //                            string Status = DataReader(string.Format("SELECT Joh_Status FROM T_JobOrderHeader WHERE Joh_JobOrderNo = '{0}'", BarcodeValue.Substring(0, 10))).Trim();
+
+                    //                            if (Status == "Error")
+                    //                            {
+                    //                                Audio.PlayErrorBeep();
+                    //                                MessageShow(""
+                    //                                            , CommonMsg.Error.ServerDisconnected
+                    //                                            , CommonEnum.NotificationType.Error
+                    //                                            , CommonEnum.MessageButtons.CloseOnly);
+                    //                                return CommonEnum.LabelType.ServerNotFound;
+                    //                            }
+                    //                            else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Cancelled))
+                    //                            {
+                    //                                Audio.PlayErrorBeep();
+                    //                                MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue.Substring(0, 10))
+                    //                                            , CommonMsg.Info.JobCancelled
+                    //                                            , CommonEnum.NotificationType.Information
+                    //                                            , CommonEnum.MessageButtons.CloseOnly);
+                    //                                return CommonEnum.LabelType.Invalid;
+                    //                            }
+                    //                            else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Started))
+                    //                            {
+                    //                                DataTable dt = GetData(string.Format(@"SELECT TOP 1 * FROM T_Travelogheader
+                    //                                                                                            JOIN	E_travelogsubdetail
+                    //                                                                                            ON		tsd_travelogno = pth_travelogno
+                    //                                                                                            WHERE	tsd_status ='F'
+                    //                                                                                            AND     pth_joborderno ='{0}'", BarcodeValue.Substring(0, 10)));
+
+                    //                                if (dt != null)
+                    //                                {
+                    //                                    if (dt.Rows.Count > 0)
+                    //                                    {
+                    //                                        MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue.Substring(0, 10)), CommonMsg.Info.JobCannotUnstart, CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.CloseOnly);
+                    //                                        return CommonEnum.LabelType.Invalid;
+                    //                                    }
+                    //                                    else
+                    //                                    {
+                    //                                        if (DialogResult.OK == GrantAccessShow(CommonMsg.Warning.ProvideJobPin
+                    //                                                                                , CommonMsg.Info.JobStarted
+                    //                                                                                , CommonEnum.NotificationType.Question
+                    //                                                                                , CommonEnum.MessageButtons.UnstartCancel))
+                    //                                        {
+                    //                                            _BarcodeJobSheetNo = BarcodeValue.Substring(0, 10);
+                    //                                            RevertJobSheet();
+                    //                                            return CommonEnum.LabelType.JobSheetNo;
+                    //                                        }
+                    //                                        else
+                    //                                            return CommonEnum.LabelType.Invalid;
+                    //                                    }
+                    //                                }
+                    //                                else
+                    //                                {
+                    //                                    if (DialogResult.OK == GrantAccessShow(CommonMsg.Warning.ProvideJobPin
+                    //                                                                            , CommonMsg.Info.JobStarted
+                    //                                                                            , CommonEnum.NotificationType.Question
+                    //                                                                            , CommonEnum.MessageButtons.UnstartCancel))
+                    //                                    {
+                    //                                        _BarcodeJobSheetNo = BarcodeValue.Substring(0, 10);
+                    //                                        RevertJobSheet();
+                    //                                        return CommonEnum.LabelType.JobSheetNo;
+                    //                                    }
+                    //                                    else
+                    //                                    {
+                    //                                        return CommonEnum.LabelType.Invalid;
+                    //                                    }
+                    //                                }
+                    //                            }
+                    //                            else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                    //                            {
+                    //                                _BarcodeJobSheetNo = BarcodeValue.Substring(0, 10);
+                    //                                JobSheetReceivingReportList();
+                    //                                Audio.PlayOKBeep();
+                    //                                return CommonEnum.LabelType.JobSheetNo;
+                    //                            }
+                    //                            /////
+                    //                            else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Fulfilled))
+                    //                            {
+                    //                                Audio.PlayErrorBeep();
+                    //                                MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue.Substring(0, 10))
+                    //                                            , CommonMsg.Info.JobResulted
+                    //                                            , CommonEnum.NotificationType.Information
+                    //                                            , CommonEnum.MessageButtons.CloseOnly);
+                    //                                return CommonEnum.LabelType.Invalid;
+                    //                            }
+                    //                            else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.New))
+                    //                            {
+                    //                                Audio.PlayErrorBeep();
+                    //                                MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue.Substring(0, 10))
+                    //                                            , CommonMsg.Info.JobNotApproved
+                    //                                            , CommonEnum.NotificationType.Information
+                    //                                            , CommonEnum.MessageButtons.CloseOnly);
+                    //                                return CommonEnum.LabelType.Invalid;
+                    //                            }
+                    //                            ///////
+                    //                            else
+                    //                            {
+                    //                                Audio.PlayErrorBeep();
+                    //                                MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue.Substring(0, 10)), CommonMsg.Error.BarcodeInvalid
+                    //                                            , CommonEnum.NotificationType.Error
+                    //                                            , CommonEnum.MessageButtons.CloseOnly);
+                    //                                return CommonEnum.LabelType.Invalid;
+                    //                            }
+                    //                        }
+                    //                        else
+                    //                            return CommonEnum.LabelType.ServerNotFound;
+                    //                    }
+                    //                    else
+                    #endregion
+
+                    if ((BarcodeValue.Length == 11 || BarcodeValue.Length == 10 || BarcodeValue.Length == 13 || BarcodeValue.Length == 14) && _CurrentFunction == CommonEnum.Function.JobStart) //JobSheet No with an extended 1 Char 
+                    {
+                        MessageShow("Job Order Function not available"
+                                                , CommonMsg.Error.BarcodeInvalid
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                        #region JobSheet Barcode Format
+                        string _BarcodeValue = string.Empty;
+
+                        if (BarcodeValue.Length == 11)
+                            _BarcodeValue = BarcodeValue.Substring(0, 10);
+                        else if (BarcodeValue.Length == 14)
+                            _BarcodeValue = BarcodeValue.Substring(0, 13);
+                        else
+                            _BarcodeValue = BarcodeValue;
+                        #endregion
+                        return IdentifyJobStartBarcode(_BarcodeValue);
+                    }
+                    else if (BarcodeValue.Length == 13 || BarcodeValue.Length == 12) //WRIS No with Extended 1 char
+                    {
+                        if (_CurrentFunction == CommonEnum.Function.DeliveryPreparation)
+                        {
+                            #region Delivery Preparation Barcode Format
+                            if (IsConnected())
+                            {
+                                //Checking the status
+                                string Status = DataReader(string.Format(CommonQueryStrings.Remote.ViewFiltered.DeliveryPreparationStatus, BarcodeValue.Substring(0, 12))).Trim();
+
+                                if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Error))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(""
+                                                , CommonMsg.Error.ServerDisconnected
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.ServerNotFound;
+                                }
+                                else if (Status == string.Empty)
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(CommonMsg.Info.NoRRDP
+                                               , BarcodeValue.Substring(0, 12)
+                                               , CommonEnum.NotificationType.Information
+                                               , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.New))
+                                {
+                                    _BarcodeWRISNo = BarcodeValue.Substring(0, 12);
+                                    DeliveryPreparationBaseOld.DeliveryPreparationReceivingReportList();
+                                    Audio.PlayOKBeep();
+                                    return CommonEnum.LabelType.WRISNo;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                                {
+                                    _BarcodeWRISNo = BarcodeValue.Substring(0, 12);
+
+                                    if (DialogResult.OK == MessageShow(string.Format(CommonMsg.Warning.DPUnload
+                                                                        , _BarcodeWRISNo, _Customer), CommonMsg.Info.Fulfilled
+                                                                        , CommonEnum.NotificationType.Information
+                                                                        , CommonEnum.MessageButtons.UnloadCancel))
+                                    {
+
+                                        //IF all DP List were prespared already can be reverted to its old status >> form A to N
+                                        if (DialogResult.Yes == MessageShow(string.Format(CommonMsg.Warning.UnloadAll
+                                                                            , _BarcodeWRISNo)
+                                                                            , CommonEnum.NotificationType.Warning
+                                                                            , CommonEnum.MessageButtons.YesNo))
+                                        {
+                                            //Unload all
+                                            ExecuteNonQuery(string.Format("UPDATE T_DeliveryPreparationDetail SET Dpd_ScanStatus = 'N', Dpd_ScannedDateTime = GETDATE(), User_login = '{1}' WHERE Dpd_DeliveryPreparationNumber = '{0}' AND Dpd_ScanStatus <> 'S'", _BarcodeWRISNo, _Username));
+                                            CeExecuteNonQuery(string.Format("DELETE FROM DeliveryPreparation WHERE DPNo = '{0}'", _BarcodeWRISNo));
+                                            CeExecuteNonQuery(string.Format("DELETE FROM ScanStatus WHERE ControlNo = '{0}'", _BarcodeWRISNo));
+                                            DeliveryPreparationBaseOld.DeliveryPreparationReceivingReportList();
+                                            Audio.PlayOKBeep();
+                                            return CommonEnum.LabelType.WRISNo;
+                                        }
+                                        else
+                                        {
+                                            Audio.PlayErrorBeep();
+                                            return CommonEnum.LabelType.Invalid;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Audio.PlayErrorBeep();
+                                        return CommonEnum.LabelType.Invalid;
+                                    }
+                                }
+                                else
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                               , CommonMsg.Info.StatusDR
+                                               , CommonEnum.NotificationType.Information
+                                               , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                            }
+                            else
+                                return CommonEnum.LabelType.ServerNotFound;
+                            #endregion
+
+                        }
+                        else if (_CurrentFunction == CommonEnum.Function.DeliveryChecklist)
+                        {
+                            #region delivery Checklist Barcode Format
+                            if (IsConnected())
+                            {
+                                string Status = DataReader(string.Format(CommonQueryStrings.Remote.ViewFiltered.DeliveryChecklistStatus, BarcodeValue.Substring(0, 12))).Trim();
+
+                                //Status = "G"; //Delete this line for testing only
+
+
+                                if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Error))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(""
+                                                , CommonMsg.Error.ServerDisconnected
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.ServerNotFound;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Generated))
+                                {
+                                    _BarcodeWRISNo = BarcodeValue.Substring(0, 12);
+                                    DeliveryChecklistBase.DeliveryReportReceivingReportList();
+                                    Audio.PlayOKBeep();
+                                    return CommonEnum.LabelType.WRISNo;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.AlreadyConfirmed
+                                                , CommonEnum.NotificationType.Information
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                                else
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.StatusDP
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                            }
+                            else
+                                return CommonEnum.LabelType.ServerNotFound;
+                            #endregion
+                        }
+                        #region Material Issuance
+                        else if (_CurrentFunction == CommonEnum.Function.MaterialIssuance)
+                        {
+                            if (IsConnected())
+                            {
+                                // retrieves Wrd_Status from T_WarehouseRequisitionDetail for the scanned Wrd_WHReqControlNo: [G|A|U|S|N]+"Error"
+                                string Status = DataReader(string.Format(CommonQueryStrings.Remote.ViewFiltered.MaterialIssuanceStatus, BarcodeValue.Substring(0, 12))).Trim();
+
+                                if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Error))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(""
+                                                , CommonMsg.Error.ServerDisconnected
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.ServerNotFound;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Generated))
+                                {
+                                    _BarcodeWRISNo = BarcodeValue.Substring(0, 12);
+                                    MaterialIssuanceBase.MaterialIssuanceReceivingReportList();
+                                    Audio.PlayOKBeep();
+                                    return CommonEnum.LabelType.IssuanceNo;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.AlreadyConfirmed
+                                                , CommonEnum.NotificationType.Information
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                                else
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.StatusNotFound
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                            }
+                            else
+                                return CommonEnum.LabelType.ServerNotFound;
+                        }
+                        #endregion
+                        #region Material Transfer
+                        else if (_CurrentFunction == CommonEnum.Function.MaterialTransfer)
+                        {
+                            if (IsConnected())
+                            {
+                                string Status = DataReader(string.Format(CommonQueryStrings.Remote.ViewFiltered.MaterialTransferStatus, BarcodeValue.Substring(0, 12))).Trim();
+
+                                if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Error))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(""
+                                                , CommonMsg.Error.ServerDisconnected
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.ServerNotFound;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.New))
+                                {
+                                    _BarcodeWRISNo = BarcodeValue.Substring(0, 12);
+                                    DeliveryChecklistBase.DeliveryReportReceivingReportList();
+                                    Audio.PlayOKBeep();
+                                    return CommonEnum.LabelType.TransferNo;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.AlreadyConfirmed
+                                                , CommonEnum.NotificationType.Information
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Cancelled))
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.Cancelled
+                                                , CommonEnum.NotificationType.Information
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                                else
+                                {
+                                    Audio.PlayErrorBeep();
+                                    MessageShow(BarcodeValue.Substring(0, 12)
+                                                , CommonMsg.Info.StatusNotFound
+                                                , CommonEnum.NotificationType.Error
+                                                , CommonEnum.MessageButtons.CloseOnly);
+                                    return CommonEnum.LabelType.Invalid;
+                                }
+                            }
+                            else
+
+                                return CommonEnum.LabelType.ServerNotFound;
+                        }
+                        #endregion
+                        else
+                        {
+                            #region Retrieve Parse Data
+                            if (CommonFunctions.CurrentFunction != CommonEnum.Function.MaterialTransfer)
+                            {
+                                BarcodeWHReqControlNo = Split[0].Trim();
+
+                                return CommonEnum.LabelType.IssuanceNo;
+                            }
+                            else
+                            {
+                                BarcodeTransNo = Split[0].Trim();
+
+                                return CommonEnum.LabelType.TransferNo;
+                            }
+                            #endregion
+
+                        }
+                    }
+                    else if (BarcodeValue.Length == 4 || BarcodeValue.Length == 6)
+                    {
+                        BarcodeLocatorCode = Split[0].Trim();
+                        return SetLocatorInstances(BarcodeValue);
+                        #region Old Locator Retrieval Function
+                        //    LocatorCode = DataReader(string.Format("SELECT Lmt_LocatorCode FROM T_LocatorMaster WHERE Lmt_LocatorCode = '{0}' AND Lmt_Status = 'A' AND Lmt_LocatorArea = 'W'", BarcodeValue)).Trim();
+                        //    if (_LocatorCode == "Error")
+                        //    {
+                        //        Audio.PlayErrorBeep();
+                        //        MessageShow(""
+                        //                    , CommonMsg.Error.ServerDisconnected
+                        //                    , CommonEnum.NotificationType.Error
+                        //                    , CommonEnum.MessageButtons.CloseOnly);
+                        //        return CommonEnum.LabelType.ServerNotFound;
+                        //    }
+                        //    else
+                        //        if (string.IsNullOrEmpty(_LocatorCode))
+                        //        {
+                        //            Audio.PlayErrorBeep();
+                        //            MessageShow(BarcodeValue
+                        //                        , CommonMsg.Error.BarcodeInvalid
+                        //                        , CommonEnum.NotificationType.Error
+                        //                        , CommonEnum.MessageButtons.CloseOnly);
+                        //            return CommonEnum.LabelType.Invalid;
+                        //        }
+                        //        else
+                        //        {
+                        //            _LocatorDesc = DataReader(string.Format("SELECT Lmt_Locatordesc FROM T_LocatorMaster WHERE Lmt_LocatorCode = '{0}' AND Lmt_Status = 'A' AND Lmt_LocatorArea = 'W'", BarcodeValue)).Trim();
+                        //            Audio.PlayErrorBeep();
+                        //            return CommonEnum.LabelType.LocatorCode;
+                        //        }
+                        #endregion
+                    }
+                    else
+                    {
+                        Audio.PlayErrorBeep();
+                        MessageShow(BarcodeValue
+                                    , CommonMsg.Error.BarcodeInvalid
+                                    , CommonEnum.NotificationType.Error
+                                    , CommonEnum.MessageButtons.CloseOnly);
+                        return CommonEnum.LabelType.Invalid;
+                    }
+                }
+                else
+                {
+                    Audio.PlayErrorBeep();
+                    MessageShow(BarcodeValue
+                                , CommonMsg.Error.BarcodeInvalid
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    return CommonEnum.LabelType.Invalid;
+                }
+            }
+            //else
+            //{
+            //    Audio.PlayErrorBeep();
+            //    MessageShow(BarcodeValue
+            //                , CommonMsg.Error.BarcodeInvalid
+            //                , CommonEnum.NotificationType.Error
+            //                , CommonEnum.MessageButtons.CloseOnly);
+            //    return CommonEnum.LabelType.Invalid;
+            //}
+        }
+
+        public static CommonEnum.LabelType IdentifyJobStartBarcode(string BarcodeValue)
+        {
+            if (IsConnected())
+            {
+                string Status = string.Empty;
+                Status = DataReader(string.Format("SELECT Joh_Status FROM T_JobOrderHeader WHERE Joh_JobOrderNo = '{0}'", BarcodeValue)).Trim();
+
+                if (Status == "Error")
+                {
+                    #region Server Not found
+                    Audio.PlayErrorBeep();
+                    MessageShow(""
+                                , CommonMsg.Error.ServerDisconnected
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.ServerNotFound;
+                }
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Cancelled))
+                {
+                    #region Cancelled
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue)
+                                , CommonMsg.Info.JobCancelled
+                                , CommonEnum.NotificationType.Information
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Started))
+                {
+                    #region Started
+                    DataTable dt = GetData(string.Format(@"SELECT TOP 1 * FROM T_Travelogheader
+                                        JOIN	E_travelogsubdetail
+                                        ON		tsd_travelogno = pth_travelogno
+                                        WHERE	tsd_status ='F'
+                                        AND     pth_joborderno ='{0}'", BarcodeValue));
+                    if (dt != null)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            MessageShow(CommonMsg.Info.JobCannotUnstart, string.Format(CommonMsg.Info.JSNo, BarcodeValue), CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.CloseOnly);
+                            dt = null; // releasing
+                            return CommonEnum.LabelType.Invalid;
+                        }
+                        else
+                        {
+                            if (DialogResult.OK == GrantAccessShow(CommonMsg.Warning.ProvideJobPin
+                                                                    , CommonMsg.Info.JobStarted
+                                                                    , CommonEnum.NotificationType.Question
+                                                                    , CommonEnum.MessageButtons.UnstartCancel))
+                            {
+                                _BarcodeJobSheetNo = BarcodeValue;
+                                JobStartBase.RevertJobSheet();
+                                dt = null; // releasing
+                                return CommonEnum.LabelType.JobSheetNo;
+                            }
+                            else
+                            {
+                                dt = null; // releasing
+                                return CommonEnum.LabelType.Invalid;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (DialogResult.OK == GrantAccessShow(CommonMsg.Warning.ProvideJobPin
+                                                                , CommonMsg.Info.JobStarted
+                                                                , CommonEnum.NotificationType.Question
+                                                                , CommonEnum.MessageButtons.UnstartCancel))
+                        {
+                            _BarcodeJobSheetNo = BarcodeValue;
+                            JobStartBase.RevertJobSheet();
+                            dt = null; // releasing
+                            return CommonEnum.LabelType.JobSheetNo;
+                        }
+                        else
+                        {
+                            dt = null; // releasing
+                            return CommonEnum.LabelType.Invalid;
+                        }
+                    }
+                    #endregion
+                }
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Approved))
+                {
+                    #region Approved
+                    _BarcodeJobSheetNo = BarcodeValue;
+                    JobStartBase.JobSheetReceivingReportList();
+                    Audio.PlayOKBeep();
+                    #endregion
+                    return CommonEnum.LabelType.JobSheetNo;
+                }
+                /////
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Fulfilled))
+                {
+                    #region Fulfilled
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue)
+                                , CommonMsg.Info.JobResulted
+                                , CommonEnum.NotificationType.Information
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.New))
+                {
+                    #region New
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue)
+                                , CommonMsg.Info.JobNotApproved
+                                , CommonEnum.NotificationType.Information
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+                else if (Status == CommonEnum.GetStringValue(CommonEnum.RRStatus.Revised))
+                {
+                    #region Revised
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue)
+                                , CommonMsg.Info.JobRevised
+                                , CommonEnum.NotificationType.Information
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+                ///////
+                else if (!string.IsNullOrEmpty(Status))
+                {
+                    #region Invalid
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue), string.Format(CommonMsg.Info.DisplayStatus, Status)
+                                , CommonEnum.NotificationType.Information
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+                else
+                {
+                    #region Invalid
+                    Audio.PlayErrorBeep();
+                    MessageShow(string.Format(CommonMsg.Info.JSNo, BarcodeValue), CommonMsg.Error.BarcodeInvalid
+                                , CommonEnum.NotificationType.Error
+                                , CommonEnum.MessageButtons.CloseOnly);
+                    #endregion
+                    return CommonEnum.LabelType.Invalid;
+                }
+            }
+            else
+                return CommonEnum.LabelType.ServerNotFound;
+        }
+
+        public static void ClearStrings()
+        {
+            OldLocatorCode = string.Empty;
+            OldLocatorDesc = string.Empty;
+            NewLocSeqNo = string.Empty;
+            QuantityType = string.Empty;
+            TransferNo = string.Empty;
+            Result = string.Empty;
+            //
+            Weight = 0;
+            AvailableQty = 0;
+            InputQty = 0;
+            ReceivedQty = 0;
+            ReservedQty = 0;
+            VarianceQty = 0;
+            LotQty = 0;
+            UntaggedQty = 0;
+            LocatorQty = 0;
+            ExpectedActualQty = 0;
+
+            ////Common
+            Unit = string.Empty;
+            LotCode = string.Empty;
+
+            //
+            Thickness = 0;
+            Width = 0;
+            Length = 0;
+            Height = 0;
+            //
+            TagNo = string.Empty;
+            Specs = string.Empty;
+            Mill = string.Empty;
+            Works = string.Empty;
+            Class = string.Empty;
+            RRNo = string.Empty;
+            RRSeq = string.Empty;
+            RRLotSeq = string.Empty;
+            RRLocSeq = string.Empty;
+            StockType = string.Empty;
+            StockClassCode = string.Empty;
+            StockClassCodeNew = string.Empty;
+            StockClassNew = string.Empty;
+            IssuedQty = 0;
+
+            //
+            IsHalfFinished = false;
+
+            ////Barcode
+            BarcodeRRNo = string.Empty;
+            BarcodeRRSeq = string.Empty;
+            BarcodeRRLotSeq = string.Empty;
+            BarcodeRRLocSeq = string.Empty;
+            BarcodeStockCode = string.Empty;
+            BarcodeLotCode = string.Empty;
+            BarcodeQuantity = string.Empty;
+            BarcodeUnit = string.Empty;
+            BarcodePrintedDate = string.Empty;
+            BarcodeSpecs = string.Empty;
+            BarcodeTravelogProcess = string.Empty;
+            BarcodeTravelogNo = string.Empty;
+        }
+
+        public static bool isDecimal()
+        {
+            if (QuantityType == "I")
+                return false;
+            else
+                return true;
+        }
+        //Nilo Added 
+        public static void ParseRRNoDisplay(string RRNoDisplay)
+        {
+            try
+            {
+                string[] Split = RRNoDisplay.Split(new Char[] { '-' });
+                //Parsing RR Display
+                _BarcodeRRNo = Split[0].Trim() + "-" + Split[1].Trim();
+                _BarcodeRRSeq = Split[2].Trim();
+                _BarcodeRRLotSeq = Split[3].Trim();
+                _BarcodeRRLocSeq = Split[4].Trim();
+                Split = null; //releasing
+            }
+            catch { }
+        }
+
+        public static void ParsestrRRNoDisplay(string RRNoDisplay)
+        {
+            try
+            {
+                string[] Split = RRNoDisplay.Split(new Char[] { '-' });
+                //Parsing RR Display
+                strRRNo = Split[0].Trim() + "-" + Split[1].Trim();
+                strRRSeqNo = Split[2].Trim();
+                strRRLotSeq = Split[3].Trim();
+                strRRLocSeq = Split[4].Trim();
+                Split = null; //releasing
+            }
+            catch { }
+        }
+
+        public static decimal ConvertStringDecimal(string stringVal)
+        {
+            decimal decimalVal = decimal.Zero;
+            try
+            {
+                decimalVal = (string.IsNullOrEmpty(stringVal)) ? decimal.Zero : System.Convert.ToDecimal(stringVal);
+            }
+            catch (System.OverflowException)
+            {
+                MessageShow("ConversionOverflowed");
+                return decimalVal;
+            }
+            catch (System.FormatException)
+            {
+                MessageShow("StringNotFormatted");
+                return decimalVal;
+            }
+            catch (System.ArgumentNullException)
+            {
+                MessageShow("NullString");
+                return decimalVal;
+            }
+
+            return decimalVal;
+        }
+
+        public static bool isExcess(decimal Read, decimal Input)
+        {
+            bool b;
+            return b = (Input > Read) ? true : false;
+        }
+
+        public static bool isInputValid(string InputQty, decimal BaseQty, bool IncludeIsExcess)
+        {
+            if (string.IsNullOrEmpty(_BarcodeRRNo))
+            {
+                CommonFunctions.MessageShow(CommonMsg.Warning.RREmpty, CommonEnum.NotificationType.Warning);
+                return false;
+            }
+            else if (string.IsNullOrEmpty(InputQty))
+            {
+                CommonFunctions.MessageShow(CommonMsg.Warning.QtyEmpy, CommonEnum.NotificationType.Warning);
+                return false;
+            }
+            else if (BaseQty <= 0)
+            {
+                CommonFunctions.MessageShow(CommonMsg.Warning.NoQty, CommonEnum.NotificationType.Warning);
+                return false;
+            }
+            else if (CommonFunctions.ConvertStringDecimal(InputQty) <= 0)
+            {
+                if (!IncludeIsExcess)
+                    return true;
+                else
+                {
+                    CommonFunctions.MessageShow(CommonMsg.Warning.InvalidQty, CommonEnum.NotificationType.Warning);
+                    return false;
+                }
+            }
+            else if (CommonFunctions.isExcess(BaseQty, CommonFunctions.ConvertStringDecimal(InputQty)) && IncludeIsExcess)
+            {
+                CommonFunctions.MessageShow(string.Format(CommonMsg.Warning.InvalidQtyExcess, BaseQty)
+                                            , CommonEnum.NotificationType.Warning
+                                            , CommonEnum.MessageButtons.CloseOnly);
+                return false;
+            }
+            else
+                return true;
+        }
+
+        public static string GetDateTime()
+        {
+            return String.Format("{0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now);
+        }
+
+        public static string GetTime()
+        {
+            return String.Format("{0:HH:mm:ss.fff}", DateTime.Now);
+        }
+
+        public static string GetDate()
+        {
+            return String.Format("{0:yyyy-MM-dd}", DateTime.Now);
+        }
+
+        public static void IsBarcodeOutDated(bool Asych)
+        {
+            IsBarcodeOutDated();
+        }
+
+        public static bool IsBarcodeOutDated()
+        {
+            bool outdate = false;
+            try
+            {
+                if (IsConnected())
+                {
+                    _LabelHistoryMaster = GetData(String.Format("EXEC [dbo].[spHandyGetRRNoRecursiveLoop] '{0}','{1}','{2}','{3}','{4}'", _BarcodeRRNo, _BarcodeRRSeq, _BarcodeRRLotSeq, _BarcodeRRLocSeq, CommonFunctions.StockType));
+                    if (_LabelHistoryMaster != null)
+                    {
+                        if (_LabelHistoryMaster.Rows.Count > 0)
+                        {
+                            string Msg = string.Empty;
+                            if (_LabelHistoryMaster.Rows.Count > 1)
+                            {
+                                _Remark = CommonMsg.Info.InventoryHoldsDiffRR;
+                                int j = 0;
+                                foreach (DataRow dr in _LabelHistoryMaster.Rows)
+                                {
+                                    if (j == 0)
+                                        Msg += dr["NewTag"].ToString().Trim();
+                                    else
+                                        Msg += " , " + dr["NewTag"].ToString().Trim();
+                                    ++j;
+                                }
+                                Msg = String.Format(CommonMsg.Warning.d_ReplaceTagGroup, Msg);
+                            }
+                            else if (_LabelHistoryMaster.Rows.Count == 1)
+                            {
+                                _Remark = CommonMsg.Info.InventoryReprintLabel + " " + _LabelHistoryMaster.Rows[0]["NewTag"].ToString().Trim();
+                                Msg = String.Format(CommonMsg.Warning.d_ReprintOutdated, _LabelHistoryMaster.Rows[0]["NewTag"].ToString().Trim());
+                            }
+
+                            Audio.PlayErrorBeep();
+                            MessageShow(Msg, CommonEnum.NotificationType.Warning);
+                            outdate = true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                outdate = false;
+            }
+            return outdate;
+        }
+
+        public static bool IsConnected()
+        {
+            return IsConnected(true);
+        }
+
+        public static bool IsConnected(bool ShowMessage)
+        {
+            if (_pbSignalStatus == null)
+            {
+                if (ShowMessage) MessageShow(CommonMsg.Warning.d_RadioIsDisabled, CommonEnum.NotificationType.Warning);
+                return false;
+            }
+            else if (_SignalStat == CommonEnum.Signal.NONE)
+            {
+                if (ShowMessage) MessageShow(CommonMsg.Warning.d_RadioIsDisabledPleasewait, CommonEnum.NotificationType.Warning);
+                return false;
+            }
+            else
+            {
+                // there's a network signal
+                if (ShowMessage) Cursor.Current = Cursors.WaitCursor;
+
+                using (SQLDataHelper DB = new SQLDataHelper())
+                {
+                    try
+                    {
+                        DB.OpenDB();
+
+                        //Nilo Added if connected then check the licensing
+                        //10022012
+                        if (ShowMessage)
+                        {
+                            if (!CommonFunctions.CheckHandyRegistration())
+                            {
+                                Cursor.Current = Cursors.Default;
+                                LicenseWindow _LicenseWindow = new LicenseWindow();
+                                _LicenseWindow.ShowDialog();
+                                ClearStrings();
+                                return false;
+                            }
+                        }
+                        //End
+                        //Nilo Added 20130228 : System version and Application version compatibility checking
+                        _ConnectionCount++;
+                        if (ShowMessage)
+                        {
+                            if (!IsVersionCompatible())
+                            {
+                                Cursor.Current = Cursors.Default;
+                                ClearStrings();
+                                return false;
+                            }
+                        }
+                        //Nilo Added Version monitoring 
+                        if (!_HandyUpdateMonitorSend && ShowMessage)
+                        {
+                            _HandyUpdateMonitorSend = UpdateHandyMonitoring();
+                        }
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        if (ShowMessage) Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        str += "\n" + "Stack Trace :" + ex.StackTrace;
+                        if (ShowMessage) Audio.PlayErrorBeep();
+                        if (ShowMessage) MessageShow(str, "Specific Exception", CommonEnum.NotificationType.Error);
+                        return false;
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ShowMessage) Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Source:" + ex.Source;
+                        str += "\n" + "Message:" + ex.Message;
+                        if (ShowMessage) Audio.PlayErrorBeep();
+                        if (ShowMessage) MessageShow(str, DB.DBName + " Database Exception", CommonEnum.NotificationType.Error);
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ShowMessage) Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        if (ShowMessage) Audio.PlayErrorBeep();
+                        if (ShowMessage) MessageShow(str, "Generic Exception", CommonEnum.NotificationType.Error);
+                        return false;
+                    }
+                    finally
+                    {
+                        DB.CloseDB();
+                    }
+                }
+                if (ShowMessage) Cursor.Current = Cursors.Default;
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Returns value according to following: 0 = Unprocessed, 1 = Sent, 2 = Scanned
+        /// </summary>
+        /// <param name="IsScanned"></param>
+        /// <param name="IsSent"></param>
+        /// <returns></returns>
+        public static int ItemStatus(int IsScanned, int IsSent)
+        {
+            //Note that this status is basing on the image list of the window
+            //0 - unscanned
+            //1 - sent
+            //2 - scanned but unsent
+
+            int status = 0;
+            status = (IsSent == 1) ? 1 : (IsScanned == 1) ? 2 : 0;
+            return status;
+        }
+
+        #endregion
+
+        #region Downloading Functions
+
+        public static DateTime GetServerDate(bool Connected)
+        {
+            if (Connected)
+                try
+                {
+
+                    {
+
+                    }
+                    return Convert.ToDateTime(CommonFunctions.DataReader("SELECT Getdate()"));
+                }
+                catch
+                {
+                    return DateTime.MinValue;
+                }
+            else
+                return DateTime.MinValue;
+        }
+
+        public static void DownloadUser()
+        {
+            try
+            {
+                if (IsConnected())
+                {
+                    DataTable dt = new DataTable();
+                    dt = GetData(CommonQueryStrings.Remote.View.HandyUser());
+                    if (dt != null)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            Cursor.Current = Cursors.WaitCursor;
+                            for (int i = 0; i < dt.Rows.Count; ++i)
+                            {
+                                TextParameterInfo[] TextParamInfo = new TextParameterInfo[2];
+                                TextParamInfo[0] = new TextParameterInfo("Umt_Usercode", dt.Rows[i]["Umt_Usercode"].ToString().Trim());
+                                TextParamInfo[1] = new TextParameterInfo("Umt_UserHandyPin", dt.Rows[i]["Umt_UserHandyPin"].ToString().Trim());
+
+                                if (i == 0)
+                                    Logger.WriteTextData(Logger.HandyPath, Logger.HandyUSERFile, TextParamInfo);
+                                else
+                                    Logger.WriteTextData(Logger.HandyPath, Logger.HandyUSERFile, TextParamInfo, false, true);
+
+                            }
+                            try { dt.Dispose(); }
+                            catch { }
+                        }
+                    }
+
+                    DataTable dtInfo = new DataTable();
+                    dtInfo = GetData(CommonQueryStrings.Remote.View.CompanyInformation);
+                    if (dtInfo != null)
+                    {
+                        if (dtInfo.Rows.Count > 0)
+                        {
+                            Cursor.Current = Cursors.WaitCursor;
+                            for (int i = 0; i < dtInfo.Rows.Count; ++i)
+                            {
+                                #region TextParameteInfo
+                                TextParameterInfo[] TextParamInfo = new TextParameterInfo[6];
+                                TextParamInfo[0] = new TextParameterInfo("Scm_CompName", dtInfo.Rows[i]["Scm_CompName"].ToString().Trim());
+                                TextParamInfo[1] = new TextParameterInfo("Scm_CompAddress1", dtInfo.Rows[i]["Scm_CompAddress1"].ToString().Trim());
+                                TextParamInfo[2] = new TextParameterInfo("Scm_CompAddress2", dtInfo.Rows[i]["Scm_CompAddress2"].ToString().Trim());
+                                //TextParamInfo[3] = new TextParameterInfo("Scm_CompAddress3", dtInfo.Rows[i]["Scm_CompAddress3"].ToString().Trim());
+                                TextParamInfo[3] = new TextParameterInfo("Scm_TelephoneNos", dtInfo.Rows[i]["Scm_TelephoneNos"].ToString().Trim());
+                                TextParamInfo[4] = new TextParameterInfo("Scm_FaxNos", dtInfo.Rows[i]["Scm_FaxNos"].ToString().Trim());
+                                TextParamInfo[5] = new TextParameterInfo("handyVer", dtInfo.Rows[i]["handyVer"].ToString().Trim());
+                                #endregion TextParamenterInfo
+                                Logger.WriteTextData(Logger.HandyPath, Logger.HandyCompanyInfoFile, TextParamInfo, true, false, '|');
+                            }
+                            Cursor.Current = Cursors.Default;
+                            MessageShow(CommonMsg.Success.d_DownloadComplete, CommonEnum.NotificationType.Success);
+                            try { dtInfo.Dispose(); }
+                            catch { }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.d_UnabletoProcess + "\n" + ex.ToString(), CommonEnum.NotificationType.Error);
+            }
+            Cursor.Current = Cursors.Default;
+        }
+
+        #region Get List of Locators
+        //Nilo Added Get List of Locator Code and Desc
+        //Running in local
+        //Applicable in MMSteel since Locator are only 300+
+        //Date 10/17/2012
+        public static void GetLocatorInfo(string LocatorCode)
+        {
+            if (_LocatorListTable == null) // commented  by marvie for checking
+                if (_LocatorListTable == null && _LocatorListTable != null)// added by marvie for checking
+            {
+                if (IsConnected())
+                {
+                    _LocatorListTable = GetData(string.Format(CommonQueryStrings.Remote.ViewFiltered.LocatorMaster, LocatorCode));
+                }
+            }
+
+            if (_LocatorListTable != null && _LocatorListTable.Rows.Count > 0)
+            {
+                foreach (DataRow row in _LocatorListTable.Rows)
+                {
+                    if (row["Lmt_Locatorcode"].ToString().Trim().Equals(LocatorCode))
+                    {
+                        _LocatorCode = row["Lmt_Locatorcode"].ToString().Trim();
+                        _LocatorDesc = row["Lmt_Locatordesc"].ToString().Trim();
+
+                        // ADDED BY DEV1521-FRANCIS
+                        _GeneratedWarehouse = row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.StorageWarehouse)) ? CommonEnum.Warehouse.StorageWarehouse
+                                            : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.ProductionMiniWarehouse)) ? CommonEnum.Warehouse.ProductionMiniWarehouse
+                                            : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.HRMiniWarehouse)) ? CommonEnum.Warehouse.HRMiniWarehouse
+                                            : CommonEnum.Warehouse.GAMiniWarehouse;
+                    }
+                }
+            }
+        }
+
+        public static CommonEnum.LabelType SetLocatorInstances(string BarcodeValue)
+        {
+            if (_LocatorListTable == null)
+            {
+                if (IsConnected())
+                {
+                    _LocatorListTable = GetData(string.Format(CommonQueryStrings.Remote.ViewFiltered.LocatorMaster, BarcodeValue));
+                }
+                else
+                {
+                    return CommonEnum.LabelType.Invalid;
+                }
+            }
+
+            if (_LocatorListTable != null && _LocatorListTable.Rows.Count > 0)
+            //if (_LocatorListTable != null && _LocatorListTable.Rows.Count > 0 || _LocatorListTable.Rows.Count <= 0)
+            {
+                foreach (DataRow row in _LocatorListTable.Rows)
+                {
+                    if (row["Lmt_Locatorcode"].ToString().Trim().Equals(BarcodeValue))
+                    {
+                        _LocatorCode = row["Lmt_Locatorcode"].ToString().Trim();
+                        _LocatorDesc = row["Lmt_Locatordesc"].ToString().Trim();
+
+                        // ADDED BY DEV1521-FRANCIS
+                        _GeneratedWarehouse = row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.StorageWarehouse)) ? CommonEnum.Warehouse.StorageWarehouse
+                                            : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.ProductionMiniWarehouse)) ? CommonEnum.Warehouse.ProductionMiniWarehouse
+                                            : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.HRMiniWarehouse)) ? CommonEnum.Warehouse.HRMiniWarehouse
+                                            : CommonEnum.Warehouse.GAMiniWarehouse;
+                        Audio.PlayErrorBeep();
+                        return CommonEnum.LabelType.LocatorCode;
+                    }
+                }
+
+                //Retry server connection with renew locator list
+                if (IsConnected())
+                {
+                    _LocatorListTable = GetData(string.Format(CommonQueryStrings.Remote.ViewFiltered.LocatorMaster, BarcodeValue));
+                    if (_LocatorListTable != null && _LocatorListTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in _LocatorListTable.Rows)
+                        {
+                            if (row["Lmt_Locatorcode"].ToString().Trim().Equals(BarcodeValue))
+                            {
+                                _LocatorCode = row["Lmt_Locatorcode"].ToString().Trim();
+                                _LocatorDesc = row["Lmt_Locatordesc"].ToString().Trim();
+
+                                // ADDED BY DEV1521-FRANCIS
+                                _GeneratedWarehouse = row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.StorageWarehouse)) ? CommonEnum.Warehouse.StorageWarehouse
+                                                    : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.ProductionMiniWarehouse)) ? CommonEnum.Warehouse.ProductionMiniWarehouse
+                                                    : row["Lmt_Warehousecode"].ToString().Trim().Equals(CommonEnum.GetStringValue(CommonEnum.Warehouse.HRMiniWarehouse)) ? CommonEnum.Warehouse.HRMiniWarehouse
+                                                    : CommonEnum.Warehouse.GAMiniWarehouse;
+                                Audio.PlayErrorBeep();
+                                return CommonEnum.LabelType.LocatorCode;
+                            }
+                        }
+                    }
+                }
+
+                Audio.PlayErrorBeep();
+                MessageShow(BarcodeValue
+                            , CommonMsg.Error.BarcodeInvalid
+                            , CommonEnum.NotificationType.Error
+                            , CommonEnum.MessageButtons.CloseOnly);
+                return CommonEnum.LabelType.Invalid;
+                //}
+            }
+            else if (_LocatorListTable.Rows.Count <= 0)
+            {
+                Audio.PlayErrorBeep();
+                MessageShow(BarcodeValue
+                            , CommonMsg.Error.BarcodeInvalid
+                            , CommonEnum.NotificationType.Error
+                            , CommonEnum.MessageButtons.CloseOnly);
+                return CommonEnum.LabelType.Invalid;
+            }
+            else
+            {
+                Audio.PlayErrorBeep();
+                MessageShow(BarcodeValue
+                            , CommonMsg.Error.BarcodeInvalid
+                            , CommonEnum.NotificationType.Error
+                            , CommonEnum.MessageButtons.CloseOnly);
+                return CommonEnum.LabelType.Invalid;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Handy Information
+
+        public static void GenerateHandyInfo(string TerminalNumber)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                TextParameterInfo[] TextParamInfo = new TextParameterInfo[3];
+                TextParamInfo[0] = new TextParameterInfo("TerminalNumber", TerminalNumber);
+                TextParamInfo[1] = new TextParameterInfo("ProductModel", Handy.Lib.Properties.Resource.ProductModel);
+                TextParamInfo[2] = new TextParameterInfo("SerialNumber", SerialNumber);
+                Logger.WriteTextData(Logger.HandyPath, Logger.HandyInfoFile, TextParamInfo, true, false, '|');
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.d_UnabletoProcess + "\n" + ex.ToString(), CommonEnum.NotificationType.Error);
+            }
+            Cursor.Current = Cursors.Default;
+        }
+
+        public static string[] HandyInfo
+        {
+            get
+            {
+                string[] HandyInfo = new string[3];
+                HandyInfo = Logger.GetTextData(Logger.HandyPath, Logger.HandyInfoFile, HandyInfo, false, true, false, '|');
+                if (HandyInfo == null)
+                {
+                    HandyInfo[0] = "0";
+                    HandyInfo[1] = Handy.Lib.Properties.Resource.ProductModel;
+                    HandyInfo[2] = SerialNumber;
+                }
+                return HandyInfo;
+            }
+        }
+
+        public static string SerialNumber
+        {
+            get
+            {
+                try
+                {
+                    //Nilo Added 10022012
+                    //Getting IP Number
+                    IPHostEntry host;
+                    host = Dns.GetHostEntry(Dns.GetHostName());
+                    foreach (IPAddress ip in host.AddressList)
+                    {
+                        if (ip.AddressFamily.ToString() == "InterNetwork")
+                        {
+                            _HandyIPAddress = ip.ToString();
+                            break;
+                        }
+                    }
+
+                    //Acquire Keyence Handy Terminal Serial Number 
+                    IntPtr pserial = Marshal.AllocCoTaskMem(32);
+                    Bt.SysLib.Terminal.btGetHandyParameter(Bt.LibDef.BT_SYS_PRM_SERIALNO, pserial);
+                    return Marshal.PtrToStringUni(pserial);
+                }
+                catch { return ""; }
+            }
+        }
+
+        public static bool IsVersionCompatible()
+        {
+            try
+            {
+                bool returnvalue = true;
+
+                string SystemRequiredVersion = DataReader(CommonQueryStrings.Remote.View.SystemRequiredVersion);
+                if (string.IsNullOrEmpty(SystemRequiredVersion))
+                {
+                    MessageShow(CommonMsg.Warning.d_UnabletoRetrieveSystemVersion, CommonEnum.NotificationType.Warning);
+                }
+                else if (SystemRequiredVersion.Length > 0 && ApplicationVersion.Length > 0)
+                {
+                    string[] SysVersionSplit = SystemRequiredVersion.Split(new Char[] { '.' });
+                    string[] AppVersionSplit = ApplicationVersion.Split(new Char[] { '.' });
+                    if (SysVersionSplit.Length == 4 && AppVersionSplit.Length == 4)
+                    {
+                        #region System Version
+                        string SysMajor = SysVersionSplit[0].Trim().ToUpper();
+                        string SysMinor = SysVersionSplit[1].Trim().ToUpper();
+                        string SysBuild = SysVersionSplit[2].Trim().ToUpper();
+                        string SysRevision = SysVersionSplit[3].Trim().ToUpper();
+                        #endregion
+
+                        #region Application Version
+                        string AppMajor = AppVersionSplit[0].Trim().ToUpper();
+                        string AppMinor = AppVersionSplit[1].Trim().ToUpper();
+                        string AppBuild = AppVersionSplit[2].Trim().ToUpper();
+                        string AppRevision = AppVersionSplit[3].Trim().ToUpper();
+                        #endregion
+
+                        if (SysMajor != AppMajor)
+                        {
+                            returnvalue = false;
+                        }
+                        else if (SysMinor != AppMinor)
+                        {
+                            returnvalue = false;
+                        }
+                        else if (SysBuild != AppBuild)
+                        {
+                            returnvalue = false;
+                        }
+                        else if (SysMajor == AppMajor && SysMinor == AppMinor && SysBuild == AppBuild && SysRevision != AppRevision)
+                        {
+                            //Warning only
+                            if (_ConnectionCount % 10 == 0)
+                                MessageShow(string.Format(CommonMsg.Warning.d_NewVersion, SystemRequiredVersion, ApplicationVersion), CommonEnum.NotificationType.Information);
+                        }
+
+                        if (!returnvalue)
+                        {
+                            //Need to update
+                            MessageShow(string.Format(CommonMsg.Warning.d_IncompatibleVersion, SystemRequiredVersion, ApplicationVersion), CommonEnum.NotificationType.Warning);
+                        }
+                    }
+                }
+                return returnvalue;
+            }
+            catch (Exception err)
+            {
+                MessageShow(CommonMsg.Warning.d_UnabletoRetrieveSystemVersion + "\n" + err.Message, CommonEnum.NotificationType.Warning);
+                return true;
+            }
+        }
+
+        public static bool UpdateHandyMonitoring()
+        {
+            bool ret = false;
+            try
+            {
+                MaintenanceBase.SetDatabaseStringInstances();
+                return ExecuteNonQuery(String.Format("EXEC [spHandyUpdateMonitoring] '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}'"
+                                                    , HandyMacAddress
+                                                    , HandyNo
+                                                    , HandyIPAddress
+                                                    , SerialNumber
+                                                    , "BT-W85G"
+                                                    , ApplicationVersion
+                                                    , MaintenanceBase.strDatasource
+                                                    , MaintenanceBase.strDatabase
+                                                    , "A"
+                                                    , Username));
+            }
+            catch
+            { ret = false; }
+            return ret;
+        }
+
+        public static void SetDeviceDateTime(bool Connection)
+        {
+            if (CommonFunctions.InvokeDeviceDate(CommonFunctions.GetServerDate(Connection)))
+            {
+                //Do nothing
+            }
+            else
+            {
+                CommonFunctions.MessageShow(CommonMsg.Warning.d_UnabletoSetDeviceDateTime, CommonEnum.NotificationType.Warning);
+            }
+        }
+
+        /**Pocket PC**/
+        [DllImport("coredll.dll")]
+        /**Desktop PC**/
+        //[DllImport("kernel32.dll")]
+
+        private static extern bool SetLocalTime([In] ref SYSTEMTIME lpLocalTime);
+
+        private struct SYSTEMTIME
+        {
+            public short Year, Month, DayOfWeek, Day, Hour, Minute, Second, Millisecond;
+            /// <summary>
+            /// Convert form System.DateTime
+            /// </summary>
+            /// <param name="time">Creates System Time from this variable</param>
+            public void FromDateTime(DateTime time)
+            {
+                Year = (short)time.Year;
+                Month = (short)time.Month;
+                DayOfWeek = (short)time.DayOfWeek;
+                Day = (short)time.Day;
+                Hour = (short)time.Hour;
+                Minute = (short)time.Minute;
+                Second = (short)time.Second;
+                Millisecond = (short)time.Millisecond;
+            }
+
+            public DateTime ToDateTime()
+            {
+                return new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
+            }
+
+            public static DateTime ToDateTime(SYSTEMTIME time)
+            {
+                return time.ToDateTime();
+            }
+        }
+
+        public static bool InvokeDeviceDate(DateTime SystemDateTime)
+        {
+            try
+            {
+                if (SystemDateTime == DateTime.MinValue)
+                    return false;
+                SYSTEMTIME SysDateTime = new SYSTEMTIME();
+                SysDateTime.FromDateTime(Convert.ToDateTime(SystemDateTime));
+                if (SetLocalTime(ref SysDateTime))
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Handy License Management
+
+        //Nilo Added 10012012
+        //Function to check and control if Device has a liscense to use the Handy Application
+
+        public static bool EnableLicensing()
+        {
+            bool _Active = false;
+            if (Properties.Resource.ResourceManager.GetString("EnableLicense").Trim().Equals("TRUE"))
+                return true; //Liscensing Restriction is not Used 
+
+            return _Active;
+        }
+
+        public static string GetHandyMacAddress()
+        {
+            //Nilo Added 09282012 (BINAGSA NA PAGKUHA SA MAC ADDRESS!) [Net info dll is available in desktop][Use as alternative for Mobile Dev.]
+            //1.Check if MAC file is already been Create.
+            //2.If File does not exist execute windows command.
+            //3.Windows command create a Network Interface Config file.
+            //4.Open the Network Interface Config file.
+            //5.Parse the file and find the mac address.
+            //6.Returm Mac Address.
+
+            #region Check if there is MAC txt already
+            string[] Mac = new string[1];
+            Logger.GetTextData(Logger.HandyPath, Logger.HandyMacFile, Mac);
+            if (Mac != null)
+                if (!string.IsNullOrEmpty(Mac[0]))
+                {
+                    //CommonFunctions.MessageShow(Mac[0]);
+                    return Mac[0].Trim();
+                }
+                else
+                {
+                    try
+                    {
+                        System.IO.File.Delete(Logger.HandyPath + Logger.HandyMacFile);
+                    }
+                    catch { }
+                }
+            #endregion
+
+            #region Recreate the Network Configuration File
+            try
+            {
+                if (!System.IO.Directory.Exists(Logger.HandyPath))
+                {
+                    System.IO.Directory.CreateDirectory(Logger.HandyPath);
+                }
+                if (Logger.isFileExist(Logger.HandyPath, Logger.HandyDeviceNetConFile))
+                    System.IO.File.Delete(Logger.HandyDeviceNetConPathFile);
+
+                System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + string.Format("ipconfig /all > {0}", Logger.HandyDeviceNetConPathFile));
+                procStartInfo.UseShellExecute = false;
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.StartInfo = procStartInfo;
+                proc.Start();
+            }
+            catch (Exception objException)
+            {
+                CommonFunctions.MessageShow(objException.Message + "\n" + objException.StackTrace.ToString());
+                // Log the exception
+            }
+
+            #endregion
+
+            Thread.Sleep(1000);
+
+            #region Parse The Network Config File to Get Mac
+            string _MacAddress = string.Empty;
+            string filter = "Address............";
+            DataTable dt = Logger.GetTextDataTable(Logger.HandyPath, Logger.HandyDeviceNetConFile, -1, false, ':');
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    try
+                    {
+                        string Address = row["COLUMN_1"].ToString().Trim();
+                        string Value = row["COLUMN_2"].ToString().Trim();
+                        if (Address.Equals(filter))
+                        {
+                            _MacAddress = Value.Replace(" ", ":");
+                            Mac[0] = _MacAddress;
+                            Logger.WriteTextData(Logger.HandyPath, Logger.HandyMacFile, Mac);
+                            break;
+                        }
+                    }
+                    catch { }
+                }
+            }
+
+            //CommonFunctions.MessageShow(_MacAddress);
+            if (string.IsNullOrEmpty(_MacAddress))
+                MessageShow(CommonMsg.Error.DisableAdapter, CommonEnum.NotificationType.Error);
+            #endregion
+            return _MacAddress.Trim();
+        }
+
+        private static void DownloadHandyLicense()
+        {
+            try
+            {
+                if (_HandyRegisteredList != null)  //Handy list has already been retrieved
+                    return;
+
+                DataTable dt = new DataTable();
+                dt = GetData(@"SELECT 
+	                                     Hrm_MacAddress
+	                                    ,Hrm_TerminalNumber
+	                                    ,Hrm_IPAddress
+	                                    ,Hrm_SerialNumber
+	                                    ,Hrm_Model
+	                                    ,Hrm_Status
+                                   FROM .dbo.T_HandyRegistryMaster");
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+
+                        _HandyRegisteredList = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageShow(CommonMsg.Error.d_UnabletoProcess + "\n" + ex.ToString(), CommonEnum.NotificationType.Error);
+            }
+        }
+
+        public static bool CheckHandyRegistration()
+        {
+            bool _registered = true;
+            if (_HandyRegistered)                       //Registration has been checked already 
+                return _registered;                     //Exit to optimize checking
+
+            DownloadHandyLicense(); //Getting registered list from database
+            if (!EnableLicensing())                       //If resource is set not to enable licensing then return true
+                return _registered;
+            if (_HandyRegisteredList == null)           //License list is not pulled yet or not set in database
+                return false;
+            if (_HandyRegisteredList.Rows.Count <= 0)   //License list is not set yet
+                return false;
+            if (string.IsNullOrEmpty(_HandyMacAddress)) //Cannotr Retrieve Device Mac Address
+                return _registered;
+            //Start Checking Licensing
+            foreach (DataRow row in _HandyRegisteredList.Rows)
+            {
+                string macfromList = row["Hrm_MacAddress"].ToString().Trim().ToUpper();
+                _registered = false; //Set by default that handy is not on the registered list
+
+                if (row["Hrm_MacAddress"].ToString().Trim().ToUpper().Equals(_HandyMacAddress.Trim().ToUpper()))
+                {
+                    if (row["Hrm_Status"].ToString().Trim().ToUpper().Equals("C"))
+                    {
+                        _HandyStatus = "C";
+                        _HandyRegistered = false;
+                        break;
+                    }
+                    else
+                    {
+                        _registered = true;
+                        _HandyRegistered = true; //Set that Handy Registration is already successful.
+                        break;
+                    }
+                }
+            }
+
+            return _registered;
+        }
+
+        #endregion
+
+        #region Handy Net Signal Strength
+
+        public static bool SignalAvailable(CommonEnum.Signal SignalStrength)
+        {
+            return SignalAvailable(SignalStrength, true);
+        }
+
+        public static bool SignalAvailable(CommonEnum.Signal SignalStrength, bool ShowMsg)
+        {
+            bool ret = true;
+            switch (SignalStrength)
+            {
+                case CommonEnum.Signal.NONE:
+                    if (ShowMsg)
+                        CommonFunctions.MessageShow(string.Format(CommonMsg.Warning.d_NoSignal, CommonEnum.GetStringValue(SignalStrength), CommonEnum.NotificationType.Error));
+                    ret = false;
+                    break;
+                case CommonEnum.Signal.POOR:
+                    if (ShowMsg)
+                        CommonFunctions.MessageShow(string.Format(CommonMsg.Warning.d_PoorSignal, CommonEnum.GetStringValue(SignalStrength), CommonEnum.NotificationType.Error));
+                    ret = false;
+                    break;
+            }
+            return ret;
+        }
+
+        #endregion
+
+        #region Message Dialog Functions
+
+        public static bool IsMessageDialogShown = false;
+        public static DialogResult MessageShow(string message)
+        {
+            return MessageShow(message, string.Empty, CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.Ok);
+        }
+
+        public static DialogResult MessageShow(string message, CommonEnum.NotificationType NotificationType)
+        {
+            if (NotificationType == CommonEnum.NotificationType.Information)
+                return MessageShow(message, "Info", NotificationType, CommonEnum.MessageButtons.Ok);
+            else if (NotificationType == CommonEnum.NotificationType.Error)
+                return MessageShow(message, "Error", NotificationType, CommonEnum.MessageButtons.Ok);
+            else if (NotificationType == CommonEnum.NotificationType.Warning)
+                return MessageShow(message, "Warning", NotificationType, CommonEnum.MessageButtons.Ok);
+            else if (NotificationType == CommonEnum.NotificationType.Question)
+                return MessageShow(message, "Question", NotificationType, CommonEnum.MessageButtons.Ok);
+            else if (NotificationType == CommonEnum.NotificationType.Question)
+                return MessageShow(message, "Successful", NotificationType, CommonEnum.MessageButtons.Ok);
+            else
+                return MessageShow(message, "", NotificationType, CommonEnum.MessageButtons.Ok);
+        }
+
+        public static DialogResult MessageShow(string message, string caption)
+        {
+            return MessageShow(message, caption, CommonEnum.NotificationType.Information, CommonEnum.MessageButtons.Ok);
+        }
+
+        public static DialogResult MessageShow(string message, string caption, CommonEnum.NotificationType NotificationType)
+        {
+            return MessageShow(message, caption, NotificationType, CommonEnum.MessageButtons.Ok);
+        }
+
+        public static DialogResult MessageShow(string message, string caption, CommonEnum.MessageButtons Buttons)
+        {
+            return MessageShow(message, caption, CommonEnum.NotificationType.Information, Buttons);
+        }
+
+        public static DialogResult MessageShow(string message, CommonEnum.NotificationType NotificationType, CommonEnum.MessageButtons Buttons)
+        {
+            return MessageShow(message, string.Empty, NotificationType, Buttons);
+        }
+
+        public static DialogResult MessageShow(string message, string caption, CommonEnum.NotificationType Notification, CommonEnum.MessageButtons Buttons)
+        {
+            using (MessageForm Message = new MessageForm(message, caption, Notification, Buttons))
+            {
+                return Message.ShowDialog();
+            }
+        }
+
+        public static DialogResult GrantAccessShow(string message, string caption, CommonEnum.NotificationType Notification, CommonEnum.MessageButtons Buttons)
+        {
+            using (PriveledgeWindow Message = new PriveledgeWindow(message, caption, Notification, Buttons))
+            {
+                return Message.ShowDialog();
+            }
+        }
+
+        public static DialogResult SupervisoryCancellation(string message, string caption)
+        {
+            using (SupervisoryCancelation Message = new SupervisoryCancelation(message, caption))
+            {
+                return Message.ShowDialog();
+            }
+        }
+
+        #endregion
+
+
+        private static void SendingThreadIssuance()
+        {
+            if (_WRISTable != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                bool ViewRemarks = false;
+                bool ItemScanned = false;
+
+                using (SQLDataHelper DB = new SQLDataHelper())
+                {
+
+                    DB.OpenDB();
+                    DB.BeginTransaction();
+                    try
+                    {
+
+
+                        _PostProgress.Value = 0;
+                        int rowindex = 0;
+
+                        //Start Looping WRIS Datatable
+                        foreach (DataRow row in _WRISTable.Rows)
+                        {
+                            Int32 _value = Convert.ToInt32((Convert.ToDecimal(rowindex) / _WRISTable.Rows.Count) * 100);
+                            DataTable dt = new DataTable();
+                            if (row["EXTUploadStatus"].ToString().Trim() == CommonEnum.GetStringValue(CommonEnum.UploadStats.Saved)
+                              || row["EXTUploadStatus"].ToString().Trim() == CommonEnum.GetStringValue(CommonEnum.UploadStats.Redo))
+                            {
+
+                                _PostProgress.Visible = true;
+                                _PostProgress.Value = _value;
+
+                                #region Assign Variable from Datatable
+
+                                CommonFunctions.BarcodeRRNo = row["Wrd_RRNo"].ToString();
+                                CommonFunctions.BarcodeRRSeq = row["Wrd_RRSeqNo"].ToString();
+                                CommonFunctions.BarcodeRRLotSeq = row["Wrd_RRLotSeqNo"].ToString();
+                                CommonFunctions.BarcodeRRLocSeq = row["Wrd_RRLoc"].ToString();
+                                CommonFunctions.BarcodeQuantity = row["EXTBarcodeQty"].ToString();
+                                CommonFunctions.BarcodePrintedDate = row["EXTBarcodePrintDate"].ToString();
+                                CommonFunctions.BarcodeReqSeqNo = row["WrdSeqNo"].ToString();
+                                CommonFunctions.BarcodeReqSPitSeqNo = row["WrdSplitNo"].ToString();
+                                CommonFunctions.IssuedQty = CommonFunctions.ConvertStringDecimal(row["IssuedQty"].ToString());
+                                CommonFunctions.BarcodeWRISStockCode = row["StockCode"].ToString();
+                                CommonFunctions.NewLocSeqNo = "";
+                                if (ConvertStringDecimal(row["IssuedQty"].ToString()) < CommonFunctions.ConvertStringDecimal(row["RequestQty"].ToString()))
+                                {
+                                    _isWRISSplit = true;
+                                }
+
+                                #endregion
+
+                                #region Post/GetData(Return Value) from server
+
+                                dt = GetData(string.Format(CommonQueryStrings.StoredProc.spHandyStockIssuance
+                                                                                              , _BarcodeRRNo
+                                                                                              , _BarcodeRRSeq
+                                                                                              , _BarcodeRRLotSeq
+                                                                                              , _BarcodeRRLocSeq
+                                                                                              , _BarcodeQuantity
+                                                                                              , _BarcodePrintedDate
+                                                                                              , Username
+                                                                                              , BarcodeWHReqControlNo
+                                                                                              , BarcodeReqSeqNo
+                                                                                              , BarcodeReqSPitSeqNo
+                                                                                              , IssuedQty
+                                                                                              , BarcodeWRISStockCode)
+                                                                                              , DB, true);
+
+                                #endregion
+
+                                #region Get Return Values
+
+                                Cursor.Current = Cursors.Default;
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    NewLocSeqNo = dt.Rows[0]["Return_Val"].ToString().Trim();
+
+                                    if (NewLocSeqNo == CommonStoredProcedures.Issuance.RX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_RX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.RU)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_RU;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WNR)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WNR;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRX)
+                                    {
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRX, dt.Rows[0]["WRRESERVEDQTY"], row["RequestQty"].ToString().Trim());
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRP)
+                                    {
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRP, dt.Rows[0]["WRRESERVEDQTY"]);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRRP)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WRRP;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRG)
+                                    {
+                                        //Returns the system requested WRREQUESTQTY
+                                        RequestedQty = (decimal)dt.Rows[0]["WRREQUESTQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRG, IssuedQty.ToString(), ReservedQty.ToString());
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRAX)
+                                    {
+                                        _AvailableQty = (decimal)dt.Rows[0]["RAVAILABLEQTY"];
+                                        _ReservedQty = (decimal)dt.Rows[0]["RRESERVEDQTY"];
+                                        _IssuedQty = (decimal)dt.Rows[0]["RISSUEQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRAX, _AvailableQty, _ReservedQty, _IssuedQty);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRRX)
+                                    {
+                                        _AvailableQty = (decimal)dt.Rows[0]["RAVAILABLEQTY"];
+                                        _ReservedQty = (decimal)dt.Rows[0]["RRESERVEDQTY"];
+                                        _IssuedQty = (decimal)dt.Rows[0]["RISSUEQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRRX, _AvailableQty, ReservedQty, _IssuedQty);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WG)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WG;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WXX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WXX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.S)
+                                    {
+                                        RequestedQty = (decimal)dt.Rows[0]["WRREQUESTQTY"];
+                                        _ReturnRemark = CommonMsg.Success.d_S;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageShow(CommonMsg.Error.d_UnabletoProcess, CommonEnum.NotificationType.Error);
+                                    return;
+                                }
+
+                                Cursor.Current = Cursors.WaitCursor;
+                                #endregion
+
+                                #region Updating Local WRIS Datatable
+                                if (CommonFunctions.NewLocSeqNo == CommonStoredProcedures.Issuance.S)
+                                {
+                                    row["EXTUploadStatus"] = CommonEnum.GetStringValue(CommonEnum.UploadStats.Sent);
+                                    ItemScanned = true;
+                                }
+                                else
+                                {
+                                    row["EXTUploadStatus"] = CommonEnum.GetStringValue(CommonEnum.UploadStats.Redo);
+                                    ViewRemarks = true;
+                                }
+
+                                row["EXT_Remark"] = CommonFunctions.ReturnRemark;
+
+                                if (CommonFunctions.NewLocSeqNo == CommonStoredProcedures.Issuance.WRRX)
+                                {
+                                    row["IssuedQty"] = CommonFunctions.AvailableQty; //Overwriting the database available quantity 
+                                    row["EXT_RRAvailable"] = CommonFunctions.AvailableQty;
+                                    ViewRemarks = true;
+                                }
+
+                                _WRISTable.AcceptChanges();
+
+                                #endregion
+                            }
+
+                            //Allow CPU to breath
+                            Thread.Sleep(500);
+                            ++rowindex;
+
+                        }
+                        //End of Loop
+
+                        _PostProgress.Value = 100;
+
+                        Cursor.Current = Cursors.Default;
+
+                        if (ViewRemarks)
+                        {
+                            //not all items are successfully issued.
+                            CommonFunctions.MessageShow(CommonMsg.Success.d_ViewRemarks, CommonEnum.NotificationType.Success);
+                        }
+                        else if (ItemScanned)
+                        {
+                            CommonFunctions.MessageShow(string.Format(CommonMsg.Success.d_WRISIssueComplete, BarcodeWHReqControlNo), CommonEnum.NotificationType.Success);
+                        }
+
+                        DB.CommitTransaction();
+                    }
+                    #region Catch/Finally
+                    catch (InvalidOperationException ex)
+                    {
+                        #region Operation Exception
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        str += "\n" + "Stack Trace :" + ex.StackTrace;
+                        MessageShow(str, "Specific Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    catch (SqlException ex)
+                    {
+                        #region SqlException
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Source:" + ex.Source;
+                        str += "\n" + "Message:" + ex.Message;
+                        MessageShow(str, "Database Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        #region Generic Exception
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        MessageShow(str, "Generic Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    finally
+                    {
+                        DB.CloseDB();
+                        Cursor.Current = Cursors.Default;
+                    }
+                    #endregion
+                }
+            }
+        }
+
+        private static void SendingThreadDeliveryPreparation()
+        {
+            if (_WRISTable != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                bool ViewRemarks = false;
+                bool ItemScanned = false;
+
+                using (SQLDataHelper DB = new SQLDataHelper())
+                {
+                    DB.OpenDB();
+                    DB.BeginTransaction();
+                    try
+                    {
+                        _PostProgress.Value = 0;
+                        int rowindex = 0;
+
+                        //Start Looping WRIS Datatable
+                        foreach (DataRow row in _WRISTable.Rows)
+                        {
+                            Int32 _value = Convert.ToInt32((Convert.ToDecimal(rowindex) / _WRISTable.Rows.Count) * 100);
+                            DataTable dt = new DataTable();
+                            if (row["EXTUploadStatus"].ToString().Trim() == CommonEnum.GetStringValue(CommonEnum.UploadStats.Saved)
+                              || row["EXTUploadStatus"].ToString().Trim() == CommonEnum.GetStringValue(CommonEnum.UploadStats.Redo))
+                            {
+
+                                _PostProgress.Visible = true;
+                                _PostProgress.Value = _value;
+
+                                #region Assign Variable from Datatable
+
+                                CommonFunctions.BarcodeRRNo = row["Wrd_RRNo"].ToString();
+                                CommonFunctions.BarcodeRRSeq = row["Wrd_RRSeqNo"].ToString();
+                                CommonFunctions.BarcodeRRLotSeq = row["Wrd_RRLotSeqNo"].ToString();
+                                CommonFunctions.BarcodeRRLocSeq = row["Wrd_RRLoc"].ToString();
+                                CommonFunctions.BarcodeQuantity = row["EXTBarcodeQty"].ToString();
+                                CommonFunctions.BarcodePrintedDate = row["EXTBarcodePrintDate"].ToString();
+                                CommonFunctions.BarcodeReqSeqNo = row["WrdSeqNo"].ToString();
+                                CommonFunctions.BarcodeReqSPitSeqNo = row["WrdSplitNo"].ToString();
+                                CommonFunctions.IssuedQty = CommonFunctions.ConvertStringDecimal(row["IssuedQty"].ToString());
+                                CommonFunctions.BarcodeWRISStockCode = row["StockCode"].ToString();
+                                CommonFunctions.NewLocSeqNo = "";
+                                if (ConvertStringDecimal(row["IssuedQty"].ToString()) < CommonFunctions.ConvertStringDecimal(row["RequestQty"].ToString()))
+                                {
+                                    _isWRISSplit = true;
+                                }
+
+                                #endregion
+
+                                #region Post/GetData(Return Value) from server
+
+                                dt = GetData(string.Format(CommonQueryStrings.StoredProc.spHandyProductIssuance
+                                                                                              , _BarcodeRRNo
+                                                                                              , _BarcodeRRSeq
+                                                                                              , _BarcodeRRLotSeq
+                                                                                              , _BarcodeRRLocSeq
+                                                                                              , _BarcodeQuantity
+                                                                                              , _BarcodePrintedDate
+                                                                                              , Username
+                                                                                              , BarcodeWHReqControlNo
+                                                                                              , BarcodeReqSeqNo
+                                                                                              , BarcodeReqSPitSeqNo
+                                                                                              , IssuedQty
+                                                                                              , BarcodeWRISStockCode)
+                                                                                              , DB, true);
+
+                                #endregion
+
+                                #region Get Return Values
+
+                                Cursor.Current = Cursors.Default;
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    NewLocSeqNo = dt.Rows[0]["Return_Val"].ToString().Trim();
+
+                                    if (NewLocSeqNo == CommonStoredProcedures.Issuance.RX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_RX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.RU)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_RU;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WNR)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WNR;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRX)
+                                    {
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRX, dt.Rows[0]["WRRESERVEDQTY"], row["RequestQty"].ToString().Trim());
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRP)
+                                    {
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRP, dt.Rows[0]["WRRESERVEDQTY"]);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRRP)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WRRP;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRG)
+                                    {
+                                        //Returns the system requested WRREQUESTQTY
+                                        RequestedQty = (decimal)dt.Rows[0]["WRREQUESTQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRG, IssuedQty.ToString(), ReservedQty.ToString());
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRAX)
+                                    {
+                                        _AvailableQty = (decimal)dt.Rows[0]["RAVAILABLEQTY"];
+                                        _ReservedQty = (decimal)dt.Rows[0]["RRESERVEDQTY"];
+                                        _IssuedQty = (decimal)dt.Rows[0]["RISSUEQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRAX, _AvailableQty, _ReservedQty, _IssuedQty);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WRRX)
+                                    {
+                                        _AvailableQty = (decimal)dt.Rows[0]["RAVAILABLEQTY"];
+                                        _ReservedQty = (decimal)dt.Rows[0]["RRESERVEDQTY"];
+                                        _IssuedQty = (decimal)dt.Rows[0]["RISSUEQTY"];
+                                        _ReturnRemark = string.Format(CommonMsg.Warning.d_WRRX, _AvailableQty, ReservedQty, _IssuedQty);
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WG)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WG;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.WXX)
+                                    {
+                                        _ReturnRemark = CommonMsg.Warning.d_WXX;
+                                        ViewRemarks = true;
+                                    }
+                                    else if (NewLocSeqNo == CommonStoredProcedures.Issuance.S)
+                                    {
+                                        RequestedQty = (decimal)dt.Rows[0]["WRREQUESTQTY"];
+                                        _ReturnRemark = CommonMsg.Success.d_S;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageShow(CommonMsg.Error.d_UnabletoProcess, CommonEnum.NotificationType.Error);
+                                    return;
+                                }
+
+                                Cursor.Current = Cursors.WaitCursor;
+                                #endregion
+
+                                #region Updating Local WRIS Datatable
+                                if (CommonFunctions.NewLocSeqNo == CommonStoredProcedures.Issuance.S)
+                                {
+                                    row["EXTUploadStatus"] = CommonEnum.GetStringValue(CommonEnum.UploadStats.Sent);
+                                    ItemScanned = true;
+                                }
+                                else
+                                {
+                                    row["EXTUploadStatus"] = CommonEnum.GetStringValue(CommonEnum.UploadStats.Redo);
+                                    ViewRemarks = true;
+                                }
+
+                                row["EXT_Remark"] = CommonFunctions.ReturnRemark;
+
+                                if (CommonFunctions.NewLocSeqNo == CommonStoredProcedures.Issuance.WRRX)
+                                {
+                                    row["IssuedQty"] = CommonFunctions.AvailableQty; //Overwriting the database available quantity 
+                                    row["EXT_RRAvailable"] = CommonFunctions.AvailableQty;
+                                    ViewRemarks = true;
+                                }
+
+                                _WRISTable.AcceptChanges();
+
+                                #endregion
+                            }
+
+                            //Allow CPU to breath
+                            Thread.Sleep(500);
+                            ++rowindex;
+
+                        }
+                        //End of Loop
+
+                        _PostProgress.Value = 100;
+
+                        Cursor.Current = Cursors.Default;
+
+                        if (ViewRemarks)
+                        {
+                            //not all items are successfully issued.
+                            CommonFunctions.MessageShow(CommonMsg.Success.d_ViewRemarks, CommonEnum.NotificationType.Success);
+                        }
+                        else if (ItemScanned)
+                        {
+                            CommonFunctions.MessageShow(string.Format(CommonMsg.Success.d_WRISIssueComplete, BarcodeWHReqControlNo), CommonEnum.NotificationType.Success);
+                        }
+
+                        DB.CommitTransaction();
+                    }
+                    #region Catch/Finally
+                    catch (InvalidOperationException ex)
+                    {
+                        #region Operation Exception
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        str += "\n" + "Stack Trace :" + ex.StackTrace;
+                        MessageShow(str, "Specific Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    catch (SqlException ex)
+                    {
+                        #region SqlException
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Source:" + ex.Source;
+                        str += "\n" + "Message:" + ex.Message;
+                        MessageShow(str, "Database Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        #region Generic Exception
+                        DB.RollBackTransaction();
+                        Cursor.Current = Cursors.Default;
+                        string str;
+                        str = "Message:" + ex.Message;
+                        MessageShow(str, "Generic Exception", CommonEnum.NotificationType.Error);
+                        Cursor.Current = Cursors.Default;
+                        //return "Error";
+                        #endregion
+                    }
+                    finally
+                    {
+                        DB.CloseDB();
+                        Cursor.Current = Cursors.Default;
+                    }
+                    #endregion
+                }
+            }
+        }
+
+        public static void DisposeCommonObj()
+        {
+            try
+            {
+                _RRNo = string.Empty;
+                _RRSeq = string.Empty;
+                _RRLotSeq = string.Empty;
+                _RRLocSeq = string.Empty;
+                _OldLocatorCode = string.Empty;
+                _OldLocatorDesc = string.Empty;
+                _LocatorQty = 0;
+                _AvailableQty = 0;
+                _ReservedQty = 0;
+                _RequestedQty = 0;
+                _IssuedQty = 0;
+                _InputQty = 0;
+                _ExpectedActualQty = 0;
+                _PostProgress = null;
+                _WRISTable = null;
+                _WRISTableSplitList = null;
+                _RRListWithUnmatchProjCode = null;
+                _MITTable = null;
+                _DisposableTable = null;
+                _NewLocSeqNo = string.Empty;
+                _BarcodeRRNo = string.Empty;
+                _BarcodeRRSeq = string.Empty;
+                _BarcodeRRLotSeq = string.Empty;
+                _BarcodeRRLocSeq = string.Empty;
+                _BarcodeStockCode = string.Empty;
+                _BarcodeLotCode = string.Empty;
+                _BarcodeQuantity = string.Empty;
+                _BarcodeUnit = string.Empty;
+                _BarcodePrintedDate = string.Empty;
+                _BarcodeSpecs = string.Empty;
+                _BarcodeWHReqControlNo = string.Empty;
+                _BarcodeReqSeqNo = string.Empty;
+                _BarcodeReqSPitSeqNo = string.Empty;
+                _BarcodeWRISStockCode = string.Empty;
+                _BarcodeJobSheetNo = string.Empty;
+                _BarcodeLocatorCode = string.Empty;
+                _BarcodeTravelogProcess = string.Empty;
+                ClearStrings();
+
+            }
+            catch (Exception err)
+            {
+                CommonFunctions.MessageShow(err.Message + "\n" + err.StackTrace.ToString(), CommonEnum.NotificationType.Error);
+            }
+        }
+
+        public static string GetStockName(string stockcode)
+        {
+            return CommonFunctions.GetData(CommonQueryStrings.Remote.ViewFiltered.GetStockName(stockcode)).Rows[0][0].ToString();
+        }
+
+        public static string GetStockSpecs(string stockcode)
+        {
+            return CommonFunctions.GetData(CommonQueryStrings.Remote.ViewFiltered.GetStockSpecs(stockcode)).Rows[0][0].ToString();
+        }
+    }
+}
