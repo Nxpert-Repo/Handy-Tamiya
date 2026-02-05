@@ -209,3 +209,18 @@ C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Li
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.csproj.GenerateResource.Cache
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.dll
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.pdb
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\Handy.Lib.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\Handy.Lib.pdb
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\Handy.DAL.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\System.Data.SqlClient.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\bin\Debug\Handy.DAL.pdb
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.LicenseWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.MessageForm.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.PriveledgeWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.Properties.Resource.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.SupervisoryCancelation.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.csproj.GenerateResource.Cache
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Lib\obj\Debug\Handy.Lib.pdb

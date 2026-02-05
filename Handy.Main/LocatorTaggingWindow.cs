@@ -345,10 +345,7 @@ namespace Handy
 
                                     this.GetLocatorTaggingRRInfo();
                                     this.Reprint = false;
-                                    if (CommonFunctions.LocatorQty == 0)
-                                        this.TaggingQty.ReadOnly = true;
-                                    else
-                                        this.TaggingQty.ReadOnly = false;
+                                    this.TaggingQty.ReadOnly = true;
                                 
                                 this.LocatorCode.Focus();
                                 this.LocatorCode.SelectAll();
@@ -377,6 +374,8 @@ namespace Handy
                         ClearAll();
                         LocatorCode.Text = CommonFunctions.BarcodeLocatorCode;
                         LocatorCodeDesc.Text = CommonFunctions.LocatorDesc;
+
+                        TaggingQty.ReadOnly = true;
                   
                         LocatorCode.Focus();
                         base.BarcodeReader_Start();
@@ -463,6 +462,7 @@ namespace Handy
         {
             LocatorCode.Focus();
             this.AllowSave = false;
+            TaggingQty.ReadOnly = true;
             if (LocatorTaggingBase.CountTaggedList() > 300)
             {
                 CommonFunctions.MessageShow(CommonMsg.Warning.d_TaglistExceeded, CommonEnum.NotificationType.Warning);

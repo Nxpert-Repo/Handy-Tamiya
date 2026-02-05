@@ -546,3 +546,42 @@ C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Ma
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Main\Handy.pdb
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Main\System.Data.SqlClient.dll
 C:\Users\MCF-KENANGELOCARDIEN\Documents\1. Handy\7. Tamiya\Handy-Tamiya\Handy.Main\System.Data.SqlServerCe.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.HandyMaintenanceListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.HandyMaintenanceWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.InventoryListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.InventoryProcessingWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.LocatorTaggingListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.LocatorTaggingWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.LocatorUnTaggingListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.LogInWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.MainWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.MaterialAdjustmentWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.MaterialIssuanceWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.Main.Properties.Resources.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.BarcodeTestWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.BaseWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.KTestWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.TestWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.DeliveryPreparationWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.DisplayNewTagsWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.InventoryGenerationWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.InventoryProcessingWindow_Symbol.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.IssuanceWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.MaterialIssuanceWindow_Sym.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.MaterialTransferWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.PickListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.ScannedListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.StatusListWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.StockCardWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.StockMovementWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.WRISWindow.resources
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.csproj.GenerateResource.Cache
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\Handy.exe.config
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\dbnetlib.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.exe
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\obj\Debug\Handy.pdb
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\Handy.exe
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\Handy.pdb
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\System.Data.SqlClient.dll
+C:\Users\TRAINEE-APOSTOL\Handy-Tamiya\Handy.Main\System.Data.SqlServerCe.dll
